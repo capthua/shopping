@@ -1,6 +1,6 @@
-package com.shopping.user.controller;
+package com.shopping.order.controller;
 
-import com.shopping.user.service.UserService;
+import com.shopping.order.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019/11/01
  */
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("order")
+public class OrderController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
-    UserService userService;
+    OrderService orderService;
 
-    @GetMapping("testUser")
-    String testUser(String name) {
-        logger.info("testUser参数:{}", name);
-        return userService.testUser(name);
+    @GetMapping("saveOrder")
+    Integer saveOrder() {
+        logger.info("save order");
+        return orderService.saveOrder();
     }
 }
 
