@@ -1,6 +1,7 @@
 package com.shopping.user.controller;
 
 import com.shopping.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author hanshaohua
  * @date 2019/11/01
  */
+//@Slf4j //自动生成log变量
 @RestController
 @RequestMapping("user")
 public class UserController {

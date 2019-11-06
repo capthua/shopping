@@ -1,6 +1,10 @@
 package com.shopping.user.service.impl;
 
+import com.shopping.user.dao.UserDao;
+import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,8 +17,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    UserDao userDao;
+
     @Override
     public String testUser(String name) {
+        User user = userDao.getUserById(1);
         return name;
     }
 }
