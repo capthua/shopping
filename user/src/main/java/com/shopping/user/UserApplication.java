@@ -14,6 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+//mapperscan必须加
 @MapperScan("com.shopping.user.dao")
 public class UserApplication {
     public static void main(String[] args) {
