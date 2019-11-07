@@ -1,5 +1,6 @@
 package com.shopping.user.controller;
 
+import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -28,7 +29,8 @@ public class UserController {
     @GetMapping("testUser")
     String testUser(String name) {
         logger.info("testUser参数:{}", name);
-        return userService.testUser(name);
+        String hehe = userService.testUser(name);
+        return "hehe";
     }
 }
 
