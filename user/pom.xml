@@ -22,6 +22,9 @@
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
+<!--                <excludes>-->
+<!--                    <exclude></exclude>-->
+<!--                </excludes>-->
             </resource>
         </resources>
     </build>
