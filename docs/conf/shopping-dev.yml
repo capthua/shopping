@@ -4,3 +4,14 @@ spring:
     url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
     username: root
     password: 242492
+
+  #  rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+logging:
+  level:
+    com.alibaba.nacos: WARN

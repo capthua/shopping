@@ -1,8 +1,9 @@
 package com.shopping.user.controller;
 
+import com.shopping.user.events.UserChangeSender;
+import com.shopping.user.events.UserChange;
 import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
+import java.util.Random;
 
 /**
  * describe:
@@ -29,11 +30,18 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserChangeSender userChangeSender;
+
     @GetMapping("testUser")
-    String testUser(String name) {
+    User testUser(String name) {
         logger.info("testUser参数:{}", name);
-        String hehe = userService.testUser(name);
-        return "hehe";
+        User user = userService.testUser(name);
+        UserChange userChange=new UserChange();
+        userChange.setId(new Random().nextInt());
+        userChange.setName(new Random().nextInt()+"heheh");
+        userChangeSender.pushMsg(userChange);
+        return user;
     }
 
 

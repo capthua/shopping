@@ -1,0 +1,4 @@
+#bootstrap会覆盖active的设置
+spring:
+  profiles:
+    active: dev

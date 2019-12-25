@@ -1,5 +1,7 @@
 package com.shopping.user.service;
 
+import com.shopping.user.model.User;
+
 /**
  * describe:
  *
@@ -7,6 +9,6 @@ package com.shopping.user.service;
  * @date 2019/11/01
  */
 public interface UserService {
-    String testUser(String name);
+    User testUser(String name);
 }
 

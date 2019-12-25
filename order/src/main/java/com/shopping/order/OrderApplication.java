@@ -1,27 +1,16 @@
-package com.shopping.user;
+package com.shopping.order;
 
-import com.shopping.user.events.CustomOutChannel;
-import org.mybatis.spring.annotation.MapperScan;
+
+import com.shopping.order.events.CustomInChannel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
-
-/**
- * describe:
- *
- * @author hanshaohua
- * @date 2019/11/01
- */
-
 @SpringBootApplication
 @EnableDiscoveryClient
-//mapperscan必须加
-@MapperScan("com.shopping.user.dao")
-public class UserApplication {
+public class OrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 }
-
