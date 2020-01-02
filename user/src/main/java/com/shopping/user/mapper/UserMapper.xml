@@ -12,13 +12,13 @@
         <id property="id" column="id" />
         <result property="username" column="username"/>
         <result property="password" column="password"/>
-        <result property="fullName" column="fullName"/>
+        <result property="fullName" column="full_name"/>
         <result property="email" column="email"/>
-        <result property="updateByEmail" column="updateByEmail"/>
+        <result property="updateByEmail" column="update_by_email"/>
     </resultMap>
 
     <!--<select id="getUserById" resultMap="userResultMap" flushCache="true">-->
-        <!--select * from `user` where id = #{id}-->
+    <!--select * from `user` where id = #{id}-->
     <!--</select>-->
 
     <select id="getUserById" resultMap="userResultMap" useCache="false">
@@ -39,13 +39,13 @@
                 password=#{password},
             </if>
             <if test="fullName!=null">
-                fullName=#{fullName},
+                full_name=#{fullName},
             </if>
             <if test="email!=null">
                 email=#{email},
             </if>
             <if test="updateByEmail!=null">
-                updateByEmail=#{updateByEmail}
+                update_by_email=#{updateByEmail}
             </if>
         </set>
         where id=#{id}
