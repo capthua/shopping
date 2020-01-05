@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS `user`
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO dps.user (username, password, full_name, email, update_by_email)
+INSERT INTO shopping.user (username, password, full_name, email, update_by_email)
 VALUES ('hsh', '02042018', '韩少华', 'hshua24@gmail.com', 0);
-INSERT INTO dps.user (username, password, full_name, email, update_by_email)
+INSERT INTO shopping.user (username, password, full_name, email, update_by_email)
 VALUES ('steve', '22222', '乔布斯', 'steve@apple.com', 0);
 
