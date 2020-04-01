@@ -7,6 +7,7 @@ public interface CustomInChannel {
 
     /**
      * Input channel name.
+     * rabbitmq中会自动创建一个"userChange"的exchange
      */
     String INPUT = "userChange";
 

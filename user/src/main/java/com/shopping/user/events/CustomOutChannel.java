@@ -6,6 +6,7 @@ import org.springframework.messaging.MessageChannel;
 public interface CustomOutChannel {
     /**
      * Name of the output channel.
+     * rabbitmq中会自动创建一个"userChange"的exchange
      */
     String OUTPUT = "userChange";
 

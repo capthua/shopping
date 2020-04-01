@@ -2,6 +2,7 @@ package com.shopping.user.controller;
 
 import com.shopping.user.events.UserChangeSender;
 import com.shopping.user.events.UserChange;
+//import com.shopping.user.events.queuesend.Sender;
 import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
 import org.slf4j.Logger;
@@ -33,8 +34,11 @@ public class UserController {
     @Autowired
     UserChangeSender userChangeSender;
 
-    @GetMapping("testUser")
-    User testUser(String name) {
+//    @Autowired
+//    Sender sender;
+
+    @GetMapping("testUser/{name}")
+    public User testUser(@PathVariable("name") String name) {
         logger.info("testUser参数:{}", name);
         User user = userService.testUser(name);
         UserChange userChange=new UserChange();
@@ -45,8 +49,8 @@ public class UserController {
     }
 
 
-    @GetMapping("/{name}")
-    String testPathVariableWithDot(@PathVariable("name") String name){
+    @GetMapping("/testPath/{name}")
+    public String testPathVariableWithDot(@PathVariable("name") String name){
         logger.info(name);
         return "hehe";
     }
