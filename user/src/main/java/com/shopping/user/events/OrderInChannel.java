@@ -1,9 +1,9 @@
-package com.shopping.order.events;
+package com.shopping.user.events;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface CustomInChannel {
+public interface OrderInChannel {
 
     /**
      * Input channel name.
@@ -14,6 +14,6 @@ public interface CustomInChannel {
     /**
      * @return input channel.
      */
-    @Input(CustomInChannel.INPUT)
+    @Input(OrderInChannel.INPUT)
     SubscribableChannel input();
 }

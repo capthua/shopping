@@ -1,18 +1,18 @@
-package com.shopping.user.events;
+package com.shopping.order.events;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
-public interface CustomOutChannel {
+public interface OrderOutChannel {
     /**
      * Name of the output channel.
      * rabbitmq中会自动创建一个"userChange"的exchange
      */
-    String OUTPUT = "userChange";
+    String OUTPUT = "order";
 
     /**
      * @return output channel
      */
-    @Output(CustomOutChannel.OUTPUT)
+    @Output(OrderOutChannel.OUTPUT)
     MessageChannel output();
 }

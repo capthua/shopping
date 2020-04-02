@@ -1,4 +1,4 @@
-package com.shopping.order.events;
+package com.shopping.user.events;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,10 +7,10 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 
-@EnableBinding(CustomInChannel.class)
-public class UserChangeHandler {
+@EnableBinding(OrderInChannel.class)
+public class OrderHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserChangeHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(OrderHandler.class);
 
 
     /**
@@ -18,9 +18,9 @@ public class UserChangeHandler {
      * @param headers
      * @param payload
      */
-    @StreamListener(CustomInChannel.INPUT)
+    @StreamListener(OrderInChannel.INPUT)
     public void loggerSink(@Headers MessageHeaders headers, byte[] payload){
-        String userChange=new String(payload);
-        logger.info("Received a message:{}",userChange);
+        String order=new String(payload);
+        logger.info("Received a message:{}",order);
     }
 }

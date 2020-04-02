@@ -8,7 +8,7 @@
     <!--<cache/>-->
     <!--<cache type="org.mybatis.caches.redis.RedisCache" />-->
 
-    <resultMap id="userResultMap" type="com.shopping.user.model.User">
+    <resultMap id="user" type="com.shopping.user.model.User">
         <id property="id" column="id" />
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -21,12 +21,12 @@
     <!--select * from `user` where id = #{id}-->
     <!--</select>-->
 
-    <select id="getUserById" resultMap="userResultMap" useCache="false">
+    <select id="getUserById" resultMap="user" useCache="false">
         select * from `user` where id = #{id}
     </select>
 
     <insert id="saveUser" useGeneratedKeys="true" keyProperty="id">
-        insert `user`(username,password,fullName,email) values (#{username},#{password},#{fullName},#{email})
+        insert `user`(username,password,full_name,email) values (#{username},#{password},#{fullName},#{email})
     </insert>
 
     <update id="updateUser">
