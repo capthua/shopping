@@ -9,7 +9,7 @@ public interface OrderInChannel {
      * Input channel name.
      * rabbitmq中会自动创建一个"userChange"的exchange
      */
-    String INPUT = "userChange";
+    String INPUT = "order";
 
     /**
      * @return input channel.
