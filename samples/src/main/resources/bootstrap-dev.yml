@@ -1,0 +1,13 @@
+#设置服务发现
+
+spring:
+  application:
+    name: samples-dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        prefix: shopping
+        file-extension: yml
