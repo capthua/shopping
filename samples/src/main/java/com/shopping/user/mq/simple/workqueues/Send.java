@@ -14,7 +14,7 @@ public class Send {
             Connection connection=factory.newConnection();
             Channel channel=connection.createChannel();
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            for(int i=0;i<100;i++){
+            for(int i=0;i<10000;i++){
                 String message = "Hello World!";
                 message+=i;
                 Thread.sleep(1000);

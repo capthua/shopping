@@ -1,9 +1,8 @@
 package com.shopping.user.mq.simple.workqueues;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
+
+import java.io.IOException;
 
 public class Recv {
 
@@ -21,10 +20,13 @@ public class Recv {
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + message + "'");
+        DeliverCallback deliverCallback = new DeliverCallback() {
+            @Override
+            public void handle(String consumerTag, Delivery message) throws IOException {
+                String messageStr = new String(message.getBody(), "UTF-8");
+                System.out.println(" [x] Received '" + messageStr + "'");
 //            channel.basicAck(delivery.getEnvelope().getDeliveryTag(),false);
+            }
         };
         boolean autoAck=true;
         channel.basicConsume(QUEUE_NAME, autoAck, deliverCallback, consumerTag -> { });
