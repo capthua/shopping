@@ -16,6 +16,7 @@ import static com.shopping.user.mq.TopicRabbitConfig.TOPIC_QUEUE_NAME;
 
 /**
  * 一个方法对应一个handler
+ * @Component 必须加，要不然无法注册到mq
  */
 @Slf4j
 @Component
@@ -45,7 +46,7 @@ public class TopicHandler {
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        //手动确认消息
+        //手动确认消息,如果Unacked的数目达到Prefetch count,就不给次消费者发送
         channel.basicAck(tag,false);
     }
 

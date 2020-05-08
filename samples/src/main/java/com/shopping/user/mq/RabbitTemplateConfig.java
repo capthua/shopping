@@ -21,7 +21,7 @@ public class RabbitTemplateConfig {
         rabbitTemplate.setConfirmCallback((correlationData, ack, cause) ->
                 log.info("ConfirmCallback correlationData:{},ack:{},cause:{}",correlationData,ack,cause));
 
-        //消息返回给生产者
+        //消息返回给生产者, 路由不到队列时返回给发送者  先returnCallback,再 confirmCallback
         rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
             log.info("ReturnCallback message:{},replyCode:{},replyText:{},exchange:{},routingKey:{}",
                     message,replyCode,replyText,exchange,routingKey);
