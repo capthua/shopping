@@ -34,5 +34,10 @@ public class SampleController {
         return "hehe";
     }
 
+    @RequestMapping("testZuul")
+    public String testZuul(){
+        return "testZuul";
+    }
+
 }
 

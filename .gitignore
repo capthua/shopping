@@ -1,8 +1,4 @@
 .idea
-/order/order.iml
-/order/target
-/user/user.iml
-/user/target
-/samples/samples.iml
-/samples/target
+/*/*.iml
+/*/target
 shopping.iml
