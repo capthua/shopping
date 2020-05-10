@@ -21,6 +21,7 @@
         <module>order</module>
         <module>samples</module>
         <module>zuul</module>
+        <module>common</module>
     </modules>
 
     <properties>
