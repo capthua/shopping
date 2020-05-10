@@ -24,5 +24,15 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getUserById(1);
         return user;
     }
+
+    @Override
+    public User addUser(User user) {
+        user.setPassword("hehe");
+        user.setFullName("hanshaohua");
+        user.setEmail("han@han.com");
+        user.setUpdateByEmail(1);
+//        int result = userDao.insertUseGeneratedKeys(user);
+        return user;
+    }
 }
 

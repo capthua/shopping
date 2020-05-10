@@ -1,8 +1,9 @@
 package com.shopping.samples.controller;
 
 //import com.shopping.user.events.queuesend.Sender;
-import com.shopping.samples.service.impl.SampleServiceImpl;
+
 import com.shopping.samples.service.RabbitMqService;
+import com.shopping.samples.service.impl.SampleServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

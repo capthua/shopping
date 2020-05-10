@@ -18,11 +18,14 @@ spring:
     publisher-returns: true
 
     listener:
+      # 默认配置是simple
+      type: simple
       simple:
-        # 手动ack
+        # 手动ack Acknowledge mode of container.
         acknowledge-mode: manual
-        #
+        # Maximum number of unacknowledged messages that can be outstanding at each consumer.
         prefetch: 3
+
 
 
 logging:

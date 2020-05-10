@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Table(name = "user")
 public class User implements Serializable {
 
+    @Id
     private Integer id;
     private String username;
     private String password;

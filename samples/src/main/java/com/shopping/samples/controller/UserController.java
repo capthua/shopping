@@ -30,7 +30,9 @@ public class UserController {
     @GetMapping("testUser/{name}")
     public User testUser(@PathVariable("name") String name) {
         logger.info("testUser参数:{}", name);
-        User user = userService.testUser(name);
+        User user=new User();
+        user.setUsername(name);
+        userService.addUser(user);
         return user;
     }
 

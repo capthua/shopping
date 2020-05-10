@@ -9,6 +9,9 @@ import com.shopping.samples.model.User;
  * @date 2019/11/01
  */
 public interface UserService {
+
     User testUser(String name);
+
+    User addUser(User user);
 }
 

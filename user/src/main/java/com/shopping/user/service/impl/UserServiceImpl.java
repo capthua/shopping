@@ -4,7 +4,6 @@ import com.shopping.user.dao.UserDao;
 import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**

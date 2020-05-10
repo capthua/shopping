@@ -1,4 +1,4 @@
-package com.shopping.samples.mq;
+package com.shopping.order.events;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = {TopicRabbitConfig.TOPIC_QUEUE_NAME})
-public class TopicHandler2 {
+@RabbitListener(queues = {"htTopicQueue"})
+public class TopicHandler {
 
     @RabbitHandler
     public void processByteMsg(@Headers MessageHeaders headers, byte[] msgPayload){
         String msg=new String(msgPayload);
-        log.info("TopicHandler2收到消息:{},exchange:{},routingKey:{},queue:{}",
+        log.info("TopicHandler_order收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
@@ -29,7 +29,7 @@ public class TopicHandler2 {
 
     @RabbitHandler
     public void processStringMsg(@Headers MessageHeaders headers, Channel channel, String msg, @Header(AmqpHeaders.DELIVERY_TAG) long tag)throws Exception{
-        log.info("TopicHandler2收到消息:{},exchange:{},routingKey:{},queue:{}",
+        log.info("TopicHandler_order收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
