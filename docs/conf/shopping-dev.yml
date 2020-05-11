@@ -27,7 +27,11 @@ spring:
         prefetch: 3
 
 
-
 logging:
   level:
     com.alibaba.nacos: WARN
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper

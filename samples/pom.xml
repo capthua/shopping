@@ -11,8 +11,12 @@
 
     <artifactId>samples</artifactId>
 
-
     <dependencies>
+        <dependency>
+            <groupId>com.shooping</groupId>
+            <artifactId>common</artifactId>
+            <version>0.24</version>
+        </dependency>
     </dependencies>
 
     <build>

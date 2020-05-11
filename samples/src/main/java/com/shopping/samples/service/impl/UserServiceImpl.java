@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         user.setFullName("hanshaohua");
         user.setEmail("han@han.com");
         user.setUpdateByEmail(1);
-//        int result = userDao.insertUseGeneratedKeys(user);
+        int result = userDao.insertUseGeneratedKeys(user);
         return user;
     }
 }

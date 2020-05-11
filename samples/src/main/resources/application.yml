@@ -2,7 +2,3 @@
 spring:
   profiles:
     active: dev
-
-mapper:
-  mappers:
-    - com.shopping.samples.common.CommonMapper

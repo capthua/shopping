@@ -15,7 +15,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//mapperscan必须加
+//mapperscan必须加 mybatis要么扫描包，要么加@Mapper
 @MapperScan("com.shopping.samples.dao")
 public class SamplesApplication {
     public static void main(String[] args) {
