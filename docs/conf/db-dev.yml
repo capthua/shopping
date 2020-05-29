@@ -1,0 +1,11 @@
+# mysql
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
+    username: root
+    password: 242492
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper

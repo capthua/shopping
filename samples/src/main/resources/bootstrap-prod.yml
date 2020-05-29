@@ -3,7 +3,4 @@
 spring:
   application:
     name: samples-prod
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
+
