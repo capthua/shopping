@@ -28,3 +28,7 @@ spring:
 ##        group默认值是DEFAULT_GROUP，可以不配置
 #        group: DEFAULT_GROUP
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
+    username: root
+    password: 242492
