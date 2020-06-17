@@ -20,3 +20,14 @@ spring:
         acknowledge-mode: manual
         # Maximum number of unacknowledged messages that can be outstanding at each consumer.
         prefetch: 3
+
+mqtt:
+  allow:
+    anonymous: false
+  auth:
+    username: guest
+    password: guest
+  set:
+    clean:
+      session: true
+  broker: tcp://localhost:1883

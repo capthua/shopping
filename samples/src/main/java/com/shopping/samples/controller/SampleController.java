@@ -3,6 +3,7 @@ package com.shopping.samples.controller;
 //import com.shopping.user.events.queuesend.Sender;
 
 import com.shopping.samples.model.Sample;
+import com.shopping.samples.service.LampService;
 import com.shopping.samples.service.RabbitMqService;
 import com.shopping.samples.service.impl.SampleServiceImpl;
 import com.shopping.samples.service.impl.TxPropagationSampleService;
@@ -37,6 +38,9 @@ public class SampleController {
     @Autowired
     private TxPropagationSampleService txPropagationSampleService;
 
+    @Autowired
+    private LampService lampService;
+
     @RequestMapping("test")
     public String test() {
         rabbitMqService.test();
@@ -57,6 +61,13 @@ public class SampleController {
 //        txPropagationSampleService.saveSample1(sample);
         return "hehe";
     }
+
+    @RequestMapping("testMqtt")
+    public String testMqtt(){
+        lampService.turnOn("han");
+        return "testMqtt";
+    }
+
 
 }
 
