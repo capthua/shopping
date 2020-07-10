@@ -1,10 +1,10 @@
 spring:
   #  rabbitmq
   rabbitmq:
-    host: 127.0.0.1
+    host: 192.168.70.169
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: 444944
     virtual-host: GHost
 
     # 确认消息已发送到交换机
@@ -25,9 +25,9 @@ mqtt:
   allow:
     anonymous: false
   auth:
-    username: guest
-    password: guest
+    username: admin
+    password: 444944
   set:
     clean:
       session: true
-  broker: tcp://localhost:1883
+  broker: tcp://192.168.70.169:1883

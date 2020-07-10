@@ -19,20 +19,11 @@ spring:
         ext-config[1]:
           data-id: db-dev.yml
         ext-config[2]:
-          data-id: mq-dev.yaml
+          data-id: mq-dev.yml
+
 ##        单个配置文件
 #        server-addr: localhost:8848
 #        prefix: shopping
 #        file-extension: yml
 ##        group默认值是DEFAULT_GROUP，可以不配置
 #        group: DEFAULT_GROUP
-mqtt:
-  allow:
-    anonymous: false
-  auth:
-    username: guest
-    password: guest
-  set:
-    clean:
-      session: true
-  broker: tcp://localhost:1883

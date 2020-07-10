@@ -44,7 +44,7 @@ public class TopicHandler {
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
         //手动确认消息,如果Unacked的数目达到Prefetch count,就不给次消费者发送
-        channel.basicAck(tag,false);
+//        channel.basicAck(tag,false);
     }
 
 }

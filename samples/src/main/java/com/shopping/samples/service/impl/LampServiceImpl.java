@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 @Service
 public class LampServiceImpl implements LampService {
 
-    @Value("${mqtt.qos:1}")
+    @Value("${mqtt.qos}")
     Integer qos;
 
     @Autowired
@@ -36,6 +36,5 @@ public class LampServiceImpl implements LampService {
         } catch (MqttException e) {
             e.printStackTrace();
         }
-        return;
     }
 }

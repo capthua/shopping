@@ -13,6 +13,11 @@ public class TopicRabbitConfig {
     static final String TOPIC_QUEUE_NAME="htTopicQueue";
     static final String TOPIC_QUEUE1_NAME="htTopicQueue1";
     static final String TOPIC_QUEUE2_NAME="htTopicQueue2";
+
+    //mqtt
+    public static final String MQTT_TOPIC_Q="mqtt_queue";
+
+
     public static final String TOPIC_EXCHANGE_NAME="htTopicExchange";
 
     /**
@@ -21,6 +26,7 @@ public class TopicRabbitConfig {
     public static final String TOPIC="htTopicRouting.*";
     public static final String TOPIC1="htTopicRouting.topic1";
     public static final String TOPIC2="htTopicRouting.topic2";
+    public static final String MQTT_TOPIC="room.*";
 
 
     //发送消息是只需要创建exchange即可
@@ -60,5 +66,15 @@ public class TopicRabbitConfig {
     @Bean
     Binding bindingTopic2(){
         return BindingBuilder.bind(topic2Queue()).to(topicExchange()).with(TOPIC2);
+    }
+
+    //mqtt_topic
+    @Bean
+    public Queue mqttTopicQueue(){
+        return new Queue(MQTT_TOPIC_Q,false);
+    }
+    @Bean
+    Binding bindingMqttTopic(){
+        return BindingBuilder.bind(mqttTopicQueue()).to(new TopicExchange("amqp.topic")).with(MQTT_TOPIC);
     }
 }
