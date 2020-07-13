@@ -75,6 +75,6 @@ public class TopicRabbitConfig {
     }
     @Bean
     Binding bindingMqttTopic(){
-        return BindingBuilder.bind(mqttTopicQueue()).to(new TopicExchange("amqp.topic")).with(MQTT_TOPIC);
+        return BindingBuilder.bind(mqttTopicQueue()).to(new TopicExchange("amq.topic")).with(MQTT_TOPIC);
     }
 }

@@ -31,3 +31,4 @@ mqtt:
     clean:
       session: true
   broker: tcp://192.168.70.169:1883
+  qos: 1

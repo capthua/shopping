@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
 public class TopicHandler2 {
 
     @RabbitHandler
-    public void processByteMsg(@Headers MessageHeaders headers, byte[] msgPayload){
-        String msg=new String(msgPayload);
+    public void processByteMsg(@Headers MessageHeaders headers, byte[] msgPayload) {
+        String msg = new String(msgPayload);
         log.info("TopicHandler2收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
@@ -28,12 +28,13 @@ public class TopicHandler2 {
     }
 
     @RabbitHandler
-    public void processStringMsg(@Headers MessageHeaders headers, Channel channel, String msg, @Header(AmqpHeaders.DELIVERY_TAG) long tag)throws Exception{
+    public void processStringMsg(@Headers MessageHeaders headers, Channel channel, String msg,
+                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
         log.info("TopicHandler2收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        channel.basicAck(tag,false);
+        channel.basicAck(tag, false);
     }
 
 }

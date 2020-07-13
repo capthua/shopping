@@ -1,24 +1,36 @@
 package com.shopping.samples.mq.mqtt;
 
+import com.rabbitmq.client.Channel;
 import com.shopping.samples.mq.TopicRabbitConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+/**
+ * @author capthua
+ */
 @Slf4j
 @Component
 @RabbitListener(queues = {TopicRabbitConfig.MQTT_TOPIC_Q})
 public class LampHandler {
 
     @RabbitHandler
-    public void processStringMsg(@Headers MessageHeaders headers, String msg){
+    public void processStringMsg(@Headers MessageHeaders headers, byte[] msgBytes, Channel channel,
+                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+        String msg = new String(msgBytes, StandardCharsets.UTF_8);
         log.info("LampHandler收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
+        channel.basicAck(tag, false);
     }
 
 }
