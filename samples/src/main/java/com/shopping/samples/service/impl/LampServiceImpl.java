@@ -1,6 +1,8 @@
 package com.shopping.samples.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.shopping.samples.mq.mqtt.MqttActionListener;
+import com.shopping.samples.mq.mqtt.MyMqttCallbackHandler;
 import com.shopping.samples.service.LampService;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 import java.util.UUID;
 
@@ -25,6 +28,12 @@ public class LampServiceImpl implements LampService {
     @Autowired
     MqttClient mqttClient;
 
+    @Autowired
+    MqttActionListener mqttActionListener;
+
+    @Autowired
+    MyMqttCallbackHandler myMqttCallbackHandler;
+
     @Override
     public void turnOn(String name) {
         UUID uuid=UUID.randomUUID();
@@ -34,12 +43,13 @@ public class LampServiceImpl implements LampService {
         String msg=msgJson.toJSONString();
         log.info("开灯:{}",msg);
         try {
-            MqttMessage mqttMessage=new MqttMessage(msg.getBytes("utf8"));
+            MqttMessage mqttMessage=new MqttMessage(msg.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(qos);
+            mqttMessage.setQos(0);
             String topic="room/lamp";
+            mqttClient.setCallback(myMqttCallbackHandler);
             mqttClient.publish(topic,mqttMessage);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+
         } catch (MqttPersistenceException e) {
             e.printStackTrace();
         } catch (MqttException e) {
