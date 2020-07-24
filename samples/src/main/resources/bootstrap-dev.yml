@@ -27,3 +27,13 @@ spring:
 #        file-extension: yml
 ##        group默认值是DEFAULT_GROUP，可以不配置
 #        group: DEFAULT_GROUP
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+  protocol:
+    port: -1
+    id: rpc-sample
+  application:
+    name: rpc-sample
+    qosEnable: false

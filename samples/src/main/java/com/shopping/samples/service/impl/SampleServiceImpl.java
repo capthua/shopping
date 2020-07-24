@@ -1,15 +1,20 @@
 package com.shopping.samples.service.impl;
 
+import com.shopping.common.rpc.UserService;
 import com.shopping.samples.dao.SampleBDao;
 import com.shopping.samples.dao.SampleDao;
 import com.shopping.samples.model.Sample;
+import com.shopping.samples.model.User;
 import com.shopping.samples.service.SampleService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -27,6 +32,9 @@ public class SampleServiceImpl implements SampleService {
 
     @Autowired
     TxPropagationSampleService txPropagationSampleService;
+
+    @DubboReference(version = "1.0.0", loadbalance = "roundrobin", timeout = 20000, check = false)
+    private UserService userService;
 
     @Override
     @Transactional
@@ -72,5 +80,13 @@ public class SampleServiceImpl implements SampleService {
 //            return null;
 //        });
 //        return 0;
+    }
+
+    @Override
+    public List<Sample> list() {
+        Sample sample = new Sample();
+        sample.setName("haan");
+        Map user=userService.getUserById("hehe");
+        return sampleDao.list(sample);
     }
 }

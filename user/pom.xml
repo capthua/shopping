@@ -12,7 +12,11 @@
     <artifactId>user</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.shooping</groupId>
+            <artifactId>common</artifactId>
+            <version>0.24</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -22,9 +26,6 @@
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
-<!--                <excludes>-->
-<!--                    <exclude></exclude>-->
-<!--                </excludes>-->
             </resource>
         </resources>
     </build>

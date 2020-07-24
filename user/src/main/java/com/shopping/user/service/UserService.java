@@ -9,6 +9,6 @@ import com.shopping.user.model.User;
  * @date 2019/11/01
  */
 public interface UserService {
-    User testUser(String name);
+    User getUserById(String name);
 }
 

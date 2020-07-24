@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Data
 @Table(name = "sample")
-@Builder
 public class Sample {
 
     @Id

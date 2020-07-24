@@ -29,13 +29,17 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 
         <!--毕业版本-->
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
 
         <nacos.version>0.2.2.RELEASE</nacos.version>
         <mybatis.version>2.1.1</mybatis.version>
         <druid.version>1.1.21</druid.version>
         <guava.version>28.1-jre</guava.version>
         <shopping.version>0.24</shopping.version>
+        <poi.version>3.15</poi.version>
+        <mapper.version>2.1.5</mapper.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <dubbo.version>2.7.7</dubbo.version>
     </properties>
 
     <dependencyManagement>
@@ -49,7 +53,7 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            如果添加alibaba.cloud依赖，com.alibaba.cloud下的nacos可以不用指定版本，不是starter里的-->
+<!--            如果添加alibaba.cloud依赖，com.alibaba.cloud下的nacos可以不用指定版本-->
 <!--            <dependency>-->
 <!--                <groupId>com.alibaba.cloud</groupId>-->
 <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
@@ -96,6 +100,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>${nacos.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
 
 <!--        日志-->
@@ -167,7 +177,7 @@
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.1.5</version>
+            <version>${mapper.version}</version>
         </dependency>
 
         <dependency>
@@ -175,6 +185,16 @@
             <artifactId>spring-integration-mqtt</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
     </dependencies>
 

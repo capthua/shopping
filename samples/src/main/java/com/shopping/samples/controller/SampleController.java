@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -41,9 +42,15 @@ public class SampleController {
     @Autowired
     private LampService lampService;
 
-    @RequestMapping("test")
-    public String test() {
-        rabbitMqService.test();
+    @RequestMapping("testMq")
+    public String testMq() {
+//        rabbitMqService.test();
+        return "hehe";
+    }
+
+    @RequestMapping("testDb")
+    public String testDb() {
+        List<Sample> samples = sampleService.list();
         return "hehe";
     }
 
@@ -56,7 +63,8 @@ public class SampleController {
     public String testTrx(String name,String descr){
         name=name+ UUID.randomUUID().toString();
         Date time=new Date();
-        Sample sample=Sample.builder().name(name).description(descr).createTime(time).build();
+        Sample sample=new Sample();
+        sample.setName("hehe");
         sampleService.saveSample(sample);
 //        txPropagationSampleService.saveSample1(sample);
         return "hehe";
