@@ -11,4 +11,6 @@ public interface SampleService {
 
     List<Sample> list();
 
+
+
 }

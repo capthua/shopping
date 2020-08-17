@@ -2,11 +2,14 @@ package com.shopping.samples.controller;
 
 //import com.shopping.user.events.queuesend.Sender;
 
+import com.shopping.samples.dao.HtT1Mapper;
 import com.shopping.samples.model.Sample;
 import com.shopping.samples.service.LampService;
 import com.shopping.samples.service.RabbitMqService;
+import com.shopping.samples.service.SampleService;
 import com.shopping.samples.service.impl.SampleServiceImpl;
 import com.shopping.samples.service.impl.TxPropagationSampleService;
+import com.shopping.samples.vo.HtT1Vo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +34,10 @@ public class SampleController {
     private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
     @Autowired
-    private SampleServiceImpl sampleService;
+    private SampleService sampleService;
+
+    @Autowired
+    private HtT1Mapper htT1Mapper;
 
     @Autowired
     private RabbitMqService rabbitMqService;
@@ -74,6 +80,12 @@ public class SampleController {
     public String testMqtt(){
         lampService.turnOn("han");
         return "testMqtt";
+    }
+
+    @RequestMapping("testMybatis")
+    public Object testMybatis(){
+        List<HtT1Vo> htT1Vos = htT1Mapper.listDeepChildren(0,"0");
+        return htT1Vos;
     }
 
 

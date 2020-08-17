@@ -8,3 +8,8 @@ management:
       exposure:
         include: "*"
         exclude: "env"
+
+#mybatis sql语句打印
+logging:
+  level:
+    com.shopping.samples.dao: debug

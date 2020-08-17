@@ -89,4 +89,6 @@ public class SampleServiceImpl implements SampleService {
         Map user=userService.getUserById("hehe");
         return sampleDao.list(sample);
     }
+
+
 }

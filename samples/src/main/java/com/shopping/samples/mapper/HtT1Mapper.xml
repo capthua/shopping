@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shopping.samples.dao.HtT1Mapper">
+
+    <resultMap id="htT1Map" type="com.shopping.samples.model.HtT1">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="update_by_email" property="updateByEmail"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+<!--    parentId=value 这里的值是表字段的值，而不是属性的值。如果添加多个值的话，可以用空格，也可以用"," parentId=id,name=name -->
+    <resultMap id="htT1VoMap" type="com.shopping.samples.vo.HtT1Vo" extends="htT1Map">
+        <collection property="children" ofType="htT1VoMap" column="parentId=id"
+                    select="listDeepChildren"/>
+    </resultMap>
+
+    <select id="listDeepChildren" resultMap="htT1VoMap">
+        select * from ht_t1 where parent_id=#{parentId}
+    </select>
+    
+</mapper>
