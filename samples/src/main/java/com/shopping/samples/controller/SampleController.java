@@ -6,9 +6,9 @@ import com.shopping.samples.dao.HtT1Mapper;
 import com.shopping.samples.model.Sample;
 import com.shopping.samples.service.LampService;
 import com.shopping.samples.service.RabbitMqService;
+import com.shopping.samples.service.RpcSampleService;
 import com.shopping.samples.service.SampleService;
-import com.shopping.samples.service.impl.SampleServiceImpl;
-import com.shopping.samples.service.impl.TxPropagationSampleService;
+import com.shopping.samples.service.TxPropagationSampleService;
 import com.shopping.samples.vo.HtT1Vo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +44,9 @@ public class SampleController {
 
     @Autowired
     private TxPropagationSampleService txPropagationSampleService;
+
+    @Autowired
+    private RpcSampleService rpcSampleService;
 
     @Autowired
     private LampService lampService;
@@ -86,6 +89,11 @@ public class SampleController {
     public Object testMybatis(){
         List<HtT1Vo> htT1Vos = htT1Mapper.listDeepChildren(0,"0");
         return htT1Vos;
+    }
+
+    @RequestMapping("testRpc")
+    public Object testRpc(Integer id){
+        return rpcSampleService.getUserById(id);
     }
 
 

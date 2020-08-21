@@ -1,4 +1,4 @@
-package com.shopping.samples.service.impl;
+package com.shopping.samples.service;
 
 import com.shopping.samples.model.Sample;
 

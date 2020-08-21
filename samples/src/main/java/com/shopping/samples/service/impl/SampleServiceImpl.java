@@ -4,18 +4,16 @@ import com.shopping.common.rpc.UserService;
 import com.shopping.samples.dao.SampleBDao;
 import com.shopping.samples.dao.SampleDao;
 import com.shopping.samples.model.Sample;
-import com.shopping.samples.model.User;
 import com.shopping.samples.service.SampleService;
+import com.shopping.samples.service.TxPropagationSampleService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 @Service
 public class SampleServiceImpl implements SampleService {
@@ -86,7 +84,7 @@ public class SampleServiceImpl implements SampleService {
     public List<Sample> list() {
         Sample sample = new Sample();
         sample.setName("haan");
-        Map user=userService.getUserById("hehe");
+        Map user=userService.getUserById(1);
         return sampleDao.list(sample);
     }
 

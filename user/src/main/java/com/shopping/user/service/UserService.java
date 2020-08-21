@@ -3,12 +3,18 @@ package com.shopping.user.service;
 import com.shopping.user.model.User;
 
 /**
- * describe:
+ * describe: 用户service
  *
  * @author hanshaohua
  * @date 2019/11/01
  */
 public interface UserService {
-    User getUserById(String name);
+
+    /**
+     * 通过id获取user
+     * @param id 用户id
+     * @return 用户
+     */
+    User getUserById(Integer id);
 }
 

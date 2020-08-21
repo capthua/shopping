@@ -22,8 +22,5 @@ dubbo:
   registry:
     address: nacos://127.0.0.1:8848
   protocol:
-    id: rpc_user
     port: -1
-  application:
-    name: rpc_user   #自定义 dubbo 的应用名
-    qosEnable: false
+    name: dubbo

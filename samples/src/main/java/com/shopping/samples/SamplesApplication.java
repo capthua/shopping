@@ -1,6 +1,5 @@
 package com.shopping.samples;
 
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,7 +17,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableDiscoveryClient
 //mapperscan必须加 mybatis要么扫描包，要么加@Mapper
 @MapperScan("com.shopping.samples.dao")
-@EnableDubbo(scanBasePackages = "com.shopping.*.service")
 public class SamplesApplication {
     public static void main(String[] args) {
         SpringApplication.run(SamplesApplication.class, args);

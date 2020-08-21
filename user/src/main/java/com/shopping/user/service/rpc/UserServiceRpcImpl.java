@@ -1,27 +1,25 @@
 package com.shopping.user.service.rpc;
 
-import com.shopping.common.rpc.UserService;
+import com.alibaba.fastjson.JSONObject;
 import com.shopping.user.model.User;
+import com.shopping.user.service.UserService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Capt.Hua
  */
 @DubboService(version = "1.0.0",loadbalance = "roundrobin")
-public class UserServiceRpcImpl implements UserService {
+public class UserServiceRpcImpl implements com.shopping.common.rpc.UserService {
 
     @Autowired
-    com.shopping.user.service.UserService userService;
+    UserService userService;
 
     @Override
-    public Map getUserById(String name) {
-        User user = userService.getUserById(name);
-        Map heeh=new HashMap();
-        heeh.put("han","shaohua");
-        return heeh;
+    public Map getUserById(Integer id) {
+        User user = userService.getUserById(id);
+        return (JSONObject)JSONObject.toJSON(user);
     }
 }

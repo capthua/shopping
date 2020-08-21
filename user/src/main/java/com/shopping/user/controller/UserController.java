@@ -30,10 +30,10 @@ public class UserController {
 //    @Autowired
 //    Sender sender;
 
-    @GetMapping("testUser/{name}")
-    public User testUser(@PathVariable("name") String name) {
-        logger.info("testUser参数:{}", name);
-        User user = userService.getUserById(name);
+    @GetMapping("testUser/{id}")
+    public User testUser(@PathVariable("id") Integer id) {
+        logger.info("testUser参数:{}", id);
+        User user = userService.getUserById(id);
         return user;
     }
 

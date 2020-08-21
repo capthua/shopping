@@ -3,14 +3,14 @@ package com.shopping.samples.service.impl;
 import com.shopping.samples.dao.SampleBDao;
 import com.shopping.samples.dao.SampleDao;
 import com.shopping.samples.model.Sample;
+import com.shopping.samples.service.TxPropagationSampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TxPropagationSampleServiceImpl implements TxPropagationSampleService{
+public class TxPropagationSampleServiceImpl implements TxPropagationSampleService {
 
     @Autowired
     private SampleDao sampleDao;

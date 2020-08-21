@@ -9,6 +9,6 @@ import java.util.Map;
  * @date 2019/11/01
  */
 public interface UserService {
-    Map getUserById(String name);
+    Map getUserById(Integer id);
 }
 

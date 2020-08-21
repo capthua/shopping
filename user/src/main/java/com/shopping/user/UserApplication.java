@@ -18,7 +18,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 //mapperscan必须加
 @MapperScan("com.shopping.user.dao")
-@EnableDubbo(scanBasePackages = "com.shopping.*.service")
+@EnableDubbo(scanBasePackages = "com.shopping.*.service.rpc")
 public class UserApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);
