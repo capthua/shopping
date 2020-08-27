@@ -3,7 +3,6 @@ package com.shopping.user.service.impl;
 import com.shopping.user.dao.UserDao;
 import com.shopping.user.model.User;
 import com.shopping.user.service.UserService;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +24,13 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Integer id) {
         User user = userDao.getUserById(id);
         return user;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        User param=new User();
+        param.setUsername(name);
+        return userDao.selectOne(param);
     }
 }
 

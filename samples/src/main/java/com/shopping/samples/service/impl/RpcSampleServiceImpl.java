@@ -2,7 +2,7 @@ package com.shopping.samples.service.impl;
 
 import com.shopping.common.rpc.UserService;
 import com.shopping.samples.service.RpcSampleService;
-import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 public class RpcSampleServiceImpl implements RpcSampleService {
 
-    @DubboReference(version = "1.0.0", loadbalance = "roundrobin", timeout = 20000, check = false)
+    @Reference(version = "1.0.0", loadbalance = "roundrobin", timeout = 20000, check = false)
     private UserService userService;
 
     @Override

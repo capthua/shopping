@@ -6,7 +6,6 @@ import com.shopping.samples.dao.SampleDao;
 import com.shopping.samples.model.Sample;
 import com.shopping.samples.service.SampleService;
 import com.shopping.samples.service.TxPropagationSampleService;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +29,6 @@ public class SampleServiceImpl implements SampleService {
 
     @Autowired
     TxPropagationSampleService txPropagationSampleService;
-
-    @DubboReference(version = "1.0.0", loadbalance = "roundrobin", timeout = 20000, check = false)
-    private UserService userService;
 
     @Override
     @Transactional
@@ -84,7 +80,6 @@ public class SampleServiceImpl implements SampleService {
     public List<Sample> list() {
         Sample sample = new Sample();
         sample.setName("haan");
-        Map user=userService.getUserById(1);
         return sampleDao.list(sample);
     }
 

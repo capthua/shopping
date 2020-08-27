@@ -10,5 +10,6 @@ import java.util.Map;
  */
 public interface UserService {
     Map getUserById(Integer id);
+    Map getUserByName(String name);
 }
 

@@ -1,11 +1,13 @@
 # 日志
-logging:
-  level:
-    com.alibaba.nacos: WARN
+  logging:
+    level:
+      com.alibaba.nacos: WARN
 
-spring:
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 1024MB
-#      enabled: true 默认是true,所以可以不配置
+  spring:
+    servlet:
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 1024MB
+  #      enabled: true 默认是true,所以可以不配置
+
+  myName: capthua
