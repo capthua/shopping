@@ -1,0 +1,13 @@
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    timeout: 10000
+  protocol:
+    #    -1:会分配一个没有被占用的端口，默认是20880
+    port: -1
+    name: dubbo
+    threads: 200
+  #    qos-enable: false
+  #    qos-port: 22222
+  metadata-report:
+    address: nacos://127.0.0.1:8848

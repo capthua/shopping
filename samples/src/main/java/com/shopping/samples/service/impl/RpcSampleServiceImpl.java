@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 public class RpcSampleServiceImpl implements RpcSampleService {
 
-    @Reference(version = "1.0.0", loadbalance = "roundrobin", timeout = 20000, check = false)
+    @Reference(version = "1.1",  check = false)
     private UserService userService;
 
     @Override

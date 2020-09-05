@@ -13,7 +13,7 @@
     <groupId>com.shooping</groupId>
     <artifactId>shopping</artifactId>
     <packaging>pom</packaging>
-    <version>${shopping.version}</version>
+    <version>0.24</version>
     <name>shopping</name>
 
     <modules>
@@ -25,6 +25,7 @@
     </modules>
 
     <properties>
+        <business.version>0.24</business.version>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 
@@ -33,18 +34,20 @@
 
         <nacos.version>0.2.2.RELEASE</nacos.version>
         <mybatis.version>2.1.1</mybatis.version>
-        <druid.version>1.1.21</druid.version>
+        <druid.version>1.1.20</druid.version>
         <guava.version>28.1-jre</guava.version>
-        <shopping.version>0.24</shopping.version>
         <poi.version>3.15</poi.version>
         <mapper.version>2.1.5</mapper.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <dubbo.version>2.7.6</dubbo.version>
+        <dubbo-registry-nacos.version>2.7.6</dubbo-registry-nacos.version>
+        <dubbo-metadata-report-nacos.version>2.7.6</dubbo-metadata-report-nacos.version>
     </properties>
 
     <dependencyManagement>
 
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -53,7 +56,7 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            如果添加alibaba.cloud依赖，com.alibaba.cloud下的nacos可以不用指定版本-->
+<!--            如果添加alibaba.cloud依赖，com.alibaba.cloud下的依赖可以不用指定版本-->
 <!--            <dependency>-->
 <!--                <groupId>com.alibaba.cloud</groupId>-->
 <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
@@ -62,80 +65,74 @@
 <!--                <scope>import</scope>-->
 <!--            </dependency>-->
 
+
+            <!--        nacos-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo-registry-nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-metadata-report-nacos</artifactId>
+                <version>${dubbo-metadata-report-nacos.version}</version>
+            </dependency>
+
+            <!--        mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.version}</version>
+            </dependency>
+
+            <!--        数据库连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
 
     <dependencies>
 
-        <!--web模块-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!--监控-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!--添加alibaba.cloud依赖才能使用-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--        </dependency>-->
-
-<!--        nacos-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${nacos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${nacos.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${dubbo.version}</version>
-        </dependency>
-
-<!--        日志-->
+        <!--        日志-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-
-<!--        amqp-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
-<!--        </dependency>-->
-
-<!--        cloud stream-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-stream</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>-->
-<!--        </dependency>-->
-
-<!--        依赖上面三个组件-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-        </dependency>
-
 
 <!--        编译器生成setter,toString方法等-->
         <dependency>
@@ -144,31 +141,6 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        数据库连接池-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
-
-<!--        mybatis-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-
-<!--    mysql driver    -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-<!--        rabbitmq客户端-->
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -177,31 +149,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>${mapper.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-mqtt</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+
 
     </dependencies>
 

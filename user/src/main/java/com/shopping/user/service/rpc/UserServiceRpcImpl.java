@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author Capt.Hua
  */
-@Service(version = "1.0.0",loadbalance = "roundrobin")
+@Service(version = "1.1",loadbalance = "roundrobin",timeout = 300, retries = 2,actives = 0, executes = 200)
 public class UserServiceRpcImpl implements com.shopping.common.rpc.UserService {
 
     @Autowired

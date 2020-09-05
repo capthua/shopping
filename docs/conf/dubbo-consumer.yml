@@ -1,0 +1,9 @@
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    #    关闭注册中心启动时检查 (注册订阅失败时报错)：
+    check: false
+  consumer:
+    timeout: 3000
+    #    关闭所有服务的启动时检查 (没有提供者时报错)
+    check: false
