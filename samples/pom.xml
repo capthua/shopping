@@ -93,7 +93,7 @@
         <!--                    <artifactId>spring-boot-starter-amqp</artifactId>-->
         <!--                </dependency>-->
 
-        <!--        &lt;!&ndash;        cloud stream&ndash;&gt;-->
+        <!--        cloud stream-->
         <!--                <dependency>-->
         <!--                    <groupId>org.springframework.cloud</groupId>-->
         <!--                    <artifactId>spring-cloud-stream</artifactId>-->
@@ -133,17 +133,6 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
 
 
 </project>

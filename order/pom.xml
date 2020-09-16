@@ -82,7 +82,7 @@
         <!--                    <artifactId>spring-boot-starter-amqp</artifactId>-->
         <!--                </dependency>-->
 
-        <!--        &lt;!&ndash;        cloud stream&ndash;&gt;-->
+        <!--        cloud stream-->
         <!--                <dependency>-->
         <!--                    <groupId>org.springframework.cloud</groupId>-->
         <!--                    <artifactId>spring-cloud-stream</artifactId>-->
