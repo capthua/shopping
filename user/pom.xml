@@ -11,6 +11,10 @@
 
     <artifactId>user</artifactId>
 
+    <properties>
+        <start-class>com.shopping.user.UserApplication</start-class>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -135,5 +139,17 @@
 
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
