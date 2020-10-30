@@ -22,16 +22,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--        自定义的starter-->
-        <dependency>
-            <groupId>com.prs</groupId>
-            <artifactId>prs-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <dependency>
             <groupId>com.shooping</groupId>
             <artifactId>common</artifactId>
+            <version>${business.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.prs</groupId>
+            <artifactId>mybatisx-spring-boot-starter</artifactId>
             <version>${business.version}</version>
         </dependency>
 
