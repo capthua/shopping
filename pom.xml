@@ -54,6 +54,7 @@
         <dubbo.version>2.7.6</dubbo.version>
         <dubbo-registry-nacos.version>2.7.6</dubbo-registry-nacos.version>
         <dubbo-metadata-report-nacos.version>2.7.6</dubbo-metadata-report-nacos.version>
+        <redisson-starter.version>3.13.6</redisson-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -140,6 +141,12 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
                 <version>${poi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-starter.version}</version>
             </dependency>
 
         </dependencies>
