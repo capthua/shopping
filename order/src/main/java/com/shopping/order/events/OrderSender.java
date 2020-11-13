@@ -9,17 +9,17 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 //必须添加，要不然无法注入。也可以加在启动类上，可以重复添加
-@EnableBinding(OrderOutChannel.class)
+@EnableBinding(OrderSource.class)
 @Component
 public class OrderSender {
 
     @Autowired
-    private OrderOutChannel outChannel;
+    private OrderSource orderSource;
 
     private static final Logger logger= LoggerFactory.getLogger(OrderSender.class);
 
     public void pushMsg(Order order){
         logger.info("sending rabbitmq message:{}",order.toString());
-        outChannel.output().send(MessageBuilder.withPayload(order).build());
+        orderSource.output().send(MessageBuilder.withPayload(order).build());
     }
 }

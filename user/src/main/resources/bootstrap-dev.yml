@@ -16,10 +16,11 @@ spring:
         ext-config[1]:
           data-id: db-dev.yml
         ext-config[2]:
-          data-id: mq-dev.yml
-        ext-config[3]:
           data-id: dubbo-provider.yml
-
+        ext-config[3]:
+          data-id: redis-dev.yml
+        ext-config[4]:
+          data-id: mq-dev.yml
 dubbo:
   application:
     metadata-type: remote

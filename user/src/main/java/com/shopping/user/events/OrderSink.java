@@ -3,7 +3,7 @@ package com.shopping.user.events;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
-public interface OrderInChannel {
+public interface OrderSink {
 
     /**
      * Input channel name.
@@ -14,6 +14,6 @@ public interface OrderInChannel {
     /**
      * @return input channel.
      */
-    @Input(OrderInChannel.INPUT)
+    @Input(OrderSink.INPUT)
     SubscribableChannel input();
 }

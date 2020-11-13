@@ -2,7 +2,7 @@
 
 spring:
   application:
-    name: samples-dev
+    name: order-dev
   cloud:
     nacos:
       discovery:
@@ -17,4 +17,6 @@ spring:
         ext-config[1]:
           data-id: db-dev.yml
         ext-config[2]:
-          data-id: mq-dev.yaml
+          data-id: mq-dev.yml
+        ext-config[3]:
+          data-id: redis-dev.yml
