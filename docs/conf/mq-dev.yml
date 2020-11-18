@@ -20,7 +20,58 @@ spring:
         acknowledge-mode: manual
         # Maximum number of unacknowledged messages that can be outstanding at each consumer.
         prefetch: 3
-
+  cloud:
+    stream:
+      #      如果有一个binder的话,就不需要设置
+      default-binder: rabbit
+      binders:
+        rabbit:
+          type: rabbit
+#          如果配置了spring.rabbitmq,会覆盖下面的配置
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.70.169
+                port: 5672
+                username: admin
+                password: 444944
+                virtual-host: GHost
+        rabbit1:
+          type: rabbit
+          defaultCandidate: false
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.70.169
+                port: 5672
+                username: admin
+                password: 444944
+                virtual-host: GHost
+      bindings:
+        order:
+          destination: order
+          binder: rabbit
+          #          绑定producer的时候没有group
+          group: myOrderQueue
+          producer:
+            #            默认是true
+            autoStartup: true
+          conumer:
+            concurrency: 3
+        cart:
+          #          如果没有指定routing key,会使用默认的 #
+          binder: rabbit1
+          destination: order
+          group: myCartQueue
+      # rabbit的扩展配置 RabbitExtendedBindingProperties
+      rabbit:
+        bindings:
+          order:
+            consumer:
+              bindingRoutingKey: order
+          cart:
+            consumer:
+              bindingRoutingKey: cart
 mqtt:
   allow:
     anonymous: false
