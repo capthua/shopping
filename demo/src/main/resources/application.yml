@@ -1,4 +1,9 @@
 spring:
+  application:
+    name: demo
+  # spring 静态资源扫描路径
+  resources:
+    static-locations: classpath:/static/
   redis:
     host: 192.168.70.167
     port: 6379

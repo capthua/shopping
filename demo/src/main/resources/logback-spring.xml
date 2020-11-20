@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-If you put a logback.xml in the root of your classpath it will be picked up from there (or logback-spring.xml to take advantage of the templating features provided by Boot).
-Spring Boot provides a default base configuration that you can include if you just want to set levels, e.g.
--->
-
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="com.alibaba.nacos" level="ERROR"/>
+
+    <property resource="application.yml"/>
+
+<!--    输出行号和方法名会影响效率-->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%line - %msg%n"/>
+    <property name="FILE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN}"/>
+
+    <property name="LOG_FILE_DIR" value="e:/logs/shopping/demo/"/>
+    <property name="LOG_FILE_NAME" value="demo"/>
+    <property name="FILE_EXTENSION" value="txt"/>
+    <property name="FILE_NAME_PATTERN" value="${LOG_FILE_DIR}${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.${FILE_EXTENSION}"/>
+
+    <property name="MAX_FILE_SIZE" value="512KB"/>
+    <property name="MAX_HISTORY" value="2"/>
+    <property name="TOTAL_SIZE_CAP" value="3MB"/>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+<!--        如果配置了file,就不会生成滚动文件-->
+<!--        <file>${LOG_FILE}</file>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_NAME_PATTERN}</fileNamePattern>
+<!--            每个文件100MB,保存2天的历史,最大2GB-->
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <logger name="com.shopping" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
 </configuration>
