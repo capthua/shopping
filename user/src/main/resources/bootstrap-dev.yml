@@ -1,7 +1,5 @@
 #设置服务发现
 spring:
-  application:
-    name: user-dev
   cloud:
     nacos:
       discovery:

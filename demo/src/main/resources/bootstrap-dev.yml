@@ -1,0 +1,16 @@
+#设置服务发现
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#      config:
+#        file-extension: yaml
+#        server-addr: localhost:8848
+#        group: DEFAULT_GROUP
+#        ext-config[0]:
+#          data-id: public-dev.yml
+#          refresh: true
+#        ext-config[1]:
+#          data-id: redis-dev.yml
+#          refresh: true

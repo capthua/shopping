@@ -1,7 +1,7 @@
 spring:
+  # spring 静态资源扫描路径
   application:
     name: demo
-  # spring 静态资源扫描路径
   resources:
     static-locations: classpath:/static/
   redis:
@@ -15,6 +15,5 @@ spring:
         min-idle: 0
         time-between-eviction-runs: 60000
     timeout: 5000
-
 mybatisx:
   mappers: hanshaoohua

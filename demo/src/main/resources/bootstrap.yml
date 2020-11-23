@@ -1,5 +1,5 @@
 spring:
   application:
-    name: user
+    name: demo
   profiles:
     active: dev
