@@ -46,7 +46,7 @@ public class AController {
         logger.debug("debug");
         logger.info("info");
         logger.error("error");
-        logger.error("exception:",new IllegalArgumentException("参数错误"));
+//        logger.error("exception:",new IllegalArgumentException("参数错误"));
 
 //        for(int i=0;i<500000;i++){
 //            if(i%10000==0){

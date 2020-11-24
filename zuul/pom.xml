@@ -12,10 +12,18 @@
     <artifactId>zuul</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.shooping</groupId>
+            <artifactId>common</artifactId>
+            <version>${business.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+
     </dependencies>
 
 
