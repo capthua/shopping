@@ -55,6 +55,8 @@
         <dubbo-registry-nacos.version>2.7.6</dubbo-registry-nacos.version>
         <dubbo-metadata-report-nacos.version>2.7.6</dubbo-metadata-report-nacos.version>
         <redisson-starter.version>3.13.6</redisson-starter.version>
+
+        <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -218,6 +220,46 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>${jib-maven-plugin.version}</version>
+                    <configuration>
+                        <from>
+                            <image>registry.cn-hangzhou.aliyuncs.com/prs-shopping/openjdk:8-alpine</image>
+                        </from>
+                        <to>
+<!--                            <image>registry.cn-hangzhou.aliyuncs.com/prs-shopping/${project.artifactId}</image>-->
+                            <image>${project.artifactId}</image>
+                            <tags>
+                                <tag>${project.version}</tag>
+                            </tags>
+                        </to>
+                        <container>
+                            <ports>
+                                <port>8080</port>
+                                <!-- <port>8082-8083/udp</port>-->
+                            </ports>
+                            <jvmFlags>
+                                <jvmFlag>-Xms512m</jvmFlag>
+                            </jvmFlags>
+                            <labels>
+                                <name>shopping</name>
+                            </labels>
+<!--                            阿里云仓库不支持OCI镜像-->
+<!--                            <format>OCI</format>-->
+                        </container>
+                    </configuration>
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <phase>package</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>build</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
                 </plugin>
             </plugins>
 

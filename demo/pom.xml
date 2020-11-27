@@ -12,7 +12,7 @@
     <artifactId>demo</artifactId>
 
     <properties>
-        <start-class>com.shopping.demo.DemoApplication</start-class>
+        <main-class>heeh</main-class>
     </properties>
 
     <dependencies>
@@ -28,6 +28,15 @@
             <version>${business.version}</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>io.prs</groupId>
             <artifactId>mybatisx-spring-boot-starter</artifactId>
@@ -37,13 +46,17 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 

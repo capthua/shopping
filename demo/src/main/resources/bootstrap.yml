@@ -2,4 +2,6 @@ spring:
   application:
     name: demo
   profiles:
-    active: dev
+    active:
+      - dev
+      - nacos

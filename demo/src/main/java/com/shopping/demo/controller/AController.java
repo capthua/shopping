@@ -1,6 +1,7 @@
 package com.shopping.demo.controller;
 
 import com.shopping.common.spring.ApplicationContextUtils;
+import com.shopping.demo.service.ConcurrentCollectionService;
 import com.shopping.demo.service.RedisSampleService;
 import com.shopping.demo.service.RedissonSampleService;
 import io.prs.mybatisx.autoconfigure.MybatisxTemplate;
@@ -30,15 +31,22 @@ public class AController {
     RedisSampleService redisSampleService;
     @Autowired
     RedissonSampleService redissonSampleService;
+    @Autowired
+    ConcurrentCollectionService concurrentCollectionService;
 
-
-    @GetMapping("a")
+    @GetMapping("redisTest")
     public String a(){
 //        redisSampleService.setSamples();
 //        redisSampleService.hashSamples();
 //        redisSampleService.zSetSamples();
 //        redissonSampleService.redissonSamples();
         return template.getProperties().toString();
+    }
+
+    @GetMapping("collectionTest")
+    public String testCollection(String key,String value){
+        concurrentCollectionService.testCHashMap(key,value);
+        return "hehe";
     }
 
     @GetMapping("logtest")

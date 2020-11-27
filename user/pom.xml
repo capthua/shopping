@@ -11,10 +11,6 @@
 
     <artifactId>user</artifactId>
 
-    <properties>
-        <start-class>com.shopping.user.UserApplication</start-class>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -145,9 +141,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

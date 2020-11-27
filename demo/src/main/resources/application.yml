@@ -1,19 +1,12 @@
 spring:
-  # spring 静态资源扫描路径
   application:
     name: demo
+    # spring 静态资源扫描路径
   resources:
     static-locations: classpath:/static/
-  redis:
-    host: 192.168.70.167
-    port: 6379
-    lettuce:
-      pool:
-        max-active: 8
-        max-wait: -1
-        max-idle: 8
-        min-idle: 0
-        time-between-eviction-runs: 60000
-    timeout: 5000
+  profiles:
+    active:
+      - dev
+      - redis-standalone
 mybatisx:
   mappers: hanshaoohua
