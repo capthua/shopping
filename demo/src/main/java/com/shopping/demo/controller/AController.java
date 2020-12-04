@@ -36,7 +36,7 @@ public class AController {
 
     @GetMapping("redisTest")
     public String a(){
-//        redisSampleService.setSamples();
+        redisSampleService.setSamples();
 //        redisSampleService.hashSamples();
 //        redisSampleService.zSetSamples();
 //        redissonSampleService.redissonSamples();
@@ -51,6 +51,8 @@ public class AController {
 
     @GetMapping("logtest")
     public String logtest()throws Exception{
+        String hehe=null;
+        logger.error("hehe{}",hehe);
         logger.debug("debug");
         logger.info("info");
         logger.error("error");
@@ -58,7 +60,7 @@ public class AController {
 
 //        for(int i=0;i<500000;i++){
 //            if(i%10000==0){
-//                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(2);
 //            }
 //            logger.info("info");
 //        }

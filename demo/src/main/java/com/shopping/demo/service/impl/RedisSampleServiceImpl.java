@@ -44,7 +44,7 @@ public class RedisSampleServiceImpl implements RedisSampleService {
         redisSetTemplate.add("han",age,hobbies);
         redisSetTemplate.expire("han",10,null);
         redisSetTemplate.add("shao",hobbies,work);
-        redisSetTemplate.expire("shao",10,null);
+        //redisSetTemplate.expire("shao",10,null);
         Set<Object> hanValues= redisSetTemplate.getMembers("han");
         Set<Object> shaoValues=  redisSetTemplate.getMembers("shao");
         logger.info("hehe");
