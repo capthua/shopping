@@ -29,12 +29,16 @@ public class TopicHandler2 {
 
     @RabbitHandler
     public void processStringMsg(@Headers MessageHeaders headers, Channel channel, String msg,
-                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws Exception {
+                                 @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag,
+                                 @Header(AmqpHeaders.CONSUMER_TAG) String consumerTag) throws Exception {
         log.info("TopicHandler2收到消息:{},exchange:{},routingKey:{},queue:{}",
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        channel.basicAck(tag, false);
+        channel.basicAck(deliveryTag, false);
+        //拒绝消息, requeue为true会重入队列, 消息就会一直接受
+        //channel.basicNack(deliveryTag,false,false);
+        //channel.basicCancel(consumerTag);
     }
 
 }

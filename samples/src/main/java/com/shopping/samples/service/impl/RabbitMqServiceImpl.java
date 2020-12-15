@@ -36,7 +36,8 @@ public class RabbitMqServiceImpl implements RabbitMqService {
 //        rabbitTemplate.convertAndSend(TopicRabbitConfig.TOPIC_EXCHANGE_NAME,"heehda",msg.toString()+TopicRabbitConfig.TOPIC);
 
 //        消息确认测试
-        rabbitTemplate.convertAndSend(TopicRabbitConfig.TOPIC_EXCHANGE_NAME,"htTopicRouting.hehe",msg.toString());
+        String routingKey="htTopicRouting.topic1";
+        rabbitTemplate.convertAndSend(TopicRabbitConfig.TOPIC_EXCHANGE_NAME,routingKey,msg.toString());
     }
 
 }

@@ -26,6 +26,7 @@ public class RabbitTemplateConfig {
             log.info("ReturnCallback message:{},replyCode:{},replyText:{},exchange:{},routingKey:{}",
                     message,replyCode,replyText,exchange,routingKey);
         });
+
         return rabbitTemplate;
     }
 

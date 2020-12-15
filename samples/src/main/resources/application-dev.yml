@@ -1,5 +1,5 @@
 server:
-  port: 8029
+  port: 8030
 
 #通过web暴露端点监控actuator,还可以通过jmx暴露
 management:

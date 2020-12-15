@@ -7,6 +7,6 @@ spring:
   profiles:
     active:
       - dev
-      - redis-sentinel
+      - redis-standalone
 mybatisx:
   mappers: hanshaoohua

@@ -53,7 +53,7 @@ public class SampleController {
 
     @RequestMapping("testMq")
     public String testMq() {
-//        rabbitMqService.test();
+        rabbitMqService.test();
         return "hehe";
     }
 

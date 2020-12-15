@@ -7,7 +7,7 @@
 
 <!--    输出行号和方法名会影响效率-->
     <property name="STDOUT_LOG_PATTERN"
-              value="%clr(%d{MM-dd HH:mm:ss.SSS}){faint} %clr([%thread] %-5level) %clr(%logger{36}){cyan}.%line %clr(-){faint} %msg%n"/>
+              value="%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread] %-5level) %clr(%logger{36}){cyan}.%line %clr(-){faint} %msg%n"/>
     <property name="FILE_LOG_PATTERN"
               value="%d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%line - %msg%n"/>
 

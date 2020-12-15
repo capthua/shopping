@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = {TopicRabbitConfig.TOPIC_QUEUE_NAME})
+//@RabbitListener(queues = {TopicRabbitConfig.TOPIC_QUEUE_NAME})
 public class TopicHandler {
 
     @RabbitHandler
