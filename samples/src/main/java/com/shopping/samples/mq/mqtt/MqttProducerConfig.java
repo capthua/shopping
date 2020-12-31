@@ -43,7 +43,7 @@ public class MqttProducerConfig {
     }
 
     @Bean
-    public MqttClient mqttFactory() throws MqttException {
+    public MqttClient mqttClient() throws MqttException {
         MemoryPersistence persistence = new MemoryPersistence();
         MqttClient sampleClient = new MqttClient(broker, MqttClient.generateClientId(), persistence);
         sampleClient.connect(producerConfigs());

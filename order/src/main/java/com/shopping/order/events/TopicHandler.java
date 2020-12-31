@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-//@RabbitListener(queues = {"htTopicQueue"})
+@RabbitListener(queues = {"htTopicQueue"})
 public class TopicHandler {
 
     @RabbitHandler
@@ -33,7 +33,7 @@ public class TopicHandler {
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        channel.basicAck(tag,false);
+        //channel.basicAck(tag,false);
     }
 
 }

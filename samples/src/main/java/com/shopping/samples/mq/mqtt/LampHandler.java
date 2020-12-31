@@ -30,7 +30,7 @@ public class LampHandler {
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        channel.basicAck(tag, false);
+        //channel.basicAck(tag, false);
     }
 
 }

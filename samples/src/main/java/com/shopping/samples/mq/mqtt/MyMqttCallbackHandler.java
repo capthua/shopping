@@ -4,11 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class MyMqttCallbackHandler implements MqttCallbackExtended {
+
+    @Autowired
+    MqttActionListener mqttActionListener;
 
     @Override
     public void connectComplete(boolean b, String s) {
@@ -29,6 +33,7 @@ public class MyMqttCallbackHandler implements MqttCallbackExtended {
     @Override
     public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
         //订阅者没有ack也会回调
+        iMqttDeliveryToken.setActionCallback(mqttActionListener);
         log.info("deliveryComplete:{}",iMqttDeliveryToken);
     }
 }
