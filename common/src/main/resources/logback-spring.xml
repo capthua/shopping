@@ -66,9 +66,9 @@
         <appender-ref ref="FILE"/>
     </logger>
 
-    <logger name="org.eclipse" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
+    <!--<logger name="org.eclipse" level="debug" additivity="false">-->
+    <!--    <appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
 
     <logger name="com.alibaba.nacos.client.naming" level="warn"/>
 

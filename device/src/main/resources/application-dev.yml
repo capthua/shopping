@@ -1,0 +1,15 @@
+server:
+  port: 8031
+
+#通过web暴露端点监控actuator,还可以通过jmx暴露
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env"
+
+#mybatis sql语句打印
+logging:
+  level:
+    com.shopping.samples.dao: debug

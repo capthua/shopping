@@ -19,8 +19,8 @@ import java.nio.charset.StandardCharsets;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = {TopicRabbitConfig.MQTT_TOPIC_Q})
-public class LampHandler {
+//@RabbitListener(queues = {TopicRabbitConfig.MQTT_TOPIC_Q})
+public class LampListener {
 
     @RabbitHandler
     public void processStringMsg(@Headers MessageHeaders headers, byte[] msgBytes, Channel channel,
@@ -30,7 +30,7 @@ public class LampHandler {
                 msg, headers.get("amqp_receivedExchange"),
                 headers.get("amqp_receivedRoutingKey"),
                 headers.get("amqp_consumerQueue"));
-        //channel.basicAck(tag, false);
+        channel.basicAck(tag, false);
     }
 
 }

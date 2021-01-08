@@ -27,6 +27,7 @@
         <module>zuul</module>
         <module>common</module>
         <module>demo</module>
+        <module>device</module>
     </modules>
 
     <properties>

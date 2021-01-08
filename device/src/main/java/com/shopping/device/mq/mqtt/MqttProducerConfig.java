@@ -1,4 +1,4 @@
-package com.shopping.samples.mq.mqtt;
+package com.shopping.device.mq.mqtt;
 
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;

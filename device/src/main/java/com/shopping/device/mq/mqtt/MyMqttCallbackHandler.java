@@ -1,4 +1,4 @@
-package com.shopping.samples.mq.mqtt;
+package com.shopping.device.mq.mqtt;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;

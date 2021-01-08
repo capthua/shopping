@@ -5,10 +5,7 @@ import com.shopping.samples.mq.mqtt.MqttActionListener;
 import com.shopping.samples.mq.mqtt.MyMqttCallbackHandler;
 import com.shopping.samples.service.LampService;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
+import org.eclipse.paho.client.mqttv3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,7 +23,7 @@ public class LampServiceImpl implements LampService {
     Integer qos;
 
     @Autowired
-    MqttClient mqttClient;
+    MqttAsyncClient mqttAsyncClient;
 
     @Autowired
     MqttActionListener mqttActionListener;
@@ -45,13 +42,13 @@ public class LampServiceImpl implements LampService {
         try {
             MqttMessage mqttMessage=new MqttMessage(msg.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(qos);
-            mqttMessage.setQos(0);
+            mqttMessage.setQos(1);
             String topic="room/lamp";
-            mqttClient.setCallback(myMqttCallbackHandler);
-            mqttClient.publish(topic,mqttMessage);
-
-        } catch (MqttPersistenceException e) {
-            e.printStackTrace();
+            //mqttClient.setCallback(myMqttCallbackHandler);
+            //mqttClient.publish(topic,mqttMessage);
+            mqttAsyncClient.setCallback(myMqttCallbackHandler);
+            //mqttAsyncClient.publish(topic,mqttMessage);
+            mqttAsyncClient.publish(topic,mqttMessage,null,mqttActionListener);
         } catch (MqttException e) {
             e.printStackTrace();
         }
