@@ -1,5 +1,6 @@
 package com.shopping.device.mq.handler;
 
+import com.shopping.device.mq.mqtt.MyMqttCallbackHandler;
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -10,15 +11,12 @@ public class LampMqttListener {
 
     MqttAsyncClient client;
 
-    MqttCallbackExtended mqttCallbackExtended;
+    MyMqttCallbackHandler myMqttCallbackHandler;
 
-    public LampMqttListener(MqttAsyncClient client,MqttCallbackExtended mqttCallbackExtended){
+    public LampMqttListener(MqttAsyncClient client,MyMqttCallbackHandler myMqttCallbackHandler){
         try {
-            client.setCallback(mqttCallbackExtended);
+            client.setCallback(myMqttCallbackHandler);
             client.subscribe("room/lamp",1);
-            if(!client.isConnected()){
-                client.connect();
-            }
         } catch (MqttException e) {
             e.printStackTrace();
         }
