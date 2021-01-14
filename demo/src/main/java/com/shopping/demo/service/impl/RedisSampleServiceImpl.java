@@ -20,16 +20,16 @@ public class RedisSampleServiceImpl implements RedisSampleService {
 
     private static final Logger logger=LoggerFactory.getLogger(RedisSampleServiceImpl.class);
 
-    @Autowired
+    @Autowired(required = false)
     private RedisHashTemplate<String,Object,Object> redisHashTemplate;
 
-    @Autowired
+    @Autowired(required = false)
     private RedisHashTemplate<User,Object,Object> userRedisHashTemplate;
 
-    @Autowired
+    @Autowired(required = false)
     private RedisSetTemplate<String,Object> redisSetTemplate;
 
-    @Autowired
+    @Autowired(required = false)
     private RedisZSetTemplate<String,Object> redisZSetTemplate;
 
     @Override

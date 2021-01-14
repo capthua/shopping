@@ -11,9 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyMqttCallbackHandler implements MqttCallbackExtended {
 
-    @Autowired
-    MqttActionListener mqttActionListener;
-
     @Override
     public void connectComplete(boolean b, String s) {
         //mq服务器关闭后重启会触发此回调

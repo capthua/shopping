@@ -1,6 +1,6 @@
 package com.shopping.demo.service.impl;
 
-import com.shopping.common.redis.RedissonUtils;
+import com.shopping.common.redis.template.RedissonTemplate;
 import com.shopping.demo.service.RedissonSampleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +12,8 @@ public class RedissonSampleServiceImpl implements RedissonSampleService {
 
     private static final Logger logger= LoggerFactory.getLogger(RedissonSampleServiceImpl.class);
 
-    @Autowired
-    RedissonUtils redissonUtils;
+    @Autowired(required = false)
+    RedissonTemplate redissonUtils;
 
     @Override
     public void redissonSamples() {

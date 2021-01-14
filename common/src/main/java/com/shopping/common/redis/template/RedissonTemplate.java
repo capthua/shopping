@@ -1,15 +1,17 @@
-package com.shopping.common.redis;
+package com.shopping.common.redis.template;
 
 import org.redisson.api.RedissonClient;
-import org.springframework.stereotype.Component;
 
-@Component
-public class RedissonUtils {
+public class RedissonTemplate {
 
-    private final RedissonClient redissonClient;
+    private  RedissonClient redissonClient;
 
-    public RedissonUtils(RedissonClient redissonClient){
-        this.redissonClient=redissonClient;
+    public RedissonClient getRedissonClient() {
+        return redissonClient;
+    }
+
+    public void setRedissonClient(RedissonClient redissonClient) {
+        this.redissonClient = redissonClient;
     }
 
     /**

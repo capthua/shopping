@@ -19,8 +19,8 @@ import java.util.UUID;
 @Service
 public class LampServiceImpl implements LampService {
 
-    @Value("${mqtt.qos}")
-    Integer qos;
+    @Value("${mqtt.producerQos}")
+    private Integer qos;
 
     @Autowired
     MqttAsyncClient mqttAsyncClient;

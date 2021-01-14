@@ -8,10 +8,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 192.168.70.169:8848
       config:
         file-extension: yaml
-        server-addr: localhost:8848
+        server-addr: 192.168.70.169:8848
         group: DEFAULT_GROUP
         ext-config[0]:
           data-id: public-dev.yml
@@ -34,4 +34,8 @@ spring:
 
 dubbo:
   application:
-    name: sample
+    name: device
+mqtt:
+  consumerQos: 1
+
+

@@ -1,8 +1,6 @@
 package com.shopping.common.redis.template;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
@@ -14,12 +12,10 @@ import java.util.concurrent.TimeUnit;
  * @param <K>
  * @param <V>
  */
-@Component
 public class RedisSetTemplate<K, V> {
 
-    private final RedisTemplate<K, V> redisTemplate;
+    private RedisTemplate<K, V> redisTemplate;
 
-    @Autowired
     public RedisSetTemplate(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }

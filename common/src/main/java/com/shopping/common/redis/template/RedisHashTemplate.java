@@ -1,20 +1,14 @@
 package com.shopping.common.redis.template;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-
-@Component
 public class RedisHashTemplate<H, HK, HV> {
 
-    private final RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
-    @Autowired
     public RedisHashTemplate(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
