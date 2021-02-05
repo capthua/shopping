@@ -1,12 +1,15 @@
 package com.shopping.demo.controller;
 
 import com.shopping.common.spring.ApplicationContextUtils;
+import com.shopping.demo.service.AopTestService;
 import com.shopping.demo.service.ConcurrentCollectionService;
 import com.shopping.demo.service.RedisSampleService;
 import com.shopping.demo.service.RedissonSampleService;
 import io.prs.mybatisx.autoconfigure.MybatisxTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.aop.Advisor;
+import org.springframework.aop.framework.Advised;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,16 @@ public class AController {
     RedissonSampleService redissonSampleService;
     @Autowired
     ConcurrentCollectionService concurrentCollectionService;
+    @Autowired
+    AopTestService aopTestService;
+
+    @GetMapping("log4methodTest")
+    public String log4methodTest(){
+        Advised advised=(Advised) aopTestService;
+        Advisor[] advisors=advised.getAdvisors();
+        aopTestService.log4MethodTest("hehe");
+        return "hehe";
+    }
 
     @GetMapping("redisTest")
     public String a(){

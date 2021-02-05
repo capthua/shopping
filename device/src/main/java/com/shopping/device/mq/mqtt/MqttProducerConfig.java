@@ -39,11 +39,14 @@ public class MqttProducerConfig {
         return connOpts;
     }
 
-    @Bean
-    public MqttClient mqttClient() throws MqttException {
+    //@Bean
+    public MqttClient mqttClient(MyMqttCallbackHandler myMqttCallbackHandler,
+                                 @Value("${mqtt.consumerQos}") Integer qos) throws MqttException {
         MemoryPersistence persistence = new MemoryPersistence();
         MqttClient client = new MqttClient(broker, "device-client", persistence);
+        client.setCallback(myMqttCallbackHandler);
         client.connect(producerConfigs());
+        client.subscribe("room/lamp",qos);
         return client;
     }
 
@@ -53,9 +56,9 @@ public class MqttProducerConfig {
         MemoryPersistence persistence = new MemoryPersistence();
         MqttAsyncClient asyncClient = new MqttAsyncClient(broker, "device-async-client",
                 persistence);
+        asyncClient.setCallback(myMqttCallbackHandler);
         IMqttToken token = asyncClient.connect(producerConfigs());
         token.waitForCompletion();
-        asyncClient.setCallback(myMqttCallbackHandler);
         asyncClient.subscribe("room/lamp",qos);
         return asyncClient;
     }

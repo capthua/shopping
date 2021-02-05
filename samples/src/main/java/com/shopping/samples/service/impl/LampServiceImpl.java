@@ -42,7 +42,7 @@ public class LampServiceImpl implements LampService {
         try {
             MqttMessage mqttMessage=new MqttMessage(msg.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(qos);
-            mqttMessage.setQos(1);
+            //mqttMessage.setQos(1);
             String topic="room/lamp";
             //mqttClient.setCallback(myMqttCallbackHandler);
             //mqttClient.publish(topic,mqttMessage);

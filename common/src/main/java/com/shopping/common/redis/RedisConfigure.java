@@ -15,7 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 @ConditionalOnClass(RedisOperations.class)
 public class RedisConfigure {
 
-    @Autowired(required = false)
+    @Autowired
     private RedisTemplate redisTemplate;
 
     //@Bean

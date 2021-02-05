@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(RedissonAutoConfiguration.class)
 public class RedissonConfigure {
 
-    @Autowired(required = false)
-    RedissonClient client;
+    @Autowired
+    private RedissonClient client;
 
     /**
      * @ConditionalOnBean(RedissonClient.class) 不起作用, 等待看源码分析原因

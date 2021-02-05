@@ -35,7 +35,5 @@ spring:
 dubbo:
   application:
     name: device
-mqtt:
-  consumerQos: 1
 
 

@@ -2,9 +2,9 @@ package com.shopping.device.mq.mqtt;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -13,7 +13,7 @@ public class MyMqttCallbackHandler implements MqttCallbackExtended {
 
     @Override
     public void connectComplete(boolean b, String s) {
-        //mq服务器关闭后重启会触发此回调
+        //mq服务器关闭后重启会触发此回调, 订阅时连接成功也会回调
         log.info("connectComplete b:{},s:{}",b,s);
     }
 
@@ -35,4 +35,5 @@ public class MyMqttCallbackHandler implements MqttCallbackExtended {
         //iMqttDeliveryToken.setActionCallback(mqttActionListener);
         log.info("deliveryComplete:{}",iMqttDeliveryToken);
     }
+
 }
