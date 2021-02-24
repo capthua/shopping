@@ -1,6 +1,7 @@
 package com.shopping.demo.controller;
 
 import com.shopping.common.spring.ApplicationContextUtils;
+import com.shopping.demo.prs.Male;
 import com.shopping.demo.service.AopTestService;
 import com.shopping.demo.service.ConcurrentCollectionService;
 import com.shopping.demo.service.RedisSampleService;
@@ -39,8 +40,12 @@ public class AController {
     @Autowired
     AopTestService aopTestService;
 
+    @Autowired
+    Male male;
+
     @GetMapping("log4methodTest")
     public String log4methodTest(){
+        logger.debug("这是日志测试");
         Advised advised=(Advised) aopTestService;
         Advisor[] advisors=advised.getAdvisors();
         aopTestService.log4MethodTest("hehe");

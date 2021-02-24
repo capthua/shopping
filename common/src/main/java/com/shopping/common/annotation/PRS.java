@@ -1,6 +1,4 @@
-package com.shopping.common.prs;
-
-import org.springframework.stereotype.Component;
+package com.shopping.common.annotation;
 
 import java.lang.annotation.*;
 
@@ -9,6 +7,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface PRS {
 
-    String[] value() default "";
+    String value() default "";
 
 }

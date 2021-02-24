@@ -1,20 +1,18 @@
-package com.shopping.common.log;
+package com.shopping.common.log.log4method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class LogHandle {
+public class Log4MethodAspect {
 
-    @Pointcut("@annotation(com.shopping.common.log.Log4Method)")
+    @Pointcut("@annotation(com.shopping.common.log.log4method.Log4Method)")
     public void log4Method(){};
 
     @Around("log4Method()")
-    public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         Object result;
         System.out.println("进入方法");
         result=joinPoint.proceed();

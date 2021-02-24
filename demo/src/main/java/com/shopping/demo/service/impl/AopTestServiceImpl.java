@@ -1,6 +1,6 @@
 package com.shopping.demo.service.impl;
 
-import com.shopping.common.log.Log4Method;
+import com.shopping.common.log.log4method.Log4Method;
 import com.shopping.demo.service.AopTestService;
 import org.springframework.stereotype.Service;
 

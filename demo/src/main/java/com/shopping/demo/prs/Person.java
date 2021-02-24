@@ -1,6 +1,6 @@
 package com.shopping.demo.prs;
 
-import com.shopping.common.prs.PRS;
+import com.shopping.common.annotation.PRS;
 import lombok.Data;
 
 @Data
