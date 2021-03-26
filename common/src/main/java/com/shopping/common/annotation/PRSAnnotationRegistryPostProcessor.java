@@ -3,18 +3,23 @@ package com.shopping.common.annotation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.Ordered;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.core.type.filter.TypeFilter;
 import org.springframework.stereotype.Component;
 
-@Component
-public class PRSAnnotationRegistryPostProcessor implements PriorityOrdered, BeanDefinitionRegistryPostProcessor {
+import java.util.List;
 
-    private static final String BASE_PACKAGE = "com.shopping";
+@Component
+@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+public class PRSAnnotationRegistryPostProcessor implements PriorityOrdered, BeanDefinitionRegistryPostProcessor {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -29,8 +34,9 @@ public class PRSAnnotationRegistryPostProcessor implements PriorityOrdered, Bean
             }
             return match;
         };
+        List<String> basePackages = AutoConfigurationPackages.get((BeanFactory) registry);
         prsScanner.addIncludeFilter(prsTypeFilter);
-        prsScanner.doScan(BASE_PACKAGE);
+        prsScanner.doScan(basePackages.toArray(new String[0]));
     }
 
     @Override
