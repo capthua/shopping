@@ -4,3 +4,17 @@ spring:
     active: dev
   application:
     name: zuul
+
+management:
+  endpoint:
+    routes:
+      enabled: true
+    filters:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+ribbon:
+  ReadTimeout: 4000

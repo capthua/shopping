@@ -1,13 +1,20 @@
 package com.shopping.order.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@ToString
+@Table(name = "tb_order")
 public class Order {
-    private Long id;
-    private String name;
+    private String id;
+    private Date createTime;
+    private Date modifyTime;
+    private Double totalCost;
+    private String paymentId;
+    private String deliveryId;
+    private Byte state;
+    private String userId;
 }

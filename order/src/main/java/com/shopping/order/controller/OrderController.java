@@ -23,10 +23,10 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping("saveOrder")
-    public Integer saveOrder() {
-        logger.info("save order");
-        return orderService.saveOrder();
+    @GetMapping("saveVastOrders")
+    public Integer saveOrder(Integer num) {
+        logger.info("saveVastOrders order");
+        return orderService.saveVastOrders(num);
     }
 }
 

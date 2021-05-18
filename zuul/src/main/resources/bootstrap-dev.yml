@@ -1,12 +1,10 @@
 #设置服务发现
 spring:
-  application:
-    name: zuul-dev
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
       config:
         server-addr: localhost:8848
-        prefix: shopping
+        prefix: public-dev
         file-extension: yml

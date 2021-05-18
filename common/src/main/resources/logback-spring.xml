@@ -61,7 +61,7 @@
         <appender-ref ref="FILE"/>
     </root>
 
-    <logger name="com.shopping" level="debug" additivity="false">
+    <logger name="com.shopping" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>

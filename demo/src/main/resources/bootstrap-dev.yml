@@ -1,0 +1,13 @@
+#设置服务发现
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        file-extension: yml
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+        ext-config[0]:
+          data-id: public-dev.yml
+          refresh: true
