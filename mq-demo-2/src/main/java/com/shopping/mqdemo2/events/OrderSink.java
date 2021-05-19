@@ -1,4 +1,4 @@
-package com.shopping.user.events;
+package com.shopping.mqdemo2.events;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;

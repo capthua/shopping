@@ -1,10 +1,12 @@
 package com.shopping.order.controller;
 
+import com.shopping.order.model.Order;
 import com.shopping.order.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +29,11 @@ public class OrderController {
     public Integer saveOrder(Integer num) {
         logger.info("saveVastOrders order");
         return orderService.saveVastOrders(num);
+    }
+
+    @GetMapping("{id}")
+    public Order saveOrder(@PathVariable("id") String id) {
+        return orderService.getOrderById(id);
     }
 }
 

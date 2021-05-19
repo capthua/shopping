@@ -1,4 +1,5 @@
-#bootstrap会覆盖active的设置
+server:
+  port: 8025
 spring:
   profiles:
-    active: dev
+    active: multi-db

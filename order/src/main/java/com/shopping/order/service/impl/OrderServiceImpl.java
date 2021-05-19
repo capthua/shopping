@@ -20,9 +20,6 @@ public class OrderServiceImpl implements OrderService {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
-
-    //@Autowired
-    //private OrderSender sender;
     @Autowired
     private OrderMapper orderMapper;
 
@@ -58,5 +55,10 @@ public class OrderServiceImpl implements OrderService {
         long useTime=System.currentTimeMillis()-startTime;
         logger.info("插入结束,用时:{}秒",useTime/1000);
         return result;
+    }
+
+    @Override
+    public Order getOrderById(String id) {
+        return orderMapper.getById(id);
     }
 }

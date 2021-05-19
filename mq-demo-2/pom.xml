@@ -9,10 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user</artifactId>
+    <artifactId>mq-demo-2</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.shooping</groupId>
             <artifactId>common</artifactId>
@@ -34,21 +33,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-registry-nacos</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-metadata-report-nacos</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--    <groupId>org.apache.dubbo</groupId>-->
+        <!--    <artifactId>dubbo-spring-boot-starter</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,7 +75,7 @@
             <artifactId>spring-integration-mqtt</artifactId>
         </dependency>
 
-        <!--rabbitmq客户端-->
+        <!--        rabbitmq客户端-->
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
@@ -99,13 +87,11 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!--office-->
+        <!--        office-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -114,12 +100,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
     </build>
+
 
 </project>

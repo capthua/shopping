@@ -1,0 +1,6 @@
+#bootstrap会覆盖active的设置
+spring:
+  application:
+    name: mq-demo-1
+  profiles:
+    active: dev

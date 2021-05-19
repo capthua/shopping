@@ -1,5 +1,5 @@
 spring:
   application:
-    name: order-dev
+    name: mq-demo-2
   profiles:
     active: dev

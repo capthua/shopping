@@ -1,5 +1,4 @@
 #设置服务发现
-
 spring:
   application:
     name: order-prod

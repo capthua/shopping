@@ -1,4 +1,4 @@
-package com.shopping.user.events;
+package com.shopping.mqdemo2.events;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,10 +7,10 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 
-@EnableBinding(OrderSink.class)
-public class OrderHandler {
+@EnableBinding(CartSink.class)
+public class CartHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(OrderHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(CartHandler.class);
 
 
     /**
@@ -18,9 +18,9 @@ public class OrderHandler {
      * @param headers
      * @param payload
      */
-    @StreamListener(OrderSink.INPUT)
-    public void handleMsg(@Headers MessageHeaders headers, byte[] payload){
-        String order=new String(payload);
-        logger.info("Received a message:{}",order);
+    @StreamListener(CartSink.INPUT)
+    public void loggerSink(@Headers MessageHeaders headers, byte[] payload){
+        String cartChange=new String(payload);
+        logger.info("cart change:{}",cartChange);
     }
 }

@@ -26,10 +26,10 @@
         <module>samples</module>
         <module>zuul</module>
         <module>common</module>
-        <module>demo</module>
+        <module>redis-demo-1</module>
         <module>device</module>
-        <module>demo-b</module>
-        <module>demo-c</module>
+        <module>mq-demo-1</module>
+        <module>mq-demo-2</module>
     </modules>
 
     <properties>
@@ -84,16 +84,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-<!--            如果添加alibaba.cloud依赖，com.alibaba.cloud下的依赖可以不用指定版本-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version>${spring-cloud-alibaba.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-
 
             <!--        nacos-->
             <dependency>

@@ -9,11 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo</artifactId>
-
-    <properties>
-        <main-class>heeh</main-class>
-    </properties>
+    <artifactId>redis-demo-1</artifactId>
 
     <dependencies>
         <!--web模块-->

@@ -1,0 +1,30 @@
+#设置服务发现
+# mysql
+spring:
+  datasource:
+    druid:
+      db1:
+        url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
+        username: root
+        password: 242492
+      db2:
+        url: jdbc:mysql://192.168.70.167:3307/iot-saas?allowMultiQueries=true&characterEncoding=UTF-8
+        username: root
+        password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper
+
+#mybatis配置文件
+# classpath*:需要遍历所有的classpath
+mybatis:
+  mapper-locations: classpath:com/shopping/*/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.shopping.order.dao: debug
