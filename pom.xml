@@ -30,6 +30,7 @@
         <module>device</module>
         <module>mq-demo-1</module>
         <module>mq-demo-2</module>
+        <module>db-demo-1</module>
     </modules>
 
     <properties>

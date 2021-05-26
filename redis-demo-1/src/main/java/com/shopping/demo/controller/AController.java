@@ -6,7 +6,7 @@ import com.shopping.demo.service.AopTestService;
 import com.shopping.demo.service.ConcurrentCollectionService;
 import com.shopping.demo.service.RedisSampleService;
 import com.shopping.demo.service.RedissonSampleService;
-import io.prs.mybatisx.autoconfigure.MybatisxTemplate;
+//import io.prs.mybatisx.autoconfigure.MybatisxTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.Advisor;
@@ -28,8 +28,8 @@ public class AController {
 
     private static final Logger logger= LoggerFactory.getLogger(AController.class);
 
-    @Autowired
-    MybatisxTemplate template;
+//    @Autowired
+//    MybatisxTemplate template;
 
     @Autowired
     ApplicationContextUtils applicationContextUtils;
@@ -61,7 +61,8 @@ public class AController {
 //        redisSampleService.hashSamples();
 //        redisSampleService.zSetSamples();
 //        redissonSampleService.redissonSamples();
-        return template.getProperties().toString();
+//        return template.getProperties().toString();
+        return null;
     }
 
     @GetMapping("collectionTest")
@@ -85,7 +86,9 @@ public class AController {
 //            }
 //            logger.info("info");
 //        }
-        return template.getProperties().toString();
+//        return template.getProperties().toString();
+        return null;
+
     }
 
 }
