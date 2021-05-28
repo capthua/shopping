@@ -2,16 +2,16 @@
 # mysql
 spring:
   datasource:
-    druid:
-      write:
-        url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
-        username: root
-        password: 123456
-      read:
-        url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
-        username: root
-        password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    write:
+      url: jdbc:mysql://localhost:3316/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://localhost:3326/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
 
 # tk.mybatis需要扫描
 mapper:

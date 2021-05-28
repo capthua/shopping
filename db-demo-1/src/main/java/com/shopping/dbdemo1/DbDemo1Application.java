@@ -11,9 +11,9 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableTransactionManagement(order = 1)
 @SpringBootApplication
 //@EnableDiscoveryClient
-@MapperScan("com.shopping.order.dao")
-public class OrderApplication {
+@MapperScan("com.shopping.dbdemo1.dao")
+public class DbDemo1Application {
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class, args);
+        SpringApplication.run(DbDemo1Application.class, args);
     }
 }

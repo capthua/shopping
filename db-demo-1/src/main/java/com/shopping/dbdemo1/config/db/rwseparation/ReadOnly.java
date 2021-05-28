@@ -1,4 +1,4 @@
-package com.shopping.dbdemo1.config.db;
+package com.shopping.dbdemo1.config.db.rwseparation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

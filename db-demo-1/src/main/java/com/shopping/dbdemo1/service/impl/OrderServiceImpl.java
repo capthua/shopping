@@ -1,6 +1,7 @@
 package com.shopping.dbdemo1.service.impl;
 
 //import com.shopping.order.events.OrderSender;
+import com.shopping.dbdemo1.config.db.rwseparation.ReadOnly;
 import com.shopping.dbdemo1.dao.OrderMapper;
 import com.shopping.dbdemo1.model.Order;
 import com.shopping.dbdemo1.service.OrderService;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -39,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         Date currentTime=new Date();
         for(int i=0;i<num;i++){
             Order order=new Order();
-            order.setId(i+"");
+            order.setId(UUID.randomUUID().toString().replace("-",""));
             order.setCreateTime(currentTime);
             order.setModifyTime(currentTime);
             order.setTotalCost(55.2);
@@ -58,6 +60,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @ReadOnly
     public Order getOrderById(String id) {
         return orderMapper.getById(id);
     }

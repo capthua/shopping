@@ -1,15 +1,13 @@
-package com.shopping.dbdemo1.config.db;
+package com.shopping.dbdemo1.config.db.rwseparation;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Value;
+import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
@@ -17,23 +15,20 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
-public class DBConfig {
-
-    @Value("mybatis.mapper-locations")
-    String mapperLocations;
+//@Configuration
+public class MultiDataSourceDBConfig {
 
     @Primary
     @Bean
-    @ConfigurationProperties(prefix = "mysql.datasource.write")
+    @ConfigurationProperties(prefix = "spring.datasource.write")
     public DataSource writeDataSource() {
-        return new DruidDataSource();
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "mysql.datasource.read")
+    @ConfigurationProperties(prefix = "spring.datasource.read")
     public DataSource readDataSource() {
-        return new DruidDataSource();
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean
@@ -48,24 +43,24 @@ public class DBConfig {
     }
 
     /**
-     * 多数据源需要自己设置sqlSessionFactory
+     * 将路由数据源设置到SqlSessionFactoryBean
      */
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
+    public SqlSessionFactory sqlSessionFactory(MybatisProperties properties) throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(routingDataSource());
-        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        // mybatis的XML的配置
-        sessionFactoryBean.setMapperLocations(resolver.getResources(mapperLocations));
+        sessionFactoryBean.setConfiguration(properties.getConfiguration());
         return sessionFactoryBean.getObject();
     }
 
     /**
-     * 设置事务，事务需要知道当前使用的是哪个数据源才能进行事务处理
+     * 将路由数据源设置到事务管理中
      */
     @Bean
     public DataSourceTransactionManager dataSourceTransactionManager() {
-        return new DataSourceTransactionManager(routingDataSource());
+        DataSourceTransactionManager transactionManager=
+                new DataSourceTransactionManager(routingDataSource());
+        return transactionManager;
     }
 
 }

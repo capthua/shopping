@@ -1,4 +1,4 @@
-package com.shopping.dbdemo1.config.db;
+package com.shopping.dbdemo1.config.db.rwseparation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -8,9 +8,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
+//@Component
 @Slf4j
-@Order(1)
+@Order(0)
 public class ReadOnlyInterceptor {
 
     @Around("@annotation(readOnly)")
@@ -19,9 +19,7 @@ public class ReadOnlyInterceptor {
             DbContextHolder.setDbOpType(DbContextHolder.READ);
             return joinPoint.proceed();
         }finally {
-            //避免对后续在本线程上执行的操作产生影响
             DbContextHolder.clearDbOpType();
-            log.info("清除threadLocal");
         }
     }
 

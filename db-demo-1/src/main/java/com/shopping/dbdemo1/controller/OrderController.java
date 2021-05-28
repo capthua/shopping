@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @GetMapping("{id}")
-    public Order saveOrder(@PathVariable("id") String id) {
+    public Order getOrder(@PathVariable("id") String id) {
         return orderService.getOrderById(id);
     }
 }
