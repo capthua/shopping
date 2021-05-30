@@ -1,7 +1,7 @@
 package com.shopping.dbdemo1.service.impl;
 
 //import com.shopping.order.events.OrderSender;
-import com.shopping.dbdemo1.config.db.rwseparation.ReadOnly;
+import com.shopping.dbdemo1.config.db.manualrwsplitting.ReadOnly;
 import com.shopping.dbdemo1.dao.OrderMapper;
 import com.shopping.dbdemo1.model.Order;
 import com.shopping.dbdemo1.service.OrderService;

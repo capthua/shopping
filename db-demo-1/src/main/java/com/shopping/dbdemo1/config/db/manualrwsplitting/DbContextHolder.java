@@ -1,4 +1,4 @@
-package com.shopping.dbdemo1.config.db.rwseparation;
+package com.shopping.dbdemo1.config.db.manualrwsplitting;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
