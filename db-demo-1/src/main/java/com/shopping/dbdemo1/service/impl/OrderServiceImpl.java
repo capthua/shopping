@@ -5,6 +5,7 @@ import com.shopping.dbdemo1.config.db.manualrwsplitting.ReadOnly;
 import com.shopping.dbdemo1.dao.OrderMapper;
 import com.shopping.dbdemo1.model.Order;
 import com.shopping.dbdemo1.service.OrderService;
+import org.apache.shardingsphere.core.strategy.keygen.SnowflakeShardingKeyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,6 @@ public class OrderServiceImpl implements OrderService {
         Date currentTime=new Date();
         for(int i=0;i<num;i++){
             Order order=new Order();
-            order.setId(UUID.randomUUID().toString().replace("-",""));
             order.setCreateTime(currentTime);
             order.setModifyTime(currentTime);
             order.setTotalCost(55.2);
@@ -53,10 +53,25 @@ public class OrderServiceImpl implements OrderService {
         }
         logger.info("开始插入");
         long startTime=System.currentTimeMillis();
-        int result = orderMapper.insertList(orders);
+//        int result = orderMapper.insertList(orders);
         long useTime=System.currentTimeMillis()-startTime;
         logger.info("插入结束,用时:{}秒",useTime/1000);
-        return result;
+        return 0;
+    }
+
+    public int saveOrder() {
+        Date currentTime=new Date();
+        Order order=new Order();
+        order.setCreateTime(currentTime);
+        order.setModifyTime(currentTime);
+        order.setTotalCost(55.2);
+        order.setPaymentId("paymentId");
+        order.setDeliveryId("deliveryId");
+        order.setState((byte) 1);
+        order.setUserId("userId");
+        //只有这种方式，或者手动写insert才能成功
+        return orderMapper.insertUseGeneratedKeys(order);
+
     }
 
     @Override

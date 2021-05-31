@@ -7,4 +7,6 @@ public interface OrderService {
     int saveVastOrders(int num);
 
     Order getOrderById(String id);
+
+    int saveOrder();
 }

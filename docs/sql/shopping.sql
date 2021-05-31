@@ -1,6 +1,6 @@
-create table tb_goods
+create table t_goods
 (
-    id          varchar(32)  null,
+    id          bigint(32)  null,
     name        varchar(64)  null,
     description varchar(512) null,
     create_time datetime     null,
@@ -8,9 +8,9 @@ create table tb_goods
     quantity    int          null
 );
 
-create table tb_order
+create table t_order
 (
-    id          varchar(32) null,
+    id          bigint      null,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -20,7 +20,7 @@ create table tb_order
     user_id     varchar(32) null
 );
 
-create table tb_order_goods
+create table t_order_goods
 (
     id       varchar(32) null,
     order_id varchar(32) null,
@@ -28,9 +28,9 @@ create table tb_order_goods
     count    int         null
 );
 
-create table tb_user
+create table t_user
 (
-    id           varchar(32)  null,
+    id           bigint(32)  null,
     username     varchar(32)  null,
     password     varchar(64)  null,
     full_name    varchar(64)  null,
