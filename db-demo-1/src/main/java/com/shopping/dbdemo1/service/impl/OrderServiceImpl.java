@@ -50,6 +50,7 @@ public class OrderServiceImpl implements OrderService {
             order.setState((byte) 1);
             order.setUserId("userId");
             orders.add(order);
+            orderMapper.insertUseGeneratedKeys(order);
         }
         logger.info("开始插入");
         long startTime=System.currentTimeMillis();

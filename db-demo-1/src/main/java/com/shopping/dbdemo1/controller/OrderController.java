@@ -28,7 +28,7 @@ public class OrderController {
     @GetMapping("saveVastOrders")
     public Integer saveOrder(Integer num) {
 //        logger.info("saveVastOrders order");
-        return orderService.saveOrder();
+        return orderService.saveVastOrders(num);
     }
 
     @GetMapping("{id}")
