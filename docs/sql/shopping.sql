@@ -1,6 +1,6 @@
 create table t_goods
 (
-    id          bigint(32)  null,
+    id          bigint  null,
     name        varchar(64)  null,
     description varchar(512) null,
     create_time datetime     null,
@@ -10,7 +10,8 @@ create table t_goods
 
 create table t_order
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -30,7 +31,8 @@ create table t_order_goods
 
 create table t_user
 (
-    id           bigint(32)  null,
+    id           bigint   not null
+        primary key,
     username     varchar(32)  null,
     password     varchar(64)  null,
     full_name    varchar(64)  null,

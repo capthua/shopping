@@ -5,10 +5,9 @@ import com.shopping.dbdemo1.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * describe:
@@ -25,15 +24,24 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping("saveVastOrders")
+    @GetMapping("saveVast")
     public Integer saveOrder(Integer num) {
 //        logger.info("saveVastOrders order");
         return orderService.saveVastOrders(num);
     }
 
-    @GetMapping("{id}")
-    public Order getOrder(@PathVariable("id") String id) {
+    @GetMapping("list")
+    public List<Order> listOrder(String id) {
+        return orderService.list();
+    }
+    @GetMapping("get")
+    public Order getOrder(String id) {
         return orderService.getOrderById(id);
+    }
+
+    @DeleteMapping("remove")
+    public int removeOrder(Long id) {
+        return orderService.remove(null);
     }
 }
 

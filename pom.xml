@@ -198,12 +198,11 @@
                 </includes>
             </resource>
 
+            <!--必须加,否则install后jar包里没有-->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.yml</include>
-                    <include>**/*.xml</include>
-                    <include>**/*.properties</include>
+                    <include>**/*</include>
                 </includes>
             </resource>
         </resources>

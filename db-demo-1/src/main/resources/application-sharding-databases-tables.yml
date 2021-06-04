@@ -26,13 +26,16 @@ spring:
             inline:
               sharding-column: id
               algorithm-expression: t_order_$->{id % 16}
+#            standard:
+#              sharding-column: user_id
+#              precise-algorithm-class-name: com.shopping.dbdemo1.config.db.sharding.UserIdPreciseShardingAlgorithm
           key-generator:
             props:
               worker:
                 id: 123
             column: id
-            type: SNOWFLAKE
-      broadcast-tables: tb_user
+            type: MY_SNOWFLAKE
+      broadcast-tables: t_user
 
     props:
       sql:

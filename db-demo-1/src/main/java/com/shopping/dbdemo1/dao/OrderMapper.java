@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface OrderMapper extends CommonMapper<Order> {
 
-    @Select("select * from tb_order where id=#{id}")
+    @Select("select * from t_order where id=#{id}")
     Order getById(@Param("id") String id);
 
 }

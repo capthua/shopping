@@ -1,6 +1,7 @@
 create table t_order_0
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -11,7 +12,8 @@ create table t_order_0
 );
 create table t_order_1
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -22,7 +24,8 @@ create table t_order_1
 );
 create table t_order_2
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -33,7 +36,8 @@ create table t_order_2
 );
 create table t_order_3
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -44,7 +48,8 @@ create table t_order_3
 );
 create table t_order_4
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -55,7 +60,8 @@ create table t_order_4
 );
 create table t_order_5
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -64,10 +70,10 @@ create table t_order_5
     state       tinyint     null comment '订单状态',
     user_id     varchar(32) null
 );
-
 create table t_order_6
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -78,7 +84,8 @@ create table t_order_6
 );
 create table t_order_7
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -89,7 +96,8 @@ create table t_order_7
 );
 create table t_order_8
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -98,10 +106,10 @@ create table t_order_8
     state       tinyint     null comment '订单状态',
     user_id     varchar(32) null
 );
-
 create table t_order_9
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -112,7 +120,8 @@ create table t_order_9
 );
 create table t_order_10
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -123,7 +132,8 @@ create table t_order_10
 );
 create table t_order_11
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -134,7 +144,8 @@ create table t_order_11
 );
 create table t_order_12
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -145,7 +156,8 @@ create table t_order_12
 );
 create table t_order_13
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -154,10 +166,10 @@ create table t_order_13
     state       tinyint     null comment '订单状态',
     user_id     varchar(32) null
 );
-
 create table t_order_14
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',
@@ -168,7 +180,8 @@ create table t_order_14
 );
 create table t_order_15
 (
-    id          bigint      null,
+    id          bigint      not null
+        primary key,
     create_time datetime    null,
     modify_time datetime    null,
     total_cost  float       null comment '商品总额',

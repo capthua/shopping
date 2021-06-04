@@ -1,6 +1,7 @@
 package com.shopping.dbdemo1.service.impl;
 
 //import com.shopping.order.events.OrderSender;
+import com.google.common.base.Splitter;
 import com.shopping.dbdemo1.config.db.manualrwsplitting.ReadOnly;
 import com.shopping.dbdemo1.dao.OrderMapper;
 import com.shopping.dbdemo1.model.Order;
@@ -12,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service
@@ -48,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
             order.setPaymentId("paymentId");
             order.setDeliveryId("deliveryId");
             order.setState((byte) 1);
-            order.setUserId("userId");
+            order.setUserId(genUserId());
             orders.add(order);
             orderMapper.insertUseGeneratedKeys(order);
         }
@@ -60,6 +58,14 @@ public class OrderServiceImpl implements OrderService {
         return 0;
     }
 
+    private static String genUserId(){
+        List<String> userIds =new ArrayList<>();
+        for(int i=0;i<16;i++){
+            userIds.add("u"+i);
+        }
+        return userIds.get(new Random().nextInt(16));
+    }
+
     public int saveOrder() {
         Date currentTime=new Date();
         Order order=new Order();
@@ -69,7 +75,7 @@ public class OrderServiceImpl implements OrderService {
         order.setPaymentId("paymentId");
         order.setDeliveryId("deliveryId");
         order.setState((byte) 1);
-        order.setUserId("userId");
+        order.setUserId(genUserId());
         //只有这种方式，或者手动写insert才能成功
         return orderMapper.insertUseGeneratedKeys(order);
 
@@ -79,5 +85,21 @@ public class OrderServiceImpl implements OrderService {
     @ReadOnly
     public Order getOrderById(String id) {
         return orderMapper.getById(id);
+    }
+
+    @Override
+    public int remove(Long id) {
+        int result=0;
+        if(id!=null){
+            result=orderMapper.deleteByPrimaryKey(id);
+        } else {
+            result=orderMapper.delete(new Order());
+        }
+        return result;
+    }
+
+    @Override
+    public List<Order> list() {
+        return orderMapper.select(new Order());
     }
 }
