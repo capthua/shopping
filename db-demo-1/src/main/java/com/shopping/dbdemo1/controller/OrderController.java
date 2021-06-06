@@ -41,7 +41,7 @@ public class OrderController {
 
     @DeleteMapping("remove")
     public int removeOrder(Long id) {
-        return orderService.remove(null);
+        return orderService.remove(id);
     }
 }
 
