@@ -1,0 +1,29 @@
+# 读写分离 手动
+spring:
+  datasource:
+    write:
+      url: jdbc:mysql://localhost:3316/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://localhost:3326/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper
+
+#mybatis配置文件
+# classpath*:需要遍历所有的classpath
+mybatis:
+  mapper-locations: classpath:com/shopping/*/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.shopping.order.dao: debug

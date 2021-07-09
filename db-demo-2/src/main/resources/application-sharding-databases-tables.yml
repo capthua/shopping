@@ -1,0 +1,58 @@
+spring:
+  shardingsphere:
+    datasource:
+      ds-0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3336/shopping?serverTimezone=UTC
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      ds-1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3346/shopping?serverTimezone=UTC
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      names: ds-0,ds-1
+    sharding:
+      tables:
+        t_order:
+          actual-data-nodes: ds-$->{0..1}.t_order_$->{0..15}
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: ds-$->{id % 2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: t_order_$->{id % 16}
+#            standard:
+#              sharding-column: user_id
+#              precise-algorithm-class-name: com.shopping.dbdemo1.config.db.sharding.UserIdPreciseShardingAlgorithm
+          key-generator:
+            props:
+              worker:
+                id: 123
+            column: id
+            type: MY_SNOWFLAKE
+      broadcast-tables: t_user
+
+    props:
+      sql:
+        show: true
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper
+
+#mybatis配置文件
+# classpath*:需要遍历所有的classpath
+mybatis:
+  mapper-locations: classpath:com/shopping/*/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.shopping.dbdemo1.dao: debug
