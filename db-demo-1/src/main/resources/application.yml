@@ -2,4 +2,11 @@ server:
   port: 8025
 spring:
   profiles:
-    active: sharding-databases-tables
+    active:
+      - sharding-databases-tables
+      - mybatis
+
+logging:
+  level:
+    com.shopping.dbdemo1.dao: debug
+debug: true

@@ -26,17 +26,25 @@ public class OrderController {
 
     @GetMapping("saveVast")
     public Integer saveOrder(Integer num) {
-//        logger.info("saveVastOrders order");
         return orderService.saveVastOrders(num);
     }
 
-    @GetMapping("list")
-    public List<Order> listOrder(String id) {
-        return orderService.list();
+    @PostMapping("list")
+    public List<Order> listOrder(@RequestBody Order criteria) {
+        return orderService.list(criteria);
     }
     @GetMapping("get")
-    public Order getOrder(String id) {
+    public Order getOrder(Long id) {
         return orderService.getOrderById(id);
+    }
+
+    @PostMapping("update")
+    public int update(Long id){
+        Order value=new Order();
+        value.setUserId("u3_1");
+        Order criteria=new Order();
+        criteria.setUserId("u3");
+        return orderService.update(value,criteria);
     }
 
     @DeleteMapping("remove")

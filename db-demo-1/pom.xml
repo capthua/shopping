@@ -88,9 +88,17 @@
             <artifactId>poi</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+            <version>${sharding-jdbc.version}</version>
+        </dependency>
+
+<!--        两阶段事务xa, 默认实现是Atomikos-->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-transaction-xa-core</artifactId>
             <version>${sharding-jdbc.version}</version>
         </dependency>
 

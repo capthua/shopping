@@ -7,15 +7,11 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shardingsphere.core.strategy.keygen.TimeService;
 import org.apache.shardingsphere.spi.keygen.ShardingKeyGenerator;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public final class MySnowflakeShardingKeyGenerator implements ShardingKeyGenerator {
-
-    StringBuilder sequenceSb=new StringBuilder();
+public final class MySnowflakeShardingKeyGeneratorWithCount implements ShardingKeyGenerator {
     
     public static final long EPOCH;
     
@@ -39,7 +35,13 @@ public final class MySnowflakeShardingKeyGenerator implements ShardingKeyGenerat
 
     private static final Random RANDOM = new Random();
 
-    private static final int RANDOM_BOUND=16;
+    private static final int RANDOM_BOUND=100;
+
+    private static final Map<String,Integer> dbCount=new HashMap<>();
+    private static final Map<String,Integer> tableCount=new HashMap<>();
+    private static final Map<String,Integer> dbTableCount=new HashMap<>();
+    private static int shardingCount=0;
+
 
     @Setter
     private static TimeService timeService = new TimeService();
@@ -87,17 +89,35 @@ public final class MySnowflakeShardingKeyGenerator implements ShardingKeyGenerat
                 sequence=RANDOM.nextInt(RANDOM_BOUND);
             }
         }
-        sequenceSb.append(sequence).append(",");
-        log.info(sequenceSb.toString());
-        try {
-            TimeUnit.MILLISECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        log.info("sequence-->{}",sequence);
         lastMilliseconds = currentMilliseconds;
+        long id=((currentMilliseconds - EPOCH) << TIMESTAMP_LEFT_SHIFT_BITS) | (getWorkerId() << WORKER_ID_LEFT_SHIFT_BITS) | sequence;
+        countSharding(id);
         return ((currentMilliseconds - EPOCH) << TIMESTAMP_LEFT_SHIFT_BITS) | (getWorkerId() << WORKER_ID_LEFT_SHIFT_BITS) | sequence;
     }
 
+    private static void countSharding(long id){
+        Integer dsCount=dbCount.getOrDefault((id%2)+"",0);
+        dsCount++;
+        dbCount.put((id%2)+"",dsCount);
+
+        Integer tbCount=tableCount.getOrDefault((id%16)+"",0);
+        tbCount++;
+        tableCount.put((id%16)+"",tbCount);
+
+        String key=id%2+"_"+id%16;
+        Integer dbTbCount=dbTableCount.getOrDefault(key,0);
+        dbTbCount++;
+        dbTableCount.put(key,dbTbCount);
+
+        shardingCount++;
+
+        log.info("dbCount{}",dbCount);
+        log.info("tbCount{}",tableCount);
+        log.info("dbTbCount{}",dbTableCount);
+        log.info("shardingCount{}",shardingCount);
+
+    }
     
     @SneakyThrows
     private boolean waitTolerateTimeDifferenceIfNeed(final long currentMilliseconds) {
