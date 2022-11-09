@@ -1,0 +1,16 @@
+server:
+  port: 8026
+spring:
+  profiles:
+    active:
+      - db
+#      - db-url-home
+#      - nacos-url-home
+      - db-url-company
+      - nacos-url-company
+      - mybatis
+      - dubbo-p
+      - dubbo-c
+
+  application:
+    name: order

@@ -1,0 +1,5 @@
+dubbo:
+  registry:
+    address: nacos://localhost:8848
+  metadata-report:
+    address: nacos://localhost:8848

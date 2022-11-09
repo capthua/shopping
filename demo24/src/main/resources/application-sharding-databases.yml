@@ -1,0 +1,35 @@
+spring:
+  shardingsphere:
+    datasource:
+      ds-0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3336/shopping?serverTimezone=UTC
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      ds-1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3346/shopping?serverTimezone=UTC
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+      names: ds-0,ds-1
+    sharding:
+      tables:
+        t_order:
+          actual-data-nodes: ds-$->{0..1}.t_order
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: ds-$->{id % 2}
+          key-generator:
+            props:
+              worker:
+                id: 123
+            column: id
+            type: SNOWFLAKE
+      broadcast-tables: tb_user
+
+    props:
+      sql:
+        show: true

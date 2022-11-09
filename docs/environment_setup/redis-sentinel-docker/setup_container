@@ -1,0 +1,17 @@
+docker run -it --name redis1 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-master1.conf:/usr/local/etc/redis/redis-master.conf -d -p 6379:6379 redis /bin/bash
+redis-server /usr/local/etc/redis/redis-master.conf
+
+docker run -it --name redis2 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-slave1.conf:/usr/local/etc/redis/redis-slave.conf -d -p 6380:6379 redis /bin/bash
+redis-server /usr/local/etc/redis/redis-slave.conf
+
+docker run -it --name redis3 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-slave2.conf:/usr/local/etc/redis/redis-slave.conf -d -p 6381:6379 redis /bin/bash
+redis-server /usr/local/etc/redis/redis-slave.conf
+
+docker run -it --name redis-sentinel1 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-sentinel1.conf:/usr/local/etc/redis/redis-sentinel.conf -d -p 26379:26379 redis /bin/bash
+redis-sentinel /usr/local/etc/redis/redis-sentinel.conf
+
+docker run -it --name redis-sentinel2 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-sentinel2.conf:/usr/local/etc/redis/redis-sentinel.conf -d -p 26380:26379 redis /bin/bash
+redis-sentinel /usr/local/etc/redis/redis-sentinel.conf
+
+docker run -it --name redis-sentinel3 -v E:\ideaProjects\shopping\docs\environment_setup\redis-sentinel-docker\redis-sentinel3.conf:/usr/local/etc/redis/redis-sentinel.conf -d -p 26381:26379 redis /bin/bash
+redis-sentinel /usr/local/etc/redis/redis-sentinel.conf

@@ -1,0 +1,15 @@
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper
+
+#mybatis配置文件
+# classpath*:需要遍历所有的classpath
+mybatis:
+  mapper-locations: classpath:com/shopping/*/dao/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.shopping.demo24.dao: debug

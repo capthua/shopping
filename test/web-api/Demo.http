@@ -1,0 +1,39 @@
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8080/cache/order/getById?id=1
+Accept: application/json
+
+###
+POST http://localhost:8080/cache/order/setState
+Content-Type: application/json
+
+{
+  "id": 1,
+  "state": 6
+}
+
+###
+GET http://localhost:8080/order/listOrder
+Content-Type: application/json
+
+
+### dubbo demo
+GET http://localhost:8080/demo/dubboDemo
+
+### 参数映射测试-get
+GET http://localhost:8080/paramTest/get?age=17&xo=50&name=wt&bi=1
+Content-Type: application/json
+
+### 参数映射测试-get
+POST http://localhost:8080/paramTest/post
+Content-Type: application/json
+
+{
+  "age": 1,
+  "x0": 50,
+  "name": "wt",
+  "bi": 1
+}

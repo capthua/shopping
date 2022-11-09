@@ -1,0 +1,41 @@
+spring:
+  cloud:
+    stream:
+      #      如果有一个binder的话,就不需要设置
+      default-binder: rabbit
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.70.224
+                port: 5672
+                username: admin
+                password: 444944
+                virtual-host: GHost
+        rabbit1:
+          type: rabbit
+          defaultCandidate: false
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.70.167
+                port: 5672
+                username: admin
+                password: public
+                virtual-host: /
+      bindings:
+        order:
+          binder: rabbit
+          destination: order
+          producer:
+            #            默认是true
+            autoStartup: true
+        cart:
+          #          如果没有指定routing key,会使用默认的 #
+          binder: rabbit1
+          destination: cart
+          producer:
+            #            默认是true
+            autoStartup: true

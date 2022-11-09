@@ -1,0 +1,3 @@
+d0=com.shopping.demo24.dubbo.spi.DemoSpiImpl
+d1=com.shopping.demo24.dubbo.spi.DemoSpiImpl1
+d2=com.shopping.demo24.dubbo.spi.DemoSpiImpl2

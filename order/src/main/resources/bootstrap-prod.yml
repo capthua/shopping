@@ -1,0 +1,8 @@
+#设置服务发现
+spring:
+  application:
+    name: order-prod
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

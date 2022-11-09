@@ -1,0 +1,15 @@
+dubbo:
+  registry:
+    #    address: 在 application-nacos-url中
+    timeout: 2000
+  protocol:
+    #    -1:会分配一个没有被占用的端口，默认是20880
+    port: -1
+    name: dubbo
+#  metadata-report:
+  #    address: 在 application-nacos-url中
+  application:
+    service-discovery:
+      migration: APPLICATION_FIRST
+    logger: slf4j
+    name: order

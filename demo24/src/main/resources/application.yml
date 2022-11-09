@@ -1,0 +1,33 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: demo
+#  main:
+#    allow-bean-definition-overriding: true
+  profiles:
+    active:
+      - db
+#      - db-url-company
+      - db-url-home-docker
+      - mybatis
+      - dubbo3-c
+      - nacos-url-company
+#      - nacos-url-home-docker
+      - cache
+#      - redis-url-company
+      - redis-url-home-docker
+
+#      - sharding-rwsplitting-company
+#通过web暴露端点监控actuator,还可以通过jmx暴露
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env"
+
+#logging:
+#  level:
+#    com.shopping.demo.dao: debug
+#debug: false

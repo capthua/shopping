@@ -1,0 +1,3 @@
+exta=com.shopping.demo24.dubbo.spi.activate.DemoExtImplA
+extb=com.shopping.demo24.dubbo.spi.activate.DemoExtImplB
+extc=com.shopping.demo24.dubbo.spi.activate.DemoExtImplC

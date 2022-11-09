@@ -1,0 +1,10 @@
+dubbo:
+  registry:
+    timeout: 2000
+  protocol:
+    #    -1:会分配一个没有被占用的端口，默认是20880
+    port: -1
+    name: dubbo
+  application:
+    logger: slf4j
+    name: cart

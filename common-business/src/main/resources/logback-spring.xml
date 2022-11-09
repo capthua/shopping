@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+<!--    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />-->
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+
+<!--    输出行号和方法名会影响效率-->
+    <property name="STDOUT_LOG_PATTERN"
+              value="%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread] %-5level) %clr(%logger{36}){cyan}.%line %clr(-){faint} %msg%n"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%line - %msg%n"/>
+<!--    <property name="LOG_FILE_DIR" value="e:/log/shopping/${appName}"/>-->
+    <property name="LOG_FILE_DIR" value="/Users/capthua/JavaProjects/shopping/log/${appName}"/>
+    <property name="LOG_FILE_NAME" value="${appName}"/>
+    <property name="FILE_EXTENSION" value="log"/>
+    <property name="FILE_NAME_PATTERN" value="${LOG_FILE_DIR}/${LOG_FILE_NAME}-%d{yyyy-MM-dd}.%i.${FILE_EXTENSION}"/>
+
+    <property name="MAX_FILE_SIZE" value="512KB"/>
+    <property name="MAX_HISTORY" value="2"/>
+    <property name="TOTAL_SIZE_CAP" value="3MB"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <!-- info级别和非info级别的日志都经过此过滤器继续过滤-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>NEUTRAL</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+
+        <!-- 大于ALL级别的日志都打, all是最低级别-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ALL</level>
+        </filter>
+
+        <encoder>
+            <pattern>${STDOUT_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+<!--        如果配置了file,就不会生成滚动文件-->
+<!--        <file>${LOG_FILE}</file>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_NAME_PATTERN}</fileNamePattern>
+<!--            每个文件100MB,保存2天的历史,最大2GB-->
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <logger name="com.shopping" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <!--<logger name="org.eclipse" level="debug" additivity="false">-->
+    <!--    <appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
+
+    <logger name="com.alibaba.nacos.client.naming" level="warn"/>
+
+</configuration>

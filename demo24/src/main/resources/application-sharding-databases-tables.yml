@@ -1,0 +1,67 @@
+spring:
+  shardingsphere:
+    datasource:
+      ds-0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/shopping_0?serverTimezone=UTC
+        username: root
+        password: 242492
+        driver-class-name: com.mysql.jdbc.Driver
+      ds-1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/shopping_1?serverTimezone=UTC
+        username: root
+        password: 242492
+        driver-class-name: com.mysql.jdbc.Driver
+      names: ds-0,ds-1
+    sharding:
+#      没有规则使用默认数据库
+      default-data-source-name: ds-0
+#      default-database-strategy:
+#        none:
+      default-database-strategy:
+        inline:
+          sharding-column: id
+          algorithm-expression: ds-$->{id % 2}
+#      default-table-strategy:
+#        none:
+#      default-table-strategy:
+#        inline:
+#          sharding-column: id
+#          algorithm-expression: t_user_0
+      tables:
+        t_order:
+          actual-data-nodes: ds-$->{0..1}.t_order_$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: t_order_$->{id % 2}
+        t_order_item:
+          actual-data-nodes: ds-$->{0..1}.t_order_item_$->{0..3}
+          table-strategy:
+            inline:
+              sharding-column: order_id
+              algorithm-expression: t_order_item_$->{order_id % 4}
+        t_user:
+          actual-data-nodes: ds-$->{0..1}.t_user_$->{0..3}
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: ds-$->{id % 2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: t_user_$->{id % 4}
+
+#              如果表规则没有设置key-generator，则使用默认的
+      defaultKeyGenerator:
+        type: MY_SNOWFLAKE
+        column: id
+        props:
+          worker:
+            id: 123
+      broadcast-tables: t_dictionary
+      binding-tables: t_order,t_order_item
+    props:
+      sql:
+        show: true

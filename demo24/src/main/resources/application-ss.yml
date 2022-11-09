@@ -1,0 +1,14 @@
+#设置服务发现
+# mysql
+spring:
+  datasource:
+    write:
+      url: jdbc:mysql://localhost:3316/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://localhost:3326/shopping?serverTimezone=UTC
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver

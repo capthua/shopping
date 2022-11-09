@@ -1,0 +1,16 @@
+# mysql
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
+    username: root
+    password: 242492
+
+# tk.mybatis需要扫描
+mapper:
+  mappers:
+    - com.shopping.common.db.CommonMapper
+
+#mybatis配置文件
+# classpath*:需要遍历所有的classpath
+mybatis:
+  mapper-locations: classpath:com/shopping/*/mapper/*Mapper.xml

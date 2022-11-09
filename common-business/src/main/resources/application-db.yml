@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    #    url: 在 application-db-url 中
+    #    username: 在 application-db-url 中
+    #    password: 在 application-db-url 中
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: druid
+        login-password: druid
+        reset-enable: true
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+        session-stat-enable: true

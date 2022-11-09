@@ -1,0 +1,14 @@
+server:
+  port: 8027
+spring:
+  profiles:
+    active:
+      - db
+      #      - db-url-home
+      #      - nacos-url-home
+      - db-url-company
+      - nacos-url-company
+      - mybatis
+      - dubbo-c
+  application:
+    name: cart

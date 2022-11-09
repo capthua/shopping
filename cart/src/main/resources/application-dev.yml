@@ -1,0 +1,8 @@
+
+#通过web暴露端点监控actuator,还可以通过jmx暴露
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env"
