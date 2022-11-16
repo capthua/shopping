@@ -6,8 +6,8 @@ import com.shopping.common.eda.IotMessage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@EdaEventProcessor(value = "p3",manager = "msgDown",eventId = "3")
-public class Processor3 extends EventProcessor<IotMessage>{
+@EdaEventProcessor(value = "p3", manager = "msgDown", eventId = "3")
+public class Processor3 extends EventProcessor<IotMessage> {
     @Override
     protected void validateData(IotMessage event) {
         super.validateData(event);

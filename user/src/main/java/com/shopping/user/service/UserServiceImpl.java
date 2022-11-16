@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * 如果添加@DubboService注解，可以不用加@Service，bean也会被实例化
  * describe:
  *
@@ -24,16 +23,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO getUserById(Long id) {
-        UserVO userVO= new UserVO();
+        UserVO userVO = new UserVO();
         User user = userDao.selectByPrimaryKey(id);
-        BeanUtils.copyProperties(user,userVO);
+        BeanUtils.copyProperties(user, userVO);
         return userVO;
     }
 
     @Override
     public void save(UserVO userVO) {
-        User user=new User();
-        BeanUtils.copyProperties(userVO,user);
+        User user = new User();
+        BeanUtils.copyProperties(userVO, user);
         userDao.insertUseGeneratedKeys(user);
     }
 }

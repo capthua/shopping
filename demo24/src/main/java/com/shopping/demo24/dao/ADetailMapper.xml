@@ -10,7 +10,9 @@
 
 
     <select id="getById" useCache="false" resultType="com.shopping.demo24.model.ADetail">
-        select * from t_a_detail where id = #{id}
+        select *
+        from t_a_detail
+        where id = #{id}
     </select>
 
 

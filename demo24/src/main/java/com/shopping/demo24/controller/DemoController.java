@@ -46,10 +46,10 @@ public class DemoController {
 
     @PostMapping("save")
     public String save() {
-        String msg="hehe";
-        msgUpProcessorManager.process("sensorStatus",msg);
-        msgUpProcessorManager.process("gatewayStatus",msg);
-        msgDownProcessorManager.process("3",new IotMessage());
+        String msg = "hehe";
+        msgUpProcessorManager.process("sensorStatus", msg);
+        msgUpProcessorManager.process("gatewayStatus", msg);
+        msgDownProcessorManager.process("3", new IotMessage());
         return "hehe";
     }
 
@@ -60,8 +60,8 @@ public class DemoController {
 
     @GetMapping("secondLevelCache")
     public String secondLevelCache() {
-       cacheTestService.secondLevelCacheTest();
-       return "hehe";
+        cacheTestService.secondLevelCacheTest();
+        return "hehe";
     }
 
     @GetMapping("dubboDemo")

@@ -15,20 +15,20 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
       names: ds-0,ds-1
     sharding:
-#      没有规则使用默认数据库
+      #      没有规则使用默认数据库
       default-data-source-name: ds-0
-#      default-database-strategy:
-#        none:
+      #      default-database-strategy:
+      #        none:
       default-database-strategy:
         inline:
           sharding-column: id
           algorithm-expression: ds-$->{id % 2}
-#      default-table-strategy:
-#        none:
-#      default-table-strategy:
-#        inline:
-#          sharding-column: id
-#          algorithm-expression: t_user_0
+      #      default-table-strategy:
+      #        none:
+      #      default-table-strategy:
+      #        inline:
+      #          sharding-column: id
+      #          algorithm-expression: t_user_0
       tables:
         t_order:
           actual-data-nodes: ds-$->{0..1}.t_order_$->{0..1}
@@ -53,7 +53,7 @@ spring:
               sharding-column: id
               algorithm-expression: t_user_$->{id % 4}
 
-#              如果表规则没有设置key-generator，则使用默认的
+      #              如果表规则没有设置key-generator，则使用默认的
       defaultKeyGenerator:
         type: MY_SNOWFLAKE
         column: id

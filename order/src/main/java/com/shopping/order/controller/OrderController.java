@@ -35,8 +35,8 @@ public class OrderController {
     }
 
     @PostMapping("setState")
-    public void setState(Long id,Byte status) {
-        orderService.setState(id,status);
+    public void setState(Long id, Byte status) {
+        orderService.setState(id, status);
     }
 }
 

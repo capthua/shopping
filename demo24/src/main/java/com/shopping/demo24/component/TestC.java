@@ -9,7 +9,7 @@ public class TestC {
     @Autowired
     TestA testA;
 
-    public void test(){
+    public void test() {
         System.out.println("----ccc----");
     }
 

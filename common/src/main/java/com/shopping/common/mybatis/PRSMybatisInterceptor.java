@@ -8,23 +8,24 @@ import java.util.Properties;
 
 public class PRSMybatisInterceptor implements Interceptor {
 
-    Boolean needBreak=false;
+    Boolean needBreak = false;
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        Object result= before(invocation);
-        if(needBreak){
+        Object result = before(invocation);
+        if (needBreak) {
             return result;
         }
-        result= invocation.proceed();
-        result=after(result,invocation);
+        result = invocation.proceed();
+        result = after(result, invocation);
         return result;
     }
 
-    protected Object before(Invocation invocation) throws Throwable{
+    protected Object before(Invocation invocation) throws Throwable {
         return null;
     }
-    protected Object after(Object result,Invocation invocation) throws Throwable{
+
+    protected Object after(Object result, Invocation invocation) throws Throwable {
         return result;
     }
 

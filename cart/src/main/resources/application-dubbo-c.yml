@@ -8,3 +8,4 @@ dubbo:
   application:
     logger: slf4j
     name: cart
+    id: cart

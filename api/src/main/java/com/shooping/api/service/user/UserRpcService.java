@@ -11,6 +11,7 @@ import com.shopping.common.response.ObjectResponse;
  */
 public interface UserRpcService {
     ObjectResponse getUserById(Long id);
+
     ObjectResponse getUserByName(String name);
 
     /**

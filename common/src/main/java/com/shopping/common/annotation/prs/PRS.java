@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  * @author CaptHua
  */
-@Target({ ElementType.TYPE })
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface PRS {

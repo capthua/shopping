@@ -4,7 +4,7 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.Adaptive;
 
 //@Adaptive
-public class DemoSpiImpl1 implements DemoSpi{
+public class DemoSpiImpl1 implements DemoSpi {
 
     @Override
     public void say(URL url) {

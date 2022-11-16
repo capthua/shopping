@@ -19,7 +19,7 @@ public class TempTest implements ApplicationRunner, ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        this.applicationContext = applicationContext;
     }
 
     @Override
@@ -27,14 +27,15 @@ public class TempTest implements ApplicationRunner, ApplicationContextAware {
         runThreadPool();
     }
 
-    void runThreadPool(){
-        ExecutorService executorService= Executors.newFixedThreadPool(3);
-        Runnable runnable= () -> {
-            for(;;){
-                try{
+    void runThreadPool() {
+        @SuppressWarnings("AlibabaThreadPoolCreation")
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        Runnable runnable = () -> {
+            for (; ; ) {
+                try {
                     applicationContext.getBean("22");
-                } catch (Exception e){
-                    log.error("error",e);
+                } catch (Exception e) {
+                    log.error("error", e);
                 }
                 System.out.println("我在跑着");
                 try {

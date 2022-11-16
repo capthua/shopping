@@ -16,7 +16,7 @@ public class TestConfiguration implements ApplicationRunner, CommandLineRunner {
     DemoController demoController;
 
     @Bean
-    public OrderVO orderVO(){
+    public OrderVO orderVO() {
         return new OrderVO();
     }
 

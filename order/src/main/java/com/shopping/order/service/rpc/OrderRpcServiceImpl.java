@@ -13,6 +13,7 @@ import com.shopping.order.api.model.OrderItemModel;
 import com.shopping.order.api.model.OrderModel;
 import com.shopping.order.dao.dataobject.OrderDO;
 import com.shopping.order.dao.dataobject.OrderItemDO;
+import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -23,10 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@DubboService(version = "0.24",timeout = 20000,loadbalance = "roundrobin",retries = 0, actives = 2,executes = 1)
+@DubboService(version = "0.24", timeout = 20000, loadbalance = "roundrobin", retries = 0, actives = 2, executes = 1)
 public class OrderRpcServiceImpl implements OrderRpcService {
 
-    @DubboReference(timeout = 20000,version = "0.24",async = false, check = false)
+    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
     private UserRpcService userRpcService;
 
     @Autowired
@@ -34,8 +35,8 @@ public class OrderRpcServiceImpl implements OrderRpcService {
 
     @Override
     public ObjectResponse getOrder(OrderParam orderParam) {
-        log.info("获取订单,参数:{}",orderParam);
-        ObjectResponse result=new ObjectResponse();
+        log.info("获取订单,参数:{}", orderParam);
+        ObjectResponse result = new ObjectResponse();
         result.setMsg("获取订单");
         log.info("dubbo info");
         log.error("dubbo error");
@@ -47,17 +48,19 @@ public class OrderRpcServiceImpl implements OrderRpcService {
 
     @Override
     public ObjectResponse validateOrder(OrderParam orderParam) {
-        ObjectResponse result=new ObjectResponse();
+        ObjectResponse result = new ObjectResponse();
         result.setMsg("校验订单");
         return result;
     }
 
     @Override
     public ObjectResponse<OrderDTO> createOrder(OrderDTO orderDTO) {
-        ObjectResponse<OrderDTO> response=new ObjectResponse<>();
+        log.info("全局事务id ：" + RootContext.getXID());
+
+        ObjectResponse<OrderDTO> response = new ObjectResponse<>();
 
         //扣减用户账户
-        AccountDTO accountDTO=new AccountDTO();
+        AccountDTO accountDTO = new AccountDTO();
         accountDTO.setUserId(orderDTO.getUserId());
         accountDTO.setAmount(orderDTO.getAmount());
         ObjectResponse accountResponse = userRpcService.decreaseAccount(accountDTO);
@@ -67,16 +70,16 @@ public class OrderRpcServiceImpl implements OrderRpcService {
         return response;
     }
 
-    private OrderModel getOrderModel(OrderDTO orderDTO){
-        OrderModel orderModel=new OrderModel();
+    private OrderModel getOrderModel(OrderDTO orderDTO) {
+        OrderModel orderModel = new OrderModel();
         orderModel.setUserId(orderDTO.getUserId());
-        orderModel.setState((byte)0);
+        orderModel.setState((byte) 0);
         orderModel.setTotalCost(orderDTO.getAmount());
-        List<OrderItemDTO> orderItemDTOS=orderDTO.getItems();
-        List<OrderItemModel> orderItemModels=new ArrayList<>();
-        orderItemDTOS.forEach(orderItemDTO -> {
-            OrderItemModel orderItemModel=new OrderItemModel();
-            BeanUtils.copyProperties(orderItemDTO,orderItemModel);
+        List<OrderItemDTO> orderItemDTOs = orderDTO.getItems();
+        List<OrderItemModel> orderItemModels = new ArrayList<>();
+        orderItemDTOs.forEach(orderItemDTO -> {
+            OrderItemModel orderItemModel = new OrderItemModel();
+            BeanUtils.copyProperties(orderItemDTO, orderItemModel);
             orderItemModels.add(orderItemModel);
         });
         orderModel.setOrderItems(orderItemModels);

@@ -42,7 +42,7 @@ public class CacheDemoController {
 
     @PostMapping("setState")
     public void setState(@RequestBody OrderModel orderModel) {
-        cacheDemoService.setState(orderModel.getId(),orderModel.getState());
+        cacheDemoService.setState(orderModel.getId(), orderModel.getState());
     }
 
 

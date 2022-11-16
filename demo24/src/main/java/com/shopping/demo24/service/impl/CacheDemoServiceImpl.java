@@ -32,37 +32,37 @@ public class CacheDemoServiceImpl implements CacheDemoService {
     private OrderMapperStd orderMapper;
 
 
-
-    @Cacheable(value = "order",key = "#id")
+    @Cacheable(value = "order", key = "#id")
     @Override
     public OrderModel getOrderById(Long id) {
-        OrderDO orderDO=orderMapper.getById(id);
-        OrderModel orderModel=new OrderModel();
-        BeanUtils.copyProperties(orderDO,orderModel);
+        OrderDO orderDO = orderMapper.getById(id);
+        OrderModel orderModel = new OrderModel();
+        BeanUtils.copyProperties(orderDO, orderModel);
         return orderModel;
     }
 
-    @Cacheable(value = "orderB",key = "#id")
+    @Cacheable(value = "orderB", key = "#id")
     @Override
     public OrderModel getOrderBById(Long id) {
-        OrderDO orderDO=orderMapper.getById(id);
-        OrderModel orderModel=new OrderModel();
-        BeanUtils.copyProperties(orderDO,orderModel);
+        OrderDO orderDO = orderMapper.getById(id);
+        OrderModel orderModel = new OrderModel();
+        BeanUtils.copyProperties(orderDO, orderModel);
         return orderModel;
     }
 
     /**
      * 一般都是先操作数据库，再删除缓存
+     *
      * @param id
      * @param status
      * @return
      */
     @Override
 //    @CacheEvict(value = "order",key = "#id",beforeInvocation = false)
-    @CachePut(value = "order",key = "#id")
+    @CachePut(value = "order", key = "#id")
     @Transactional
     public OrderModel setState(Long id, Byte status) {
-        OrderDO orderDO=new OrderDO();
+        OrderDO orderDO = new OrderDO();
         orderDO.setId(id);
         orderDO.setState(status);
         orderDO.setModifyTime(new Date());

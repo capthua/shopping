@@ -33,10 +33,11 @@ public class ApplicationContextUtils implements ApplicationContextAware, BeanFac
 
     /**
      * 获取bean
+     *
      * @param requiredType type the bean must match; can be an interface or superclass
      * @return an instance of the single bean matching the required type
      */
-    public  <T> T getBean(Class<T> requiredType){
+    public <T> T getBean(Class<T> requiredType) {
         return applicationContext.getBean(requiredType);
     }
 }

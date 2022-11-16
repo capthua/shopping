@@ -40,7 +40,7 @@ public class OrderController {
 
     @PostMapping("setState")
     public void setState(@RequestBody OrderModel orderModel) {
-        orderService.setState(orderModel.getId(),orderModel.getState());
+        orderService.setState(orderModel.getId(), orderModel.getState());
     }
 
     @GetMapping("listOrder")
@@ -68,6 +68,7 @@ public class OrderController {
     public List<Order> listOrder(@RequestBody Order criteria) {
         return orderServiceA.list(criteria);
     }
+
     @GetMapping("get")
     public Order getOrder(Long id) {
         return orderServiceA.getOrderById(id);
@@ -79,12 +80,12 @@ public class OrderController {
     }
 
     @PostMapping("update")
-    public int update(Long id){
-        Order value=new Order();
+    public int update(Long id) {
+        Order value = new Order();
         value.setUserId(223L);
-        Order criteria=new Order();
+        Order criteria = new Order();
         criteria.setUserId(223L);
-        return orderServiceA.update(value,criteria);
+        return orderServiceA.update(value, criteria);
     }
 
     @DeleteMapping("remove")

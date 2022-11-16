@@ -8,23 +8,23 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.core.type.filter.TypeFilter;
 
 import java.util.List;
+
 public class PRSComponentScanAnnotationParser {
 
     private TypeFilter prsTypeFilter;
     private BeanDefinitionRegistry registry;
 
     public PRSComponentScanAnnotationParser(BeanDefinitionRegistry registry) {
-        prsTypeFilter=new AnnotationTypeFilter(PRS.class);
-        this.registry=registry;
+        prsTypeFilter = new AnnotationTypeFilter(PRS.class);
+        this.registry = registry;
     }
 
-    int parse(){
+    int parse() {
         List<String> basePackages = AutoConfigurationPackages.get((BeanFactory) registry);
         ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(registry);
         scanner.addIncludeFilter(prsTypeFilter);
         return scanner.scan(basePackages.toArray(new String[0]));
     }
-
 
 
 }

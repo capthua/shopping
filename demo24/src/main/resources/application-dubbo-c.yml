@@ -1,7 +1,7 @@
 dubbo:
   registry:
     address: nacos://192.168.0.124:8848
-#    address: nacos://192.168.9.202:8848
+    #    address: nacos://192.168.9.202:8848
     timeout: 2000
   protocol:
     #    -1:会分配一个没有被占用的端口，默认是20880
@@ -9,7 +9,7 @@ dubbo:
     name: dubbo
   metadata-report:
     address: nacos://192.168.0.124:8848
-#      address: nacos://192.168.9.202:8848
+  #      address: nacos://192.168.9.202:8848
   application:
     logger: slf4j
     name: demo-dubbo

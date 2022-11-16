@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class BaseResponse implements Serializable {
 
-    private int status=200;
+    private int status = 200;
     private String msg;
 
 }

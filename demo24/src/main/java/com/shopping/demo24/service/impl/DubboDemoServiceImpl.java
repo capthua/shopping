@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class DubboDemoServiceImpl implements DubboDemoService {
 
-    @DubboReference(timeout = 20000,version = "0.24",async = false, check = false)
+    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
     private OrderRpcService orderService;
 
 
     @Override
     public void dubboTest1() {
-        OrderParam orderParam=new OrderParam();
+        OrderParam orderParam = new OrderParam();
         orderParam.setOrderId(12L);
         ObjectResponse result = orderService.getOrder(orderParam);
         System.out.println("hehe");

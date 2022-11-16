@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author CaptHua
+ */
 public class SpringUtils {
 
 
@@ -32,7 +35,9 @@ public class SpringUtils {
                     break;
                 }
             }
-            if (find) break;
+            if (find) {
+                break;
+            }
         }
         if (springApplicationClass == null) {
             throw new RuntimeException("spring启动类不存在");

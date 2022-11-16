@@ -33,10 +33,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer removeUser(Long id) {
         Integer result;
-        if(id!=null){
-            result=userMapper.deleteByPrimaryKey(id);
+        if (id != null) {
+            result = userMapper.deleteByPrimaryKey(id);
         } else {
-            result=userMapper.delete(new User());
+            result = userMapper.delete(new User());
         }
         return result;
     }

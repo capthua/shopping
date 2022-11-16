@@ -10,16 +10,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TestAspect {
 
-//    @Pointcut("execution(* com.shopping.demo24.eda.*.process(..))")
+    //    @Pointcut("execution(* com.shopping.demo24.eda.*.process(..))")
     @Pointcut("execution(* com.shopping.demo24.component.*.test(..))")
-    public void pointcut() {}
+    public void pointcut() {
+    }
 
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println(this.getClass().getSimpleName()+"-around:before");
-        Object result=joinPoint.proceed();
+        System.out.println(this.getClass().getSimpleName() + "-around:before");
+        Object result = joinPoint.proceed();
 //        int a=3/0;
-        System.out.println(this.getClass().getSimpleName()+"-around:after");
+        System.out.println(this.getClass().getSimpleName() + "-around:after");
         return result;
     }
 

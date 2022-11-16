@@ -27,7 +27,7 @@ import java.util.*;
 @Intercepts({@Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class}),})
 public class ConvertColumnName2UpperMybatisInterceptor extends PRSMybatisInterceptor {
 
-    private static final Converter<String,String> LU2LC_CONVERTER=
+    private static final Converter<String, String> LU2LC_CONVERTER =
             CaseFormat.LOWER_UNDERSCORE.converterTo(CaseFormat.LOWER_CAMEL);
 
     @Override
@@ -57,9 +57,9 @@ public class ConvertColumnName2UpperMybatisInterceptor extends PRSMybatisInterce
                     while (resultSet.next()) {
                         Map<String, Object> resultMap = new HashMap<>();
                         for (String originColumnName : columnList) {
-                            if(Objects.nonNull(originColumnName)){
-                                String columnName=LU2LC_CONVERTER.convert(originColumnName);
-                                if(StringUtils.isAllUpperCase(columnName)){
+                            if (Objects.nonNull(originColumnName)) {
+                                String columnName = LU2LC_CONVERTER.convert(originColumnName);
+                                if (StringUtils.isAllUpperCase(columnName)) {
                                     resultMap.put(columnName.toLowerCase(), resultSet.getObject(originColumnName));
                                 } else {
                                     resultMap.put(columnName, resultSet.getObject(originColumnName));
@@ -69,7 +69,7 @@ public class ConvertColumnName2UpperMybatisInterceptor extends PRSMybatisInterce
                         result.add(resultMap);
 
                     }
-                    needBreak=true;
+                    needBreak = true;
                     return result;
                 }
             }

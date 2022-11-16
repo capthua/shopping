@@ -6,10 +6,12 @@ import com.shopping.common.response.ObjectResponse;
 
 public interface OrderRpcService {
     ObjectResponse getOrder(OrderParam orderParam);
+
     ObjectResponse validateOrder(OrderParam orderParam);
 
     /**
      * 创建订单
+     *
      * @param orderDTO
      * @return
      */

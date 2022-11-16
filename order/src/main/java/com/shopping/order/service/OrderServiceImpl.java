@@ -1,6 +1,5 @@
 package com.shopping.order.service;
 
-//import com.shopping.order.events.OrderSender;
 import com.shopping.common.id.SnowflakeShardingKeyGenerator;
 import com.shopping.order.api.model.OrderModel;
 import com.shopping.order.dao.dataobject.OrderItemDO;
@@ -19,9 +18,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.apache.tomcat.jni.Thread.current;
-
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -49,62 +45,62 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public int saveVastOrders(int num) {
-        List<OrderDO> orders=new ArrayList<>();
-        Date currentTime=new Date();
-        for(int i=0;i<num;i++){
-            OrderDO order=new OrderDO();
-            order.setId(Long.parseLong(i+""));
+        List<OrderDO> orders = new ArrayList<>();
+        Date currentTime = new Date();
+        for (int i = 0; i < num; i++) {
+            OrderDO order = new OrderDO();
+            order.setId(Long.parseLong(i + ""));
             order.setCreateTime(currentTime.getTime());
             order.setModifyTime(currentTime.getTime());
             order.setTotalCost(BigDecimal.valueOf(55.2));
             order.setState((byte) 1);
-            order.setUserId(Long.parseLong(i+""));
+            order.setUserId(Long.parseLong(i + ""));
             orders.add(order);
         }
         logger.info("开始插入");
-        long startTime=System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         int result = orderMapper.insertList(orders);
-        long useTime=System.currentTimeMillis()-startTime;
-        logger.info("插入结束,用时:{}秒",useTime/1000);
+        long useTime = System.currentTimeMillis() - startTime;
+        logger.info("插入结束,用时:{}秒", useTime / 1000);
         return result;
     }
 
     @Override
     public OrderModel getOrderById(Long id) {
-        OrderDO orderDO=orderMapper.selectByPrimaryKey(id);
-        OrderModel orderModel=new OrderModel();
-        BeanUtils.copyProperties(orderDO,orderModel);
+        OrderDO orderDO = orderMapper.selectByPrimaryKey(id);
+        OrderModel orderModel = new OrderModel();
+        BeanUtils.copyProperties(orderDO, orderModel);
         return orderModel;
     }
 
     @Override
     public void setState(Long id, Byte status) {
-        OrderDO orderDO=new OrderDO();
+        OrderDO orderDO = new OrderDO();
         orderDO.setId(id);
         orderDO.setState(status);
-        orderDO.setModifyTime(new Date().getTime());
+        orderDO.setModifyTime(System.currentTimeMillis());
         orderMapper.updateByPrimaryKeySelective(orderDO);
     }
 
     @Transactional
     @Override
     public void saveOrder(OrderModel order) {
-        Long currentTime=System.currentTimeMillis();
+        Long currentTime = System.currentTimeMillis();
         order.setCreateTime(currentTime);
         order.setCreateTime(currentTime);
-        OrderDO orderDO=new OrderDO();
-        BeanUtils.copyProperties(order,orderDO);
+        OrderDO orderDO = new OrderDO();
+        BeanUtils.copyProperties(order, orderDO);
         orderDO.setId(idGenerator.generateKey());
         orderMapper.insert(orderDO);
 
-        List<OrderItemDO> orderItemDOS=new ArrayList<>();
-        order.getOrderItems().forEach(orderItem ->{
-            OrderItemDO orderItemDO=new OrderItemDO();
-            BeanUtils.copyProperties(orderItem,orderItemDO);
+        List<OrderItemDO> orderItemDOs = new ArrayList<>();
+        order.getOrderItems().forEach(orderItem -> {
+            OrderItemDO orderItemDO = new OrderItemDO();
+            BeanUtils.copyProperties(orderItem, orderItemDO);
             orderItemDO.setOrderId(orderDO.getId());
             orderItemDO.setId(idGenerator.generateKey());
-            orderItemDOS.add(orderItemDO);
+            orderItemDOs.add(orderItemDO);
         });
-        orderItemMapper.insertList(orderItemDOS);
+        orderItemMapper.insertList(orderItemDOs);
     }
 }

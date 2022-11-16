@@ -20,9 +20,9 @@ public class MybatisCacheTestServiceImpl implements MybatisCacheTestService {
     @Transactional
     @Override
     public void secondLevelCacheTest() {
-        A a=aDao.getById(1);
-        String anme="hehe";
-        aDao.updateNameById(anme,1);
+        A a = aDao.getById(1);
+        String anme = "hehe";
+        aDao.updateNameById(anme, 1);
         System.out.println("hehe");
     }
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ServiceRMapper implements ServiceRouteMapper {
     @Override
     public String apply(String serviceId) {
-        log.debug("serviceId:{}",serviceId);
+        log.debug("serviceId:{}", serviceId);
         return serviceId;
     }
 }

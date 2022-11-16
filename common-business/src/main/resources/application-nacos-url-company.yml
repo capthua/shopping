@@ -3,3 +3,5 @@ dubbo:
     address: nacos://192.168.70.224:8848
   metadata-report:
     address: nacos://192.168.70.224:8848
+  config-center:
+    address: nacos://192.168.70.224:8848

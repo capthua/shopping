@@ -28,6 +28,7 @@ public class OrderServiceBImpl implements OrderServiceB {
 
     /**
      * 测试读写分离
+     *
      * @param order
      * @return
      */
@@ -36,9 +37,9 @@ public class OrderServiceBImpl implements OrderServiceB {
     public Order saveOrder(Order order) {
         Order result = orderMapper.selectByPrimaryKey(order.getId());
         orderMapper.selectAll();
-        if(result==null){
+        if (result == null) {
             orderMapper.insertUseGeneratedKeys(order);
-            result=order;
+            result = order;
         }
         orderMapper.selectByPrimaryKey(order.getId());
         return result;

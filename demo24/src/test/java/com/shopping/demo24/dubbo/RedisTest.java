@@ -18,10 +18,11 @@ public class RedisTest {
 
     /**
      * redis hash
+     *
      * @throws Exception
      */
     @Test
-    public void hashTest()  {
+    public void hashTest() {
         redisTemplate.opsForHash().keys("hehe");
     }
 

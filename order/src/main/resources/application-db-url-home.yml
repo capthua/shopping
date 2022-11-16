@@ -1,7 +1,7 @@
 # mysql
 spring:
   datasource:
-#      #    homePC docker
+    #      #    homePC docker
     url: jdbc:mysql://192.168.0.124:3308/sp_order?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 242492

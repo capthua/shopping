@@ -20,29 +20,29 @@ public class EdaContext implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        this.applicationContext=event.getApplicationContext();
-        Map<String,Object> processors=applicationContext.getBeansWithAnnotation(EdaEventProcessor.class);
-        for(Map.Entry<String,Object> entry:processors.entrySet()){
-            EdaEventProcessor edaEventProcessor= (EdaEventProcessor) AnnotationUtils.getAnnotation(entry.getValue().getClass(),
+        this.applicationContext = event.getApplicationContext();
+        Map<String, Object> processors = applicationContext.getBeansWithAnnotation(EdaEventProcessor.class);
+        for (Map.Entry<String, Object> entry : processors.entrySet()) {
+            EdaEventProcessor edaEventProcessor = (EdaEventProcessor) AnnotationUtils.getAnnotation(entry.getValue().getClass(),
                     EdaEventProcessor.class);
-            String managerName=edaEventProcessor.manager();
-            String eventId=edaEventProcessor.eventId();
-            String processorName=edaEventProcessor.value();
-            log.info("eda----manager:{},eventId:{},processor:{}",managerName,eventId,processorName);
-            if(StringUtils.isAnyBlank(managerName,eventId,processorName)){
+            String managerName = edaEventProcessor.manager();
+            String eventId = edaEventProcessor.eventId();
+            String processorName = edaEventProcessor.value();
+            log.info("eda----manager:{},eventId:{},processor:{}", managerName, eventId, processorName);
+            if (StringUtils.isAnyBlank(managerName, eventId, processorName)) {
                 throw new RuntimeException("EdaEventProcessor注解中的值不能为空");
             }
-            ProcessorManager manager=applicationContext.getBean(managerName,ProcessorManagerImpl.class);
-            Object processorBean=getBean(processorName);
-            if(processorBean instanceof EventProcessor){
-                manager.registerProcessor(eventId,(EventProcessor)processorBean);
+            ProcessorManager manager = applicationContext.getBean(managerName, ProcessorManagerImpl.class);
+            Object processorBean = getBean(processorName);
+            if (processorBean instanceof EventProcessor) {
+                manager.registerProcessor(eventId, (EventProcessor) processorBean);
             } else {
                 throw new RuntimeException("bean不是EventProcessor");
             }
         }
     }
 
-    private Object getBean(String name){
+    private Object getBean(String name) {
         return applicationContext.getBean(name);
     }
 }

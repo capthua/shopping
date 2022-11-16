@@ -1,8 +1,15 @@
 package com.shopping.common.response;
 
 
+/**
+ * @author CaptHua
+ */
+
 public enum RspStatusEnum {
 
+    /**
+     * 返回值，成功
+     */
     SUCCESS(200, "成功"),
 
     FAIL(999, "失败"),
@@ -16,6 +23,7 @@ public enum RspStatusEnum {
         this.status = status;
         this.msg = message;
     }
+
     public int getStatus() {
         return status;
     }

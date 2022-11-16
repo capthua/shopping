@@ -17,7 +17,7 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping("checkout")
-    public ObjectResponse checkout(@RequestBody CheckoutParam param){
+    public ObjectResponse checkout(@RequestBody CheckoutParam param) {
         cartService.checkout(param);
         return new ObjectResponse();
     }

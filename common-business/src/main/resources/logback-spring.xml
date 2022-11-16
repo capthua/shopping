@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-<!--    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />-->
     <springProperty scope="context" name="appName" source="spring.application.name"/>
 
-<!--    输出行号和方法名会影响效率-->
+    <!--    输出行号和方法名会影响效率-->
     <property name="STDOUT_LOG_PATTERN"
               value="%clr(%d{HH:mm:ss.SSS}){faint} %clr([%thread] %-5level) %clr(%logger{36}){cyan}.%line %clr(-){faint} %msg%n"/>
     <property name="FILE_LOG_PATTERN"
               value="%d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%line - %msg%n"/>
-<!--    <property name="LOG_FILE_DIR" value="e:/log/shopping/${appName}"/>-->
+    <!--    <property name="LOG_FILE_DIR" value="e:/log/shopping/${appName}"/>-->
     <property name="LOG_FILE_DIR" value="/Users/capthua/JavaProjects/shopping/log/${appName}"/>
     <property name="LOG_FILE_NAME" value="${appName}"/>
     <property name="FILE_EXTENSION" value="log"/>
@@ -44,11 +44,11 @@
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
         </encoder>
-<!--        如果配置了file,就不会生成滚动文件-->
-<!--        <file>${LOG_FILE}</file>-->
+        <!--        如果配置了file,就不会生成滚动文件-->
+        <!--        <file>${LOG_FILE}</file>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${FILE_NAME_PATTERN}</fileNamePattern>
-<!--            每个文件100MB,保存2天的历史,最大2GB-->
+            <!--            每个文件100MB,保存2天的历史,最大2GB-->
             <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
             <maxHistory>${MAX_HISTORY}</maxHistory>
             <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>

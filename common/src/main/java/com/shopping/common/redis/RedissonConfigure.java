@@ -17,14 +17,14 @@ public class RedissonConfigure {
     private RedissonClient client;
 
     /**
-     * @ConditionalOnBean(RedissonClient.class) 不起作用, 等待看源码分析原因
      * @return
+     * @ConditionalOnBean(RedissonClient.class) 不起作用, 等待看源码分析原因
      */
     @Bean
     //@ConditionalOnBean(RedissonClient.class)
     @ConditionalOnMissingBean(name = "redissonTemplate")
-    public RedissonTemplate redissonTemplate(){
-        RedissonTemplate redissonTemplate=new RedissonTemplate();
+    public RedissonTemplate redissonTemplate() {
+        RedissonTemplate redissonTemplate = new RedissonTemplate();
         redissonTemplate.setRedissonClient(client);
         return redissonTemplate;
     }

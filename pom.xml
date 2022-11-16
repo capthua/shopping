@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--
-    将spring-boot-dependencies加到dependencyManagement中可同样实现子pom使用spring-boot的依赖版本
-    spring-boot-starter-parent继承spring-boot-dependencies
--->
-<!--    <parent>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
-<!--        <version>2.1.5.RELEASE</version>-->
-<!--    </parent>-->
+    <!--
+        将spring-boot-dependencies加到dependencyManagement中可同样实现子pom使用spring-boot的依赖版本
+        spring-boot-starter-parent继承spring-boot-dependencies
+    -->
+    <!--    <parent>-->
+    <!--        <groupId>org.springframework.boot</groupId>-->
+    <!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+    <!--        <version>2.1.5.RELEASE</version>-->
+    <!--    </parent>-->
 
     <groupId>com.shooping</groupId>
     <artifactId>shopping</artifactId>
@@ -59,14 +59,15 @@
         <poi.version>3.15</poi.version>
         <mapper.version>2.1.5</mapper.version>
         <commons-lang3.version>3.11</commons-lang3.version>
-        <dubbo.version>2.7.7</dubbo.version>
-<!--        <dubbo.version>3.1.0</dubbo.version>-->
-        <seata.version>1.4.2</seata.version>
+        <dubbo.version>2.7.18</dubbo.version>
+        <!--        <dubbo.version>3.1.0</dubbo.version>-->
+        <!--        <seata.version>1.4.2</seata.version>-->
+        <seata.version>1.5.2</seata.version>
 
 
         <redisson-starter.version>3.13.6</redisson-starter.version>
 
-<!--        插件版本号-->
+        <!--        插件版本号-->
         <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
     </properties>
 
@@ -91,13 +92,13 @@
             </dependency>
 
             <!--            如果添加alibaba.cloud依赖，nacos可以不用指定版本-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version>${spring-cloud-alibaba.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba.cloud</groupId>-->
+            <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+            <!--                <version>${spring-cloud-alibaba.version}</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
 
             <!--        nacos-->
             <dependency>
@@ -192,7 +193,7 @@
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
 
-<!--        编译器生成setter,toString方法等-->
+        <!--        编译器生成setter,toString方法等-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -222,7 +223,7 @@
     <build>
         <resources>
 
-<!--            directory中无法使用*-->
+            <!--            directory中无法使用*-->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -265,7 +266,7 @@
                             <image>registry.cn-hangzhou.aliyuncs.com/prs-shopping/openjdk:8-alpine</image>
                         </from>
                         <to>
-<!--                            <image>registry.cn-hangzhou.aliyuncs.com/prs-shopping/${project.artifactId}</image>-->
+                            <!--                            <image>registry.cn-hangzhou.aliyuncs.com/prs-shopping/${project.artifactId}</image>-->
                             <image>${project.artifactId}</image>
                             <tags>
                                 <tag>${project.version}</tag>
@@ -282,18 +283,18 @@
                             <labels>
                                 <name>shopping</name>
                             </labels>
-<!--                            阿里云仓库不支持OCI镜像-->
-<!--                            <format>OCI</format>-->
+                            <!--                            阿里云仓库不支持OCI镜像-->
+                            <!--                            <format>OCI</format>-->
                         </container>
                     </configuration>
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>package</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>build</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
+                    <!--                    <executions>-->
+                    <!--                        <execution>-->
+                    <!--                            <phase>package</phase>-->
+                    <!--                            <goals>-->
+                    <!--                                <goal>build</goal>-->
+                    <!--                            </goals>-->
+                    <!--                        </execution>-->
+                    <!--                    </executions>-->
                 </plugin>
             </plugins>
 

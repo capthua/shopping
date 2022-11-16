@@ -16,8 +16,8 @@ public class MapperFactoryBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if(bean instanceof MapperFactoryBean){
-            MapperFactoryBean mapperFactoryBean=(MapperFactoryBean)bean;
+        if (bean instanceof MapperFactoryBean) {
+            MapperFactoryBean mapperFactoryBean = (MapperFactoryBean) bean;
             Type[] types = mapperFactoryBean.getMapperInterface().getGenericInterfaces();
             for (Type type : types) {
                 if (type instanceof ParameterizedType) {

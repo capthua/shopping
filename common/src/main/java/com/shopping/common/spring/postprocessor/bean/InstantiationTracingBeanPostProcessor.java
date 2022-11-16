@@ -21,7 +21,7 @@ public class InstantiationTracingBeanPostProcessor implements BeanPostProcessor 
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("Bean '{}' created : {}",beanName,bean.toString());
+        logger.info("Bean '{}' created : {}", beanName, bean.toString());
         return bean;
     }
 }

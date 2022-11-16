@@ -29,19 +29,19 @@ public class RedisConfigure {
 
     @Bean
     @ConditionalOnMissingBean(name = "redisHashTemplate")
-    public RedisHashTemplate redisHashTemplate(){
+    public RedisHashTemplate redisHashTemplate() {
         return new RedisHashTemplate(redisTemplate);
     }
 
     @Bean
     @ConditionalOnMissingBean(name = "redisSetTemplate")
-    public RedisSetTemplate redisSetTemplate(){
+    public RedisSetTemplate redisSetTemplate() {
         return new RedisSetTemplate(redisTemplate);
     }
 
     @Bean
     @ConditionalOnMissingBean(name = "redisZSetTemplate")
-    public RedisZSetTemplate redisZSetTemplate(){
+    public RedisZSetTemplate redisZSetTemplate() {
         return new RedisZSetTemplate(redisTemplate);
     }
 

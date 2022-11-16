@@ -20,13 +20,14 @@ public class DubboSpiTest {
 
     /**
      * dubbo spi
+     *
      * @throws Exception
      */
     @Test
     public void spi() throws Exception {
         ExtensionLoader<DemoSpi> extensionLoader =
                 ExtensionLoader.getExtensionLoader(DemoSpi.class);
-        DemoSpi demoSpi=null;
+        DemoSpi demoSpi = null;
         URL url = URL.valueOf("demo://localhost/demo");
 
 //        //通过扩展名获取扩展
@@ -37,18 +38,18 @@ public class DubboSpiTest {
 
 //        配置自适应扩展
 //        1.设置SPI注解的值为d2，@SPI("d2")
-        demoSpi=extensionLoader.getAdaptiveExtension();
+        demoSpi = extensionLoader.getAdaptiveExtension();
         demoSpi.say(url);
 
         //2. url中的参数k与Adaptive中的参数相同，默认参数为 DemoSpi->demo.spi
         url = URL.valueOf("demo://localhost/demo?demo.spi=d0");
         url = URL.valueOf("demo://localhost/demo?key=d0");
-        demoSpi=extensionLoader.getAdaptiveExtension();
+        demoSpi = extensionLoader.getAdaptiveExtension();
         demoSpi.say(url);
 
         //3.在类DemoSpiImpl1上添加@Adaptive，设置 SPI注解的值为d2，获取的是d1，此时获取的是实现类，而不是生成的类
 //        所以 @Adaptive注解的优先级最高
-        demoSpi=extensionLoader.getAdaptiveExtension();
+        demoSpi = extensionLoader.getAdaptiveExtension();
         demoSpi.say(url);
 
 //        URL url = URL.valueOf("dubbo://localhost/test");
@@ -58,6 +59,7 @@ public class DubboSpiTest {
 
     /**
      * dubbo spi
+     *
      * @throws Exception
      */
     @Test
@@ -67,7 +69,7 @@ public class DubboSpiTest {
 
         // 1. 组参数为空，不会用组过滤，只会用value过滤
         List<DemoExt> list = null;
-               list = loader.getActivateExtension(url, new String[]{}, null);
+        list = loader.getActivateExtension(url, new String[]{}, null);
         System.out.println(list);
 //        [com.shopping.demo24.dubbo.spi.activate.DemoExtImplC@301770d9,
 //        com.shopping.demo24.dubbo.spi.activate.DemoExtImplB@40edc64e]
@@ -79,7 +81,7 @@ public class DubboSpiTest {
 
         //3. 组与value，注解中如果设置了value，则要求value中的key:value必须与url中的相同，
         // 注解中如果没有value，则不会校验参数，只用group匹配
-        url=url.addParameter("k1","v1");
+        url = url.addParameter("k1", "v1");
         list = loader.getActivateExtension(url, new String[]{}, "g1");
         System.out.println(list);
 //        [com.shopping.demo24.dubbo.spi.activate.DemoExtImplC@e1fd2bf,

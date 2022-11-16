@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@EdaEventProcessor(value = "SensorStatusProcessor",manager = "msgUp",eventId = "sensorStatus")
+@EdaEventProcessor(value = "SensorStatusProcessor", manager = "msgUp", eventId = "sensorStatus")
 public class SensorStatusProcessor extends EventProcessor<SensorStatusMsg> {
 
     @Override
@@ -27,6 +27,6 @@ public class SensorStatusProcessor extends EventProcessor<SensorStatusMsg> {
 
     @Override
     protected void initFactory() {
-        this.msgFactory=new SensorStatusFactory();
+        this.msgFactory = new SensorStatusFactory();
     }
 }

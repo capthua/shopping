@@ -39,16 +39,16 @@ public class OrderServiceStdImpl implements OrderServiceStd {
     @Cacheable("order")
     @Override
     public OrderModel getOrderById(Long id) {
-        OrderDO orderDO=orderMapper.getById(id);
-        OrderModel orderModel=new OrderModel();
-        BeanUtils.copyProperties(orderDO,orderModel);
+        OrderDO orderDO = orderMapper.getById(id);
+        OrderModel orderModel = new OrderModel();
+        BeanUtils.copyProperties(orderDO, orderModel);
         return orderModel;
     }
 
     @Override
     @Transactional
     public void setState(Long id, Byte status) {
-        OrderDO orderDO=new OrderDO();
+        OrderDO orderDO = new OrderDO();
         orderDO.setId(id);
         orderDO.setState(status);
         orderDO.setModifyTime(new Date());
@@ -60,10 +60,10 @@ public class OrderServiceStdImpl implements OrderServiceStd {
         orderMapper.delete(new OrderDO());
 
         List<OrderDO> orderDOs = orderMapper.selectAll();
-        List<OrderModel> orderModels=new ArrayList<>();
+        List<OrderModel> orderModels = new ArrayList<>();
         for (OrderDO orderDO : orderDOs) {
-            OrderModel orderModel=new OrderModel();
-            BeanUtils.copyProperties(orderDO,orderModel);
+            OrderModel orderModel = new OrderModel();
+            BeanUtils.copyProperties(orderDO, orderModel);
             orderModels.add(orderModel);
         }
         return orderModels;

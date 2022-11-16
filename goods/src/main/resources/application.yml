@@ -9,6 +9,7 @@ spring:
       - mybatis
       #      - nacos-url-home
       - nacos-url-company
-      - dubbo3-p
+      - dubbo-p
+      - seata
 server:
   port: 8025

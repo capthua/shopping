@@ -3,19 +3,19 @@ server:
 spring:
   application:
     name: demo
-#  main:
-#    allow-bean-definition-overriding: true
+  #  main:
+  #    allow-bean-definition-overriding: true
   profiles:
     active:
       - db
-#      - db-url-company
+      #      - db-url-company
       - db-url-home-docker
       - mybatis
       - dubbo3-c
       - nacos-url-company
-#      - nacos-url-home-docker
+      #      - nacos-url-home-docker
       - cache
-#      - redis-url-company
+      #      - redis-url-company
       - redis-url-home-docker
 
 #      - sharding-rwsplitting-company

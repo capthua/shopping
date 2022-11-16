@@ -3,7 +3,6 @@ package com.shopping.common.eda;
 public interface ProcessorManager {
 
     /**
-     *
      * @param eventId
      * @param processor
      * @return

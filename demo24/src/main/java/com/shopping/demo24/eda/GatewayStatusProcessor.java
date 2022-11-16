@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import javax.annotation.PostConstruct;
 
 @Slf4j
-@EdaEventProcessor(value = "GatewayStatusProcessor",manager = "msgUp",eventId = "gatewayStatus")
+@EdaEventProcessor(value = "GatewayStatusProcessor", manager = "msgUp", eventId = "gatewayStatus")
 public class GatewayStatusProcessor extends EventProcessor<GatewayStatusMsg> {
     @Override
     protected void validateData(GatewayStatusMsg msg) {
@@ -23,6 +23,6 @@ public class GatewayStatusProcessor extends EventProcessor<GatewayStatusMsg> {
 
     @Override
     protected void initFactory() {
-        this.msgFactory=new GatewayStatusFactory();
+        this.msgFactory = new GatewayStatusFactory();
     }
 }

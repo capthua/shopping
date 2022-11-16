@@ -10,7 +10,7 @@ public class TestA {
     @Autowired
     TestB testB;
 
-    public void test(){
+    public void test() {
         System.out.println("----aaa----");
     }
 

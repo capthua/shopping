@@ -32,8 +32,8 @@ public class UserController {
 
     @PostMapping
     public ObjectResponse save(@RequestBody UserVO userVO) {
-         userService.save(userVO);
-         return new ObjectResponse();
+        userService.save(userVO);
+        return new ObjectResponse();
     }
 
 

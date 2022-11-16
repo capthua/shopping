@@ -7,37 +7,37 @@ import lombok.SneakyThrows;
 
 import java.util.Calendar;
 
-public final class SnowflakeShardingKeyGenerator{
-    
+public final class SnowflakeShardingKeyGenerator {
+
     public static final long EPOCH;
-    
+
     private static final long SEQUENCE_BITS = 12L;
-    
+
     private static final long WORKER_ID_BITS = 10L;
-    
+
     private static final long SEQUENCE_MASK = (1 << SEQUENCE_BITS) - 1;
-    
+
     private static final long WORKER_ID_LEFT_SHIFT_BITS = SEQUENCE_BITS;
-    
+
     private static final long TIMESTAMP_LEFT_SHIFT_BITS = WORKER_ID_LEFT_SHIFT_BITS + WORKER_ID_BITS;
-    
+
     private static final long WORKER_ID_MAX_VALUE = 1L << WORKER_ID_BITS;
-    
+
     private long workerId = 0;
-    
+
     private static final int DEFAULT_VIBRATION_VALUE = 1;
-    
+
     private static final int MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS = 10;
-    
+
     @Setter
     private static TimeService timeService = new TimeService();
-    
+
     private int sequenceOffset = -1;
-    
+
     private long sequence;
-    
+
     private long lastMilliseconds;
-    
+
     static {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, Calendar.NOVEMBER, 1);
@@ -64,7 +64,7 @@ public final class SnowflakeShardingKeyGenerator{
         lastMilliseconds = currentMilliseconds;
         return ((currentMilliseconds - EPOCH) << TIMESTAMP_LEFT_SHIFT_BITS) | (getWorkerId() << WORKER_ID_LEFT_SHIFT_BITS) | sequence;
     }
-    
+
     @SneakyThrows
     private boolean waitTolerateTimeDifferenceIfNeed(final long currentMilliseconds) {
         if (lastMilliseconds <= currentMilliseconds) {
@@ -76,7 +76,7 @@ public final class SnowflakeShardingKeyGenerator{
         Thread.sleep(timeDifferenceMilliseconds);
         return true;
     }
-    
+
     private long getWorkerId() {
         long result = Long.parseLong(String.valueOf(workerId));
         Preconditions.checkArgument(result >= 0L && result < WORKER_ID_MAX_VALUE);
@@ -86,17 +86,17 @@ public final class SnowflakeShardingKeyGenerator{
     public void setWorkerId(long workerId) {
         this.workerId = workerId;
     }
-    
+
     private int getMaxVibrationOffset() {
         int result = Integer.parseInt(String.valueOf(DEFAULT_VIBRATION_VALUE));
         Preconditions.checkArgument(result >= 0 && result <= SEQUENCE_MASK, "Illegal max vibration offset");
         return result;
     }
-    
+
     private int getMaxTolerateTimeDifferenceMilliseconds() {
         return Integer.parseInt(String.valueOf(MAX_TOLERATE_TIME_DIFFERENCE_MILLISECONDS));
     }
-    
+
     private long waitUntilNextTime(final long lastTime) {
         long result = timeService.getCurrentMillis();
         while (result <= lastTime) {
@@ -104,7 +104,7 @@ public final class SnowflakeShardingKeyGenerator{
         }
         return result;
     }
-    
+
     private void vibrateSequenceOffset() {
         sequenceOffset = sequenceOffset >= getMaxVibrationOffset() ? 0 : sequenceOffset + 1;
     }

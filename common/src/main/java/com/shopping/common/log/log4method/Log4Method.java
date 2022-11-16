@@ -12,6 +12,8 @@ import java.lang.annotation.*;
 @Documented
 public @interface Log4Method {
     LogLevel logLevel() default LogLevel.DEBUG;
+
     Class classType() default Object.class;
+
     String[] excludeFieldName() default {};
 }

@@ -6,23 +6,28 @@
 
     <cache/>
 
-<!--    <resultMap id="a" type="com.shopping.demo24.model.A">-->
-<!--        <id property="id" column="id" />-->
-<!--        <result property="name" column="name"/>-->
-<!--    </resultMap>-->
+    <!--    <resultMap id="a" type="com.shopping.demo24.model.A">-->
+    <!--        <id property="id" column="id" />-->
+    <!--        <result property="name" column="name"/>-->
+    <!--    </resultMap>-->
 
     <select id="getById" flushCache="true" resultType="com.shopping.demo24.model.A">
-        select * from `t_a` where id = #{id}
+        select *
+        from `t_a`
+        where id = #{id}
     </select>
 
     <select id="getById2" resultType="com.shopping.demo24.model.A">
-        select * from `t_a` where id = #{id}
+        select *
+        from `t_a`
+        where id = #{id}
     </select>
 
     <update id="updateNameById">
-        update t_a set name=#{name} where id=#{id}
+        update t_a
+        set name=#{name}
+        where id = #{id}
     </update>
-
 
 
 </mapper>

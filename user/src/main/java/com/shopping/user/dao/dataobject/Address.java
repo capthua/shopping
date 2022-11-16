@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 /**
  * 收货地址
+ *
  * @author capthua
  */
 @Data

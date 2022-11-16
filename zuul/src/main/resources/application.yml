@@ -18,9 +18,9 @@ management:
 
 # ribbon配置
 ribbon:
-#  建立连接的超时时间
+  #  建立连接的超时时间
   ConnectTimeout: 2000
-#  已经建立连接,并开始读取服务端资源.如果到了指定的时间,没有可能的数据被客户端读取,则报异常
+  #  已经建立连接,并开始读取服务端资源.如果到了指定的时间,没有可能的数据被客户端读取,则报异常
   ReadTimeout: 8000
 #demo1的ribbon配置
 demo2:
@@ -34,7 +34,7 @@ hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 8000
 
 zuul:
   host:
-#    默认2s
+    #    默认2s
     connect-timeout-millis: 2000
 
 

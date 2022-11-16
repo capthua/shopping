@@ -8,18 +8,18 @@
 </head>
 
 <body>
-    <div id="app">
-        <el-upload
-                   class="upload-demo"
-                   drag
-                   :before-upload="beforeUpload"
-                   :action="action"
-                   multiple>
-            <i class="el-icon-upload"></i>
-            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-        </el-upload>
-        <el-input style="margin-top:20px;" v-model="action" placeholder="请输入上传接口URL"></el-input>
-    </div>
+<div id="app">
+    <el-upload
+            class="upload-demo"
+            drag
+            :before-upload="beforeUpload"
+            :action="action"
+            multiple>
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+    </el-upload>
+    <el-input style="margin-top:20px;" v-model="action" placeholder="请输入上传接口URL"></el-input>
+</div>
 </body>
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
