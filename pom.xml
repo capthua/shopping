@@ -75,6 +75,7 @@
 
         <dependencies>
 
+<!--            不将 spring-boot-starter-parent 设置为项目的parent，就无法使用其配置的plugin-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

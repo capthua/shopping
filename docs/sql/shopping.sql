@@ -1,3 +1,4 @@
+#### 用户库
 create schema sp_user collate utf8_general_ci;
 create table t_user
 (
@@ -20,7 +21,7 @@ create table t_account
 INSERT INTO sp_user.t_account (id, user_id, amount)
 VALUES (1, 1, 200000);
 
-
+#### 商品库
 create schema sp_goods collate utf8_general_ci;
 create table t_goods
 (
@@ -34,7 +35,7 @@ create table t_goods
 INSERT INTO sp_goods.t_goods (id, name, description, quantity, price)
 VALUES (1, 'MacBook', '苹果电脑', 10, 12400);
 
-
+#### 订单库
 create schema sp_order collate utf8_general_ci;
 create table t_order
 (
@@ -54,13 +55,3 @@ create table t_order_item
     goods_id bigint null,
     quantity int    null
 );
-
-
-# create table t_dict
-# (
-#     id    bigint       not null
-#         primary key,
-#     name  varchar(64)  null,
-#     code  varchar(64)  null,
-#     value varchar(128) null
-# );

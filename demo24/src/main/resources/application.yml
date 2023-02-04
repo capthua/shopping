@@ -1,5 +1,7 @@
 server:
   port: 8030
+  tomcat:
+    min
 spring:
   application:
     name: demo
@@ -8,16 +10,12 @@ spring:
   profiles:
     active:
       - db
-      #      - db-url-company
-      - db-url-home-docker
+      - db-url-company
       - mybatis
-      - dubbo3-c
+      - dubbo-c
       - nacos-url-company
-      #      - nacos-url-home-docker
       - cache
-      #      - redis-url-company
-      - redis-url-home-docker
-
+      - redis-url-company
 #      - sharding-rwsplitting-company
 #通过web暴露端点监控actuator,还可以通过jmx暴露
 management:

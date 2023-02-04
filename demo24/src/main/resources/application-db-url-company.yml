@@ -1,6 +1,5 @@
 spring:
   datasource:
-    #    公司
-    url: jdbc:mysql://192.168.9.19:3307/sp?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/sp_order?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: root
+    password: 242492
