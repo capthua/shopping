@@ -4,12 +4,14 @@ spring:
   profiles:
     active:
       - db
-      #      - db-url-home
+#      - db-url-home
+#      - nacos-url-home
       - db-url-company
-      - mybatis
-      #      - nacos-url-home
       - nacos-url-company
+      - mybatis
+
       - dubbo-p
+      - seata-common
       - seata
 server:
   port: 8024

@@ -11,6 +11,11 @@ mapper:
   mappers:
     - com.shopping.common.db.CommonMapper
 
+mybatis-plus:
+  global-config:
+    db-config:
+      capital-mode: true
+
 #mybatis配置文件
 # classpath*:需要遍历所有的classpath
 mybatis:

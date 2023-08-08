@@ -19,7 +19,7 @@ import java.sql.Statement;
 /**
  * @author CaptHua
  */
-@Component
+//@Component
 @Order(2)
 @Intercepts({@Signature(type = StatementHandler.class, method = "update", args = {Statement.class}),})
 public class SqlValidateMybatisInterceptor2 extends PRSMybatisInterceptor {

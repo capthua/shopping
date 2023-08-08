@@ -1,12 +1,17 @@
 package com.shopping.order.service;
 
+import com.shooping.api.dto.AccountDTO;
+import com.shooping.api.dto.OrderDTO;
+import com.shooping.api.service.user.UserRpcService;
 import com.shopping.common.id.SnowflakeShardingKeyGenerator;
+import com.shopping.common.response.ObjectResponse;
 import com.shopping.order.api.model.OrderModel;
-import com.shopping.order.dao.dataobject.OrderItemDO;
 import com.shopping.order.dao.mapper.OrderItemMapper;
 import com.shopping.order.dao.mapper.OrderMapper;
+//import com.shopping.order.dao.mapper.OrderMapperMP;
 import com.shopping.order.dao.dataobject.OrderDO;
 import com.shopping.order.api.OrderService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -19,10 +24,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.shopping.order.service.rpc.OrderRpcServiceImpl.getOrderModel;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
+
+    @DubboReference(timeout = 60000, version = "0.24", async = false, check = false)
+    private UserRpcService userRpcService;
 
     @Autowired
     SnowflakeShardingKeyGenerator idGenerator;
@@ -59,7 +69,8 @@ public class OrderServiceImpl implements OrderService {
         }
         logger.info("开始插入");
         long startTime = System.currentTimeMillis();
-        int result = orderMapper.insertList(orders);
+        int result = 0;
+//                orderMapper.insertList(orders);
         long useTime = System.currentTimeMillis() - startTime;
         logger.info("插入结束,用时:{}秒", useTime / 1000);
         return result;
@@ -67,9 +78,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderModel getOrderById(Long id) {
-        OrderDO orderDO = orderMapper.selectByPrimaryKey(id);
+//        OrderDO orderDO = orderMapper.selectByPrimaryKey(id);
         OrderModel orderModel = new OrderModel();
-        BeanUtils.copyProperties(orderDO, orderModel);
+        BeanUtils.copyProperties(null, orderModel);
         return orderModel;
     }
 
@@ -79,7 +90,7 @@ public class OrderServiceImpl implements OrderService {
         orderDO.setId(id);
         orderDO.setState(status);
         orderDO.setModifyTime(System.currentTimeMillis());
-        orderMapper.updateByPrimaryKeySelective(orderDO);
+//        orderMapper.updateByPrimaryKeySelective(orderDO);
     }
 
     @Transactional
@@ -91,16 +102,32 @@ public class OrderServiceImpl implements OrderService {
         OrderDO orderDO = new OrderDO();
         BeanUtils.copyProperties(order, orderDO);
         orderDO.setId(idGenerator.generateKey());
-        orderMapper.insert(orderDO);
+//        orderMapper.insertUseGeneratedKeys(orderDO);
+        orderMapper.saveOrder(orderDO);
 
-        List<OrderItemDO> orderItemDOs = new ArrayList<>();
-        order.getOrderItems().forEach(orderItem -> {
-            OrderItemDO orderItemDO = new OrderItemDO();
-            BeanUtils.copyProperties(orderItem, orderItemDO);
-            orderItemDO.setOrderId(orderDO.getId());
-            orderItemDO.setId(idGenerator.generateKey());
-            orderItemDOs.add(orderItemDO);
-        });
-        orderItemMapper.insertList(orderItemDOs);
+//        List<OrderItemDO> orderItemDOs = new ArrayList<>();
+//        order.getOrderItems().forEach(orderItem -> {
+//            OrderItemDO orderItemDO = new OrderItemDO();
+//            BeanUtils.copyProperties(orderItem, orderItemDO);
+//            orderItemDO.setOrderId(orderDO.getId());
+//            orderItemDO.setId(idGenerator.generateKey());
+//            orderItemDOs.add(orderItemDO);
+//        });
+//        orderItemMapper.insertList(orderItemDOs);
+    }
+
+
+    @Override
+    @Transactional
+    public ObjectResponse<OrderDTO> createOrder(OrderDTO orderDTO) {
+        ObjectResponse<OrderDTO> response = new ObjectResponse<>();
+        //生成订单
+        saveOrder(getOrderModel(orderDTO));
+        //扣减用户账户
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setUserId(orderDTO.getUserId());
+        accountDTO.setAmount(orderDTO.getAmount());
+        ObjectResponse accountResponse = userRpcService.decreaseAccount(accountDTO);
+        return response;
     }
 }

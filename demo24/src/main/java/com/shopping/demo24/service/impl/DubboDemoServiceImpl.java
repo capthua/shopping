@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DubboDemoServiceImpl implements DubboDemoService {
 
-    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
+    @DubboReference(timeout = 60000, version = "0.24", async = false, check = false)
     private OrderRpcService orderService;
 
 

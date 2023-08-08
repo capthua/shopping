@@ -13,3 +13,7 @@ mybatis:
 logging:
   level:
     com.shopping.demo24.dao: debug
+    com.shopping.cart.dao: debug
+    com.shopping.user.dao: debug
+    com.shopping.goods.dao: debug
+    com.shopping.order.dao: debug

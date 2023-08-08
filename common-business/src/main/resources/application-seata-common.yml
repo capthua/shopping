@@ -1,6 +1,5 @@
 seata:
   enabled: true
-  application-id: shopping
   data-source-proxy-mode: AT
   tx-service-group: tx_group_shopping # 事务群组（可以每个应用独立取名，也可以使用相同的名字）
   client:
@@ -16,6 +15,7 @@ seata:
     tm:
       commit-retry-count: 3 # 一阶段全局提交结果上报TC重试次数（默认1次，建议大于1）
       rollback-retry-count: 3 # 一阶段全局回滚结果上报TC重试次数（默认1次，建议大于1）
+      degrade-check: false # 降级开关：默认false，业务侧根据连续错误数自动降级不走seata事务
     undo:
       data-validation: true # 二阶段回滚镜像校验（默认true开启）
       log-serialization: jackson # undo序列化方式（默认jackson）
@@ -29,7 +29,7 @@ seata:
     enable-degrade: false # 降级开关
     disable-global-transaction: false # 禁用全局事务（默认false）
     grouplist:
-      default: 127.0.0.1:8091
+      default: 127.0.0.1:8091    # 仅注册中心为file时使用
   transport:
     shutdown:
       wait: 3
@@ -64,3 +64,9 @@ seata:
       group: SEATA_GROUP
       username: nacos
       password: nacos
+logging:
+  level:
+    io.seata: debug
+    io.seata.core.rpc.processor.client.ClientHeartbeatProcessor: info
+    io.seata.core.rpc.netty.AbstractNettyRemotingClient: info
+    io.seata.core.rpc.netty.AbstractNettyRemoting: info

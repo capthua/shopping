@@ -43,6 +43,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
+<!--        <spring-boot.version>2.7.14</spring-boot.version>-->
         <!--<spring-boot.version>2.3.6.RELEASE</spring-boot.version>-->
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <!--<spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
@@ -50,6 +51,8 @@
         <!--毕业版本-->
         <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
         <!--<spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>-->
+
+        <mysql.version>8.0.29</mysql.version>
 
         <nacos.version>0.2.2.RELEASE</nacos.version>
 
@@ -62,7 +65,8 @@
         <dubbo.version>2.7.18</dubbo.version>
         <!--        <dubbo.version>3.1.0</dubbo.version>-->
         <!--        <seata.version>1.4.2</seata.version>-->
-        <seata.version>1.5.2</seata.version>
+<!--        <seata.version>1.5.2</seata.version>-->
+        <seata.version>1.7.0</seata.version>
 
 
         <redisson-starter.version>3.13.6</redisson-starter.version>

@@ -19,15 +19,16 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@DubboService(version = "0.24", timeout = 20000, loadbalance = "roundrobin", retries = 0, actives = 2, executes = 1)
+@DubboService(version = "0.24", timeout = 60000, loadbalance = "roundrobin", retries = 0, actives = 2, executes = 1)
 public class OrderRpcServiceImpl implements OrderRpcService {
 
-    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
+    @DubboReference(timeout = 60000, version = "0.24", async = false, check = false)
     private UserRpcService userRpcService;
 
     @Autowired
@@ -54,23 +55,26 @@ public class OrderRpcServiceImpl implements OrderRpcService {
     }
 
     @Override
+    @Transactional
     public ObjectResponse<OrderDTO> createOrder(OrderDTO orderDTO) {
         log.info("全局事务id ：" + RootContext.getXID());
 
         ObjectResponse<OrderDTO> response = new ObjectResponse<>();
 
-        //扣减用户账户
-        AccountDTO accountDTO = new AccountDTO();
-        accountDTO.setUserId(orderDTO.getUserId());
-        accountDTO.setAmount(orderDTO.getAmount());
-        ObjectResponse accountResponse = userRpcService.decreaseAccount(accountDTO);
+//        //生成订单
+//        orderService.saveOrder(getOrderModel(orderDTO));
+//        //扣减用户账户
+//        AccountDTO accountDTO = new AccountDTO();
+//        accountDTO.setUserId(orderDTO.getUserId());
+//        accountDTO.setAmount(orderDTO.getAmount());
+//        ObjectResponse accountResponse = userRpcService.decreaseAccount(accountDTO);
 
-        //生成订单
-        orderService.saveOrder(getOrderModel(orderDTO));
+        orderService.createOrder(orderDTO);
+
         return response;
     }
 
-    private OrderModel getOrderModel(OrderDTO orderDTO) {
+    public static OrderModel getOrderModel(OrderDTO orderDTO) {
         OrderModel orderModel = new OrderModel();
         orderModel.setUserId(orderDTO.getUserId());
         orderModel.setState((byte) 0);

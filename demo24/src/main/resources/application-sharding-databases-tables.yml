@@ -3,13 +3,13 @@ spring:
     datasource:
       ds-0:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/shopping_0?serverTimezone=UTC
+        url: jdbc:mysql://localhost:3384/shopping_0?serverTimezone=UTC
         username: root
         password: 242492
         driver-class-name: com.mysql.jdbc.Driver
       ds-1:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/shopping_1?serverTimezone=UTC
+        url: jdbc:mysql://localhost:3384/shopping_1?serverTimezone=UTC
         username: root
         password: 242492
         driver-class-name: com.mysql.jdbc.Driver

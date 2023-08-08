@@ -8,4 +8,6 @@ public interface GoodsMapper extends CommonMapper<GoodsDO> {
 
     int decreaseStock(@Param("id") Long id, @Param("count") Integer count);
 
+    int removeById(@Param("id") Long id);
+
 }

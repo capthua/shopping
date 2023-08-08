@@ -5,7 +5,7 @@ import com.shooping.api.service.order.OrderParam;
 import com.shopping.common.response.ObjectResponse;
 import org.apache.dubbo.config.annotation.DubboService;
 
-@DubboService(version = "0.24", timeout = 20000, loadbalance = "roundrobin", retries = 0, actives = 2)
+@DubboService(version = "0.24", timeout = 60000, loadbalance = "roundrobin", retries = 0, actives = 2)
 public class OrderAdsRpcServiceImpl implements OrderAdsService {
 
     @Override

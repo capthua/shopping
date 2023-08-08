@@ -4,7 +4,7 @@ spring:
   datasource:
     druid:
       db1:
-        url: jdbc:mysql://localhost:3306/shopping?serverTimezone=UTC
+        url: jdbc:mysql://localhost:3384/shopping?serverTimezone=UTC
         username: root
         password: 242492
       db2:

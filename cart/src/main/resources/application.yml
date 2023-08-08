@@ -4,12 +4,13 @@ spring:
   profiles:
     active:
       - db
-      #      - db-url-home
-      #      - nacos-url-home
+#      - db-url-home
+#      - nacos-url-home
       - db-url-company
       - nacos-url-company
       - mybatis
       - dubbo-c
+      - seata-common
       - seata
   application:
     name: cart

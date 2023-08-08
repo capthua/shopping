@@ -1,7 +1,5 @@
 server:
   port: 8030
-  tomcat:
-    min
 spring:
   application:
     name: demo

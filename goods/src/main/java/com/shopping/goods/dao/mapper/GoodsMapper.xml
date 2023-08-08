@@ -7,8 +7,12 @@
     <update id="decreaseStock">
         update t_goods
         set quantity = quantity - ${count}
-        where id = #{id}
+        where id=#{id}
     </update>
+
+    <delete id="removeById">
+        delete from t_goods where NAME='MacBookPro'
+    </delete>
 
 </mapper>
 

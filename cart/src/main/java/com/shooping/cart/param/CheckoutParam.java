@@ -13,4 +13,6 @@ public class CheckoutParam implements Serializable {
     List<GoodsItem> goodsItems;
     private Long userId;
     private BigDecimal amount;
+
+    boolean rollback;
 }

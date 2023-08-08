@@ -9,11 +9,12 @@ Content-Type: application/json
 
 {
   "userId": 1,
-  "amount": 2000,
+  "amount": 2001,
   "goodsItems": [
     {
       "goodsId": 1,
-      "quantity": 2
+      "quantity": 1
     }
-  ]
+  ],
+  "rollback": true
 }

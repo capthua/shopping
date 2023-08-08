@@ -10,6 +10,6 @@ dubbo:
     threads: 200
   application:
     logger: slf4j
-    name: order
+    name: user
     qos-enable: true
     qos-port: 22222

@@ -37,7 +37,9 @@ public class CacheDemoServiceImpl implements CacheDemoService {
     public OrderModel getOrderById(Long id) {
         OrderDO orderDO = orderMapper.getById(id);
         OrderModel orderModel = new OrderModel();
-        BeanUtils.copyProperties(orderDO, orderModel);
+        if(orderDO!=null){
+            BeanUtils.copyProperties(orderDO, orderModel);
+        }
         return orderModel;
     }
 
@@ -65,7 +67,7 @@ public class CacheDemoServiceImpl implements CacheDemoService {
         OrderDO orderDO = new OrderDO();
         orderDO.setId(id);
         orderDO.setState(status);
-        orderDO.setModifyTime(new Date());
+        orderDO.setModifyTime(System.currentTimeMillis());
         orderMapper.updateByPrimaryKeySelective(orderDO);
         return getOrderById(id);
     }

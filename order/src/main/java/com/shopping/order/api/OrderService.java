@@ -1,5 +1,7 @@
 package com.shopping.order.api;
 
+import com.shooping.api.dto.OrderDTO;
+import com.shopping.common.response.ObjectResponse;
 import com.shopping.order.api.model.OrderModel;
 
 public interface OrderService {
@@ -12,4 +14,6 @@ public interface OrderService {
     void setState(Long id, Byte status);
 
     void saveOrder(OrderModel order);
+
+    ObjectResponse<OrderDTO> createOrder(OrderDTO orderDTO);
 }

@@ -8,9 +8,10 @@ import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
-@DubboService(version = "0.24", timeout = 20000, loadbalance = "roundrobin", retries = 0, actives = 2, executes = 1)
+@DubboService(version = "0.24", timeout = 60000, loadbalance = "roundrobin", retries = 0, actives = 2, executes = 1)
 public class UserRpcServiceImpl implements UserRpcService {
 
     @Autowired
@@ -27,6 +28,7 @@ public class UserRpcServiceImpl implements UserRpcService {
     }
 
     @Override
+    @Transactional
     public ObjectResponse decreaseAccount(AccountDTO accountDTO) {
         log.info("全局事务id ：" + RootContext.getXID());
         accountService.decreaseAccount(accountDTO.getUserId(), accountDTO.getAmount());

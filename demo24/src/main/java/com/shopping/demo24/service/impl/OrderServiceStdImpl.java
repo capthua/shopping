@@ -51,7 +51,7 @@ public class OrderServiceStdImpl implements OrderServiceStd {
         OrderDO orderDO = new OrderDO();
         orderDO.setId(id);
         orderDO.setState(status);
-        orderDO.setModifyTime(new Date());
+        orderDO.setModifyTime(System.currentTimeMillis());
         orderMapper.updateByPrimaryKeySelective(orderDO);
     }
 

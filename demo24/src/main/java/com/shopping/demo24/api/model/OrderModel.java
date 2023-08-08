@@ -12,11 +12,9 @@ public class OrderModel implements Serializable {
     private static final long serialVersionUID = 24L;
 
     private Long id;
-    private Date createTime;
-    private Date modifyTime;
     private BigDecimal totalCost;
-    private Long paymentId;
-    private Long deliveryId;
+    private Long createTime;
+    private Long modifyTime;
     private Byte state;
     private Long userId;
 }

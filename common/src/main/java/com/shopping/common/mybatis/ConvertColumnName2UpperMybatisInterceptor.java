@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * @author CaptHua
  */
-@Component
+//@Component
 @Intercepts({@Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class}),})
 public class ConvertColumnName2UpperMybatisInterceptor extends PRSMybatisInterceptor {
 

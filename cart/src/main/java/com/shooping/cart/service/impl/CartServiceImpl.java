@@ -19,19 +19,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @Service
 public class CartServiceImpl implements CartService {
 
-    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
+    @DubboReference(timeout = 60000, version = "0.24", async = false, check = false)
     private GoodsRpcService goodsService;
 
-    @DubboReference(timeout = 20000, version = "0.24", async = false, check = false)
+    @DubboReference(timeout = 60000, version = "0.24", async = false, check = false)
     private OrderRpcService orderService;
 
 
-    @GlobalTransactional(timeoutMills = 300000, name = "dubbo-gts-seata-example")
+    @GlobalTransactional(timeoutMills = 300000, name = "shopping-checkout")
     @Override
     public ObjectResponse checkout(CheckoutParam checkoutParam) {
         log.info("开始全局事务，XID = " + RootContext.getXID());
@@ -63,8 +64,8 @@ public class CartServiceImpl implements CartService {
         ObjectResponse orderResponse = orderService.createOrder(orderDTO);
 
         //        打开注释测试事务发生异常后，全局回滚功能
-        boolean flag = false;
-        if (flag) {
+        if (checkoutParam.isRollback()) {
+            log.error("测试抛异常后，分布式事务回滚！");
             throw new RuntimeException("测试抛异常后，分布式事务回滚！");
         }
 
