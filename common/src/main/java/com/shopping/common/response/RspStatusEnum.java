@@ -1,10 +1,8 @@
 package com.shopping.common.response;
 
-
 /**
  * @author CaptHua
  */
-
 public enum RspStatusEnum {
 
     /**

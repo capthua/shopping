@@ -6,6 +6,7 @@ import com.shooping.api.service.user.UserRpcService;
 import com.shopping.common.id.SnowflakeShardingKeyGenerator;
 import com.shopping.common.response.ObjectResponse;
 import com.shopping.order.api.model.OrderModel;
+import com.shopping.order.dao.dataobject.OrderItemDO;
 import com.shopping.order.dao.mapper.OrderItemMapper;
 import com.shopping.order.dao.mapper.OrderMapper;
 //import com.shopping.order.dao.mapper.OrderMapperMP;
@@ -102,18 +103,17 @@ public class OrderServiceImpl implements OrderService {
         OrderDO orderDO = new OrderDO();
         BeanUtils.copyProperties(order, orderDO);
         orderDO.setId(idGenerator.generateKey());
-//        orderMapper.insertUseGeneratedKeys(orderDO);
         orderMapper.saveOrder(orderDO);
 
-//        List<OrderItemDO> orderItemDOs = new ArrayList<>();
-//        order.getOrderItems().forEach(orderItem -> {
-//            OrderItemDO orderItemDO = new OrderItemDO();
-//            BeanUtils.copyProperties(orderItem, orderItemDO);
-//            orderItemDO.setOrderId(orderDO.getId());
-//            orderItemDO.setId(idGenerator.generateKey());
-//            orderItemDOs.add(orderItemDO);
-//        });
-//        orderItemMapper.insertList(orderItemDOs);
+        List<OrderItemDO> orderItemDOs = new ArrayList<>();
+        order.getOrderItems().forEach(orderItem -> {
+            OrderItemDO orderItemDO = new OrderItemDO();
+            BeanUtils.copyProperties(orderItem, orderItemDO);
+            orderItemDO.setOrderId(orderDO.getId());
+            orderItemDO.setId(idGenerator.generateKey());
+            orderItemDOs.add(orderItemDO);
+            orderItemMapper.insert(orderItemDO);
+        });
     }
 
 

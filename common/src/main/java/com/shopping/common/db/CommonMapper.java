@@ -1,7 +1,6 @@
 package com.shopping.common.db;
 
-import tk.mybatis.mapper.common.Mapper;
-import tk.mybatis.mapper.common.MySqlMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CommonMapper<T> extends Mapper<T>, MySqlMapper<T> {
+public interface CommonMapper<T> extends BaseMapper<T> {
 }

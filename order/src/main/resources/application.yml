@@ -9,8 +9,8 @@ spring:
       - db-url-company
       - nacos-url-company
       - mybatis
-      - dubbo-p
-      - dubbo-c
+      - dubbo3-p
+      - dubbo3-c
       - seata-common
       - seata
   application:

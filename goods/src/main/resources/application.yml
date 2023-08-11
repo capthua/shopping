@@ -9,7 +9,7 @@ spring:
       - db-url-company
       - nacos-url-company
       - mybatis
-      - dubbo-p
+      - dubbo3-p
       - seata-common
       - seata
 server:

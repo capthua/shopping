@@ -3,7 +3,7 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-###
+### 下单
 POST http://localhost:8027/cart/checkout
 Content-Type: application/json
 

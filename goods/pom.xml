@@ -82,8 +82,8 @@
         <!--        </dependency>-->
 
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -91,11 +91,16 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
+<!--        分布式事务-->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </dependency>
+
         <!--    mysql driver    -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <!-- <version>${mysql.version}</version>-->
         </dependency>
 
 
@@ -103,11 +108,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
         </dependency>
 
     </dependencies>

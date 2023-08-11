@@ -44,8 +44,8 @@
         </dependency>
 
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -57,7 +57,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <!-- <version>${mysql.version}</version>-->
         </dependency>
 
         <!--        dubbo-->
@@ -75,12 +74,6 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-metadata-report-nacos</artifactId>
         </dependency>
-
-
-        <!--        <dependency>-->
-        <!--            <groupId>io.seata</groupId>-->
-        <!--            <artifactId>seata-all</artifactId>-->
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.seata</groupId>

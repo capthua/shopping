@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getUserById(Long id) {
         UserVO userVO = new UserVO();
-        User user = userDao.selectByPrimaryKey(id);
+        User user = userDao.selectById(id);
         BeanUtils.copyProperties(user, userVO);
         return userVO;
     }
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     public void save(UserVO userVO) {
         User user = new User();
         BeanUtils.copyProperties(userVO, user);
-        userDao.insertUseGeneratedKeys(user);
+        userDao.insert(user);
     }
 }
 

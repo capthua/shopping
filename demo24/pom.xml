@@ -68,15 +68,14 @@
         <!--    <artifactId>mybatis-spring-boot-starter</artifactId>-->
         <!--</dependency>-->
 
+        <!--        <dependency>-->
+        <!--            <groupId>tk.mybatis</groupId>-->
+        <!--            <artifactId>mapper-spring-boot-starter</artifactId>-->
+        <!--        </dependency>-->
+
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <!--<exclusions>-->
-            <!--    <exclusion>-->
-            <!--        <groupId>org.mybatis</groupId>-->
-            <!--        <artifactId>mybatis</artifactId>-->
-            <!--    </exclusion>-->
-            <!--</exclusions>-->
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
         <!--        如果引用此包，用sharding-jdbc配置会加载不到数据源配置-->

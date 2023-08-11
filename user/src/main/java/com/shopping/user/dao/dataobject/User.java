@@ -1,16 +1,17 @@
 package com.shopping.user.dao.dataobject;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.io.Serializable;
 
 @Data
-@Table(name = "t_user")
+@TableName("t_user")
 public class User implements Serializable {
 
-    @Id
+    @TableId
     private Long id;
     private String username;
     private String password;
@@ -18,3 +19,5 @@ public class User implements Serializable {
     private String phoneNo;
 
 }
+
+
