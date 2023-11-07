@@ -1,6 +1,7 @@
 package com.shopping.goods.service;
 
 import com.shopping.goods.api.GoodsService;
+import com.shopping.goods.dao.dataobject.GoodsDO;
 import com.shopping.goods.dao.mapper.GoodsMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -30,5 +31,9 @@ public class GoodsServiceImpl implements GoodsService, BeanFactoryAware {
         goodsMapper.decreaseStock(goodsId, quantity);
 //        goodsMapper.deleteByPrimaryKey(2);
 //        goodsMapper.removeById(2L);
+    }
+
+    public GoodsDO getGoodsById(Long goodsId) {
+        return goodsMapper.selectById(goodsId);
     }
 }

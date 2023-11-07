@@ -15,3 +15,7 @@ dubbo:
     qos-port: 22225
     name: cart
     qos-enable: true
+
+logging:
+  level:
+    org.apache.dubbo: debug

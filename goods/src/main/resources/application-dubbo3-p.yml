@@ -8,7 +8,7 @@ dubbo:
   protocol:
     #    -1:会分配一个没有被占用的端口，默认是20880
     port: -1
-    name: dubbo
+#    name: tri
     threads: 200
   #  metadata-report:
   #    address: application-nacos-url中
@@ -17,3 +17,7 @@ dubbo:
     name: goods
     qos-enable: true
     qos-port: 22223
+
+logging:
+  level:
+    org.apache.dubbo: debug
