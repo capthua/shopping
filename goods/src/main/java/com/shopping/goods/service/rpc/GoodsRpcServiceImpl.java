@@ -1,11 +1,14 @@
 package com.shopping.goods.service.rpc;
 
 import com.shooping.api.dto.CommodityDTO;
+import com.shooping.api.dto.GoodsDTO;
 import com.shooping.api.service.goods.GoodsRpcService;
 import com.shopping.common.response.ObjectResponse;
 import com.shopping.goods.api.GoodsService;
+import com.shopping.goods.dao.dataobject.GoodsDO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,5 +28,17 @@ public class GoodsRpcServiceImpl implements GoodsRpcService {
             goodsService.decreaseStock(commodityDTO.getId(), commodityDTO.getCount());
         });
         return new ObjectResponse();
+    }
+
+    @Override
+    public ObjectResponse<GoodsDTO> getGoodsById(Long goodsId) {
+        GoodsDTO goodsDTO=new GoodsDTO();
+        GoodsDO goodsDO=goodsService.getGoodsById(goodsId);
+        if(goodsDO!=null){
+            BeanUtils.copyProperties(goodsDO,goodsDTO);
+        }
+        ObjectResponse<GoodsDTO> or=new ObjectResponse<>();
+        or.setData(goodsDTO);
+        return or;
     }
 }

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Slf4j
 @Service
@@ -75,4 +74,10 @@ public class CartServiceImpl implements CartService {
         return objectResponse;
     }
 
+    @Override
+    public ObjectResponse getGoodsById(Long id) {
+        ObjectResponse or= new ObjectResponse();
+        or.setData(goodsService.getGoodsById(id).getData());
+        return or;
+    }
 }

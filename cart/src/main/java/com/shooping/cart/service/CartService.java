@@ -7,4 +7,6 @@ public interface CartService {
 
     ObjectResponse checkout(CheckoutParam checkoutParam);
 
+    ObjectResponse getGoodsById(Long id);
+
 }

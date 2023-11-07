@@ -12,3 +12,8 @@ spring:
       - dubbo3-c
   application:
     name: cart
+
+#debug: true
+logging:
+  level:
+    org.apache.dubbo: debug

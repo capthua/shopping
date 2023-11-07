@@ -67,14 +67,12 @@
         <dubbo.version>3.2.4</dubbo.version>
 <!--        <dubbo.version>2.7.18</dubbo.version>-->
         <!--        <dubbo.version>3.1.0</dubbo.version>-->
-        <!--        <seata.version>1.4.2</seata.version>-->
-<!--        <seata.version>1.5.2</seata.version>-->
         <seata.version>1.7.0</seata.version>
 
 
         <redisson-starter.version>3.13.6</redisson-starter.version>
+        <protobuf-java.version>3.24.3</protobuf-java.version>
 
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <!--        插件版本号-->
         <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
     </properties>
@@ -169,6 +167,13 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson-starter.version}</version>
+            </dependency>
+
+<!--           for dubbo triple protocol-->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
             </dependency>
 
         </dependencies>
@@ -289,17 +294,6 @@
             </plugins>
 
         </pluginManagement>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
-        </plugins>
 
     </build>
 
