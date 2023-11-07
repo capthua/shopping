@@ -4,3 +4,4 @@ spring:
     url: jdbc:mysql://localhost:3380/sp_user?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 242492
+    type: com.alibaba.druid.pool.DruidDataSource

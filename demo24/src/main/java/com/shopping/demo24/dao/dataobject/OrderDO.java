@@ -1,16 +1,16 @@
 package com.shopping.demo24.dao.dataobject;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Data
-@Table(name = "t_order")
+@TableName("t_order")
 public class OrderDO {
 
-    @Id
+    @TableId
     private Long id;
     private BigDecimal totalCost;
     private Long createTime;

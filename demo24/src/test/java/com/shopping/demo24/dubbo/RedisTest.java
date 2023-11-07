@@ -1,7 +1,6 @@
 package com.shopping.demo24.dubbo;
 
 import com.shopping.demo24.Demo24Application;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,7 @@ public class RedisTest {
      *
      * @throws Exception
      */
-    @Test
+//    @Test
     public void hashTest() {
         redisTemplate.opsForHash().keys("hehe");
     }

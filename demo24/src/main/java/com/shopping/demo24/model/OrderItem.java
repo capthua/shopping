@@ -1,17 +1,15 @@
 package com.shopping.demo24.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 @Data
-@Table(name = "t_order_item")
+@TableName("t_order_item")
 public class OrderItem {
-
-    @Id
+    @TableId
     private Long id;
     private Long orderId;
-    private String productName;
-
+    private Long goodsId;
+    private Integer quantity;
 }

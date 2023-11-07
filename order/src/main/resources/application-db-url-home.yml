@@ -2,7 +2,7 @@
 spring:
   datasource:
     #homePC docker
-    url: jdbc:mysql://192.168.0.124:3380/sp_order?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://192.168.0.124:3380/sp_order?allowMultiQueries=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&useOldAliasMetadataBehavior=true
     username: root
     password: 242492
-#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    type: com.alibaba.druid.pool.DruidDataSource

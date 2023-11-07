@@ -1,15 +1,22 @@
 package com.shopping.demo24.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Table(name = "t_user")
 @Data
-public class User {
-    @Id
+@TableName("t_user")
+public class User implements Serializable {
+
+    @TableId
     private Long id;
-    private String name;
+    private String username;
+    private String password;
+    private String nickname;
+    private String phoneNo;
 
 }
+
+

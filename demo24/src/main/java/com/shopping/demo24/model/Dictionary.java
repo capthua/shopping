@@ -1,15 +1,14 @@
 package com.shopping.demo24.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Table(name = "t_dictionary")
+@TableName("t_order")
 @Data
 public class Dictionary {
 
-    @Id
+    @TableId
     private Long id;
     private String code;
     private String name;

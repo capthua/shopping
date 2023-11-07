@@ -9,7 +9,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import tk.mybatis.spring.annotation.MapperScan;
 
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
@@ -17,7 +16,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 //@EnableTransactionManagement(order = 1)
 @SpringBootApplication
 //@EnableDiscoveryClient
-@MapperScan("com.shopping.demo24.dao")
 @ComponentScan(basePackages = {"com.shopping"})
 public class Demo24Application {
 

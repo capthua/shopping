@@ -56,7 +56,8 @@
         <nacos.version>0.2.2.RELEASE</nacos.version>
 
         <mybatis.version>2.1.1</mybatis.version>
-        <druid.version>1.1.20</druid.version>
+<!--        <druid.version>1.1.20</druid.version>-->
+        <druid.version>1.2.6</druid.version>
         <guava.version>30.1.1-jre</guava.version>
         <poi.version>3.15</poi.version>
         <mapper.version>2.1.5</mapper.version>

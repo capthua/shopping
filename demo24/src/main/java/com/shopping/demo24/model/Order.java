@@ -1,16 +1,20 @@
 package com.shopping.demo24.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
-@Table(name = "t_order")
-public class Order implements Serializable {
-    @Id
+@TableName("t_order")
+public class Order {
+
+    @TableId
     private Long id;
+    private BigDecimal totalCost;
+    private Long createTime;
+    private Long modifyTime;
+    private Byte state;
     private Long userId;
-    private int status;
 }
