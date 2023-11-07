@@ -10,7 +10,5 @@ spring:
       - nacos-url-company
       - mybatis
       - dubbo3-c
-      - seata-common
-      - seata
   application:
     name: cart

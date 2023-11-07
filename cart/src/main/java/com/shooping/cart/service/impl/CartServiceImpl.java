@@ -11,8 +11,6 @@ import com.shopping.common.business.OrderUtils;
 import com.shopping.common.exception.DefaultException;
 import com.shopping.common.response.ObjectResponse;
 import com.shopping.common.response.RspStatusEnum;
-import io.seata.core.context.RootContext;
-import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
@@ -32,10 +30,8 @@ public class CartServiceImpl implements CartService {
     private OrderRpcService orderService;
 
 
-    @GlobalTransactional(timeoutMills = 300000, name = "shopping-checkout")
     @Override
     public ObjectResponse checkout(CheckoutParam checkoutParam) {
-        log.info("开始全局事务，XID = " + RootContext.getXID());
         ObjectResponse<Object> objectResponse = new ObjectResponse<>();
 
         List<OrderItemDTO> orderItems = new ArrayList<>();

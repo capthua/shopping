@@ -13,7 +13,6 @@ import com.shopping.order.api.model.OrderItemModel;
 import com.shopping.order.api.model.OrderModel;
 import com.shopping.order.dao.dataobject.OrderDO;
 import com.shopping.order.dao.dataobject.OrderItemDO;
-import io.seata.core.context.RootContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -57,8 +56,6 @@ public class OrderRpcServiceImpl implements OrderRpcService {
     @Override
     @Transactional
     public ObjectResponse<OrderDTO> createOrder(OrderDTO orderDTO) {
-        log.info("全局事务id ：" + RootContext.getXID());
-
         ObjectResponse<OrderDTO> response = new ObjectResponse<>();
 
 //        //生成订单
