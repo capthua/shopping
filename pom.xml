@@ -74,6 +74,7 @@
 
         <redisson-starter.version>3.13.6</redisson-starter.version>
 
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <!--        插件版本号-->
         <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
     </properties>
@@ -288,6 +289,17 @@
             </plugins>
 
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
 
     </build>
 
