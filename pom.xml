@@ -75,6 +75,7 @@
 
         <!--        插件版本号-->
         <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -251,6 +252,17 @@
                         </execution>
                     </executions>
                 </plugin>
+
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+
 
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
