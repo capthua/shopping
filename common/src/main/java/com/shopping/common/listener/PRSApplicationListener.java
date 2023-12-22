@@ -11,6 +11,6 @@ public class PRSApplicationListener implements ApplicationListener {
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        log.info("ApplicationEvent:{}", event);
+//        log.info("ApplicationEvent:{}", event);
     }
 }

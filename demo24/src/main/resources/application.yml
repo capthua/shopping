@@ -1,10 +1,10 @@
 server:
   port: 8030
 spring:
+  main:
+    allow-circular-references: true
   application:
     name: demo
-  #  main:
-  #    allow-bean-definition-overriding: true
   profiles:
     active:
       - db
@@ -14,6 +14,7 @@ spring:
       - nacos-url-company
       - cache
       - redis-url-company
+      - sentinel
 #      - sharding-rwsplitting-company
 #通过web暴露端点监控actuator,还可以通过jmx暴露
 management:
